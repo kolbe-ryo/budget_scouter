@@ -1,13 +1,15 @@
 // Flutter imports:
-import 'package:budget_scouter/chart.dart';
 import 'package:flutter/material.dart';
 
+// Project imports:
+import 'chart.dart';
+
 void main() {
-  runApp(const MyApp());
+  runApp(const BudgetScouter());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class BudgetScouter extends StatelessWidget {
+  const BudgetScouter({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
