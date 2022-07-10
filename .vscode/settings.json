@@ -1,0 +1,5 @@
+{
+    "dart.lineLength": 120,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 120
+}

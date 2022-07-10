@@ -1,8 +1,9 @@
 // Flutter imports:
+import 'package:budget_scouter/view/page/top_page.dart';
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'money_meter.dart';
+import 'view/organism/money_meter.dart';
 
 void main() {
   runApp(const BudgetScouter());
@@ -15,7 +16,7 @@ class BudgetScouter extends StatelessWidget {
     return MaterialApp(
       title: 'Money Meter',
       theme: ThemeData.dark(),
-      home: const MyHomePage(),
+      home: const TopPage(),
     );
   }
 }
@@ -32,16 +33,16 @@ class MyHomePage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Stack(
           children: [
-            Center(
+            const Center(
               child: MoneyMeter(isInnerCircle: false, used: 5),
             ),
-            Center(
+            const Center(
               child: MoneyMeter(isInnerCircle: true),
             ),
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: const [
                   Text(
                     'Balance',
                     style: TextStyle(
