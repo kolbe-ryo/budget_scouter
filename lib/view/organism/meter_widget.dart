@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 // Package imports:
 import 'package:pie_chart/pie_chart.dart';
 
-class MoneyMeter extends StatelessWidget {
-  const MoneyMeter({
+class MeterWidget extends StatelessWidget {
+  const MeterWidget({
     Key? key,
     required this.isInnerCircle,
     this.used = 0,
