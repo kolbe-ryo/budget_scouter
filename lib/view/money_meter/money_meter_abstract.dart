@@ -16,9 +16,10 @@ abstract class MoneyMeterAbstract extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Stack(
+      alignment: Alignment.center,
       children: [
-        ...(meterWidgets().map((widget) => Center(child: widget))),
-        Center(child: innerTextWidget()),
+        ...(meterWidgets().map((widget) => widget)),
+        innerTextWidget(),
       ],
     );
   }

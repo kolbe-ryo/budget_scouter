@@ -22,18 +22,24 @@ class MeterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      return PieChart(
-        baseChartColor: inOutCircle.color(),
-        chartRadius: meterRadius.radius(constraints),
-        chartType: ChartType.ring,
-        chartValuesOptions: const ChartValuesOptions(showChartValues: false),
-        colorList: const [Colors.black],
-        dataMap: {"usedMoney": used},
-        initialAngleInDegree: 270,
-        legendOptions: const LegendOptions(showLegends: false),
-        ringStrokeWidth: 10,
-        totalValue: 100,
+    return LayoutBuilder(builder: (context, _constraints) {
+      return ConstrainedBox(
+        constraints: BoxConstraints(
+          maxHeight: meterRadius.constraints(_constraints),
+          maxWidth: meterRadius.constraints(_constraints),
+        ),
+        child: PieChart(
+          baseChartColor: inOutCircle.color(),
+          chartRadius: meterRadius.radius(_constraints),
+          chartType: ChartType.ring,
+          chartValuesOptions: const ChartValuesOptions(showChartValues: false),
+          colorList: const [Colors.black],
+          dataMap: {"usedMoney": used},
+          initialAngleInDegree: 270,
+          legendOptions: const LegendOptions(showLegends: false),
+          ringStrokeWidth: 10,
+          totalValue: 100,
+        ),
       );
     });
   }

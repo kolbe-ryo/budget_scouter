@@ -7,8 +7,8 @@ import '../../enum/meter_radius_enum.dart';
 import 'meter_widget.dart';
 import 'money_meter_abstract.dart';
 
-class SmallMoneyMeter extends MoneyMeterAbstract {
-  const SmallMoneyMeter({Key? key}) : super(key: key);
+class MoneyMeterSmall extends MoneyMeterAbstract {
+  const MoneyMeterSmall({Key? key}) : super(key: key);
 
   @override
   Widget innerTextWidget() {
@@ -19,7 +19,6 @@ class SmallMoneyMeter extends MoneyMeterAbstract {
   List<MeterWidget> meterWidgets() {
     return [
       const MeterWidget(inOutCircle: MeterInOutEnum.outer, meterRadius: MeterRadiusEnum.smallInner),
-      const MeterWidget(inOutCircle: MeterInOutEnum.inner, meterRadius: MeterRadiusEnum.smallOuter),
     ];
   }
 }

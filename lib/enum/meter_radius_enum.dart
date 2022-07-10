@@ -21,4 +21,17 @@ extension MeterRadiusEnumExt on MeterRadiusEnum {
         return constraints.maxWidth;
     }
   }
+
+  double constraints(BoxConstraints constraints) {
+    switch (this) {
+      case MeterRadiusEnum.smallInner:
+        return constraints.maxWidth / 3;
+      case MeterRadiusEnum.smallOuter:
+        return constraints.maxWidth / 3;
+      case MeterRadiusEnum.largeInner:
+        return constraints.maxWidth;
+      case MeterRadiusEnum.largeOuter:
+        return constraints.maxWidth;
+    }
+  }
 }
