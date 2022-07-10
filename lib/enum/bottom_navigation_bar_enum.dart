@@ -1,8 +1,13 @@
-import 'package:budget_scouter/view/page/analysis_page.dart';
-import 'package:budget_scouter/view/page/money_meter_page.dart';
-import 'package:budget_scouter/view/page/setting_page.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+// Project imports:
+import '../view/page/analysis_page.dart';
+import '../view/page/money_meter_page.dart';
+import '../view/page/setting_page.dart';
 
 enum BottomNavigationBarEnum {
   moneyMeter,

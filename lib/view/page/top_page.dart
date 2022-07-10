@@ -1,7 +1,12 @@
-import 'package:budget_scouter/constant/style.dart';
-import 'package:budget_scouter/enum/bottom_navigation_bar_enum.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+// Project imports:
+import '../../constant/style.dart';
+import '../../enum/bottom_navigation_bar_enum.dart';
 
 final bottomNavigtionIndex = StateProvider<int>(((ref) => 0));
 

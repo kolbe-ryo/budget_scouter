@@ -1,6 +1,11 @@
-import 'package:budget_scouter/view/money_meter/meter_widget.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+// Project imports:
+import 'meter_widget.dart';
 
 abstract class MoneyMeterAbstract extends ConsumerWidget {
   const MoneyMeterAbstract({Key? key}) : super(key: key);
