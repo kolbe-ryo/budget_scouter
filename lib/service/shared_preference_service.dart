@@ -12,24 +12,26 @@ import '../model/money_meter_model_list.dart';
 class SharedPreferenceService implements SharedPreferenceInterface {
   SharedPreferenceService(this._storage);
 
-  final SharedPreferences _storage;
+  final Future<SharedPreferences> _storage;
 
   @override
-  MoneyMeterModelList? fetch() {
-    if (!_storage.containsKey(kStorageKey)) {
+  Future<MoneyMeterModelList?> fetch() async {
+    final storage = await _storage;
+    if (!storage.containsKey(kStorageKey)) {
       return null;
     }
-    final String? value = _storage.getString(kStorageKey);
+    final String? value = storage.getString(kStorageKey);
     return value != null ? MoneyMeterModelList.fromJson(json.decode(value)) : null;
   }
 
   @override
   Future<void> save(MoneyMeterModelList value) async {
+    final storage = await _storage;
     final savingItem = json.encode(value.toJson());
-    if (!_storage.containsKey(kStorageKey)) {
+    if (!storage.containsKey(kStorageKey)) {
       return;
     }
-    await _storage.setString(kStorageKey, savingItem);
+    await storage.setString(kStorageKey, savingItem);
     return;
   }
 }

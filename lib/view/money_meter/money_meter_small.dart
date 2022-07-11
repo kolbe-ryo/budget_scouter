@@ -19,6 +19,7 @@ class MoneyMeterSmall extends MoneyMeterAbstract {
   List<MeterWidget> meterWidgets() {
     return [
       const MeterWidget(inOutCircle: MeterInOutEnum.outer, meterRadius: MeterRadiusEnum.smallInner),
+      const MeterWidget(inOutCircle: MeterInOutEnum.inner, meterRadius: MeterRadiusEnum.smallOuter),
     ];
   }
 }

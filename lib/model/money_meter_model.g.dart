@@ -8,6 +8,7 @@ part of 'money_meter_model.dart';
 
 _$_MoneyMeterModel _$$_MoneyMeterModelFromJson(Map<String, dynamic> json) =>
     _$_MoneyMeterModel(
+      index: json['index'] as int? ?? 0,
       isCenterContent: json['isCenterContent'] as bool? ?? false,
       initBalance: json['initBalance'] as int? ?? 0,
       balance: json['balance'] as int? ?? 0,
@@ -23,6 +24,7 @@ _$_MoneyMeterModel _$$_MoneyMeterModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_MoneyMeterModelToJson(_$_MoneyMeterModel instance) =>
     <String, dynamic>{
+      'index': instance.index,
       'isCenterContent': instance.isCenterContent,
       'initBalance': instance.initBalance,
       'balance': instance.balance,
