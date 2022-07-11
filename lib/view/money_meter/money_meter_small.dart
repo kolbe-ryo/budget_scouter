@@ -4,11 +4,14 @@ import 'package:flutter/material.dart';
 // Project imports:
 import '../../enum/meter_in_out_enum.dart';
 import '../../enum/meter_radius_enum.dart';
+import '../../model/money_meter_model.dart';
 import 'meter_widget.dart';
 import 'money_meter_abstract.dart';
 
 class MoneyMeterSmall extends MoneyMeterAbstract {
-  const MoneyMeterSmall({Key? key}) : super(key: key);
+  const MoneyMeterSmall(this.moneyMeterModel, {Key? key}) : super(key: key);
+
+  final MoneyMeterModel moneyMeterModel;
 
   @override
   Widget innerTextWidget() {
