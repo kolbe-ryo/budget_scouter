@@ -1,12 +1,14 @@
 // Flutter imports:
-import 'package:budget_scouter/model/money_meter_model_list.dart';
-import 'package:budget_scouter/view/money_meter/money_meter_large.dart';
-import 'package:budget_scouter/view/view_model/money_meter_page_view_model.dart';
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
+import '../../model/money_meter_model_list.dart';
+import '../money_meter/money_meter_large.dart';
 import '../money_meter/money_meter_small.dart';
+import '../view_model/money_meter_page_view_model.dart';
 
 // MoneyMeterModelListの管理
 final moneyMeterModelListProvider =

@@ -1,7 +1,10 @@
-import 'package:budget_scouter/model/money_meter_model_list.dart';
-import 'package:budget_scouter/service/shared_preference_service.dart';
+// Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+// Project imports:
+import '../../model/money_meter_model_list.dart';
+import '../../service/shared_preference_service.dart';
 
 class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterModelList> {
   MoneyMeterPageViewModel() : super(const MoneyMeterModelList());
