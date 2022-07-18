@@ -98,7 +98,7 @@ class __$$_MoneyMeterModelListCopyWithImpl<$Res>
 class _$_MoneyMeterModelList extends _MoneyMeterModelList {
   const _$_MoneyMeterModelList(
       {final List<MoneyMeterModel> moneyMeterModelList =
-          const <MoneyMeterModel>[]})
+          const <MoneyMeterModel>[MoneyMeterModel()]})
       : _moneyMeterModelList = moneyMeterModelList,
         super._();
 

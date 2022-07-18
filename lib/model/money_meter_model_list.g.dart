@@ -12,7 +12,7 @@ _$_MoneyMeterModelList _$$_MoneyMeterModelListFromJson(
       moneyMeterModelList: (json['moneyMeterModelList'] as List<dynamic>?)
               ?.map((e) => MoneyMeterModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
-          const <MoneyMeterModel>[],
+          const <MoneyMeterModel>[MoneyMeterModel()],
     );
 
 Map<String, dynamic> _$$_MoneyMeterModelListToJson(

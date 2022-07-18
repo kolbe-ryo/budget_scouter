@@ -12,7 +12,7 @@ class MoneyMeterModelList with _$MoneyMeterModelList {
   const MoneyMeterModelList._();
 
   const factory MoneyMeterModelList({
-    @Default(<MoneyMeterModel>[]) List<MoneyMeterModel> moneyMeterModelList,
+    @Default(<MoneyMeterModel>[MoneyMeterModel()]) List<MoneyMeterModel> moneyMeterModelList,
   }) = _MoneyMeterModelList;
 
   factory MoneyMeterModelList.fromJson(Map<String, dynamic> json) => _$MoneyMeterModelListFromJson(json);
