@@ -9,3 +9,5 @@ const kTextStyleSecondary = TextStyle(
 );
 
 const kThemeColor = Colors.deepOrange;
+
+const kDarkBackColor = Color(0xff303030);

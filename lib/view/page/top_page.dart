@@ -17,7 +17,11 @@ class TopPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final pageIndex = ref.watch(bottomNavigtionIndex);
     return Scaffold(
-      appBar: AppBar(title: Text('Money Meter')),
+      appBar: AppBar(
+        title: Text('Money Meter'),
+        backgroundColor: kDarkBackColor,
+        elevation: 0,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(kSpacing),
         child: BottomNavigationBarEnum.values.map((item) => item.page()).toList()[pageIndex],
