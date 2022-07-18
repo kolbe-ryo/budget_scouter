@@ -2,5 +2,6 @@
   "@@locale": "ja",
   "meter": "メーター",
   "analysis": "分析",
-  "setting": "設定"
+  "setting": "設定",
+  "additionalMeter": "メーター追加"
 }

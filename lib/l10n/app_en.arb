@@ -3,5 +3,6 @@
   "@@locale":"en",
   "meter": "Meter",
   "analysis": "Analysis",
-  "setting": "Setting"
+  "setting": "Setting",
+  "additionalMeter": "Add Meter"
 }

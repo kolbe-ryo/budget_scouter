@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/constant/style.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -19,7 +20,7 @@ class BudgetScouter extends StatelessWidget {
       title: 'Money Meter',
       theme: ThemeData.dark().copyWith(
         bottomNavigationBarTheme: BottomNavigationBarTheme.of(context).copyWith(
-          selectedItemColor: Colors.deepOrange,
+          selectedItemColor: kThemeColor,
         ),
       ),
       home: const TopPage(),

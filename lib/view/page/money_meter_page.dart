@@ -27,7 +27,7 @@ class MoneyMeterPage extends ConsumerWidget {
             return Scaffold(
               body: Stack(
                 children: [
-                  for (int index = 0; index < 5; index++)
+                  for (int index = 0; index < 3; index++)
                     Align(
                       alignment: kAlignmentPosition.elementAt(index),
                       child: MoneyMeter(
