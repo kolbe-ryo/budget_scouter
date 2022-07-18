@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/view/common/logo_image.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -18,7 +19,7 @@ class TopPage extends ConsumerWidget {
     final pageIndex = ref.watch(bottomNavigtionIndex);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Money Meter'),
+        title: const LogoImage(),
         backgroundColor: kDarkBackColor,
         elevation: 0,
       ),
