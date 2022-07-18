@@ -1,5 +1,8 @@
 // Flutter imports:
-import 'package:budget_scouter/view/money_meter/money_meter.dart';
+import 'package:budget_scouter/constant/alignment_position.dart';
+import 'package:budget_scouter/model/money_meter_model.dart';
+
+import '../money_meter/money_meter.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -9,7 +12,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../model/money_meter_model_list.dart';
 import '../view_model/money_meter_page_view_model.dart';
 
-// MoneyMeterModelListの管理
+// Management of MoneyMeterModelList
 final moneyMeterModelListProvider =
     StateNotifierProvider<MoneyMeterPageViewModel, MoneyMeterModelList>((ref) => MoneyMeterPageViewModel());
 
@@ -23,44 +26,21 @@ class MoneyMeterPage extends ConsumerWidget {
         builder: (context, asyncValue) {
           if (asyncValue.hasData) {
             return Scaffold(
-              body: LayoutBuilder(
-                builder: (context, constraints) {
-                  return Stack(
-                    children: [
-                      Align(
-                        alignment: Alignment.center,
-                        child: MoneyMeter(
-                          moneyMeterModel: ref.watch(
-                            moneyMeterModelListProvider.select(
-                              (state) => state.moneyMeterModelList.firstWhere((moneyModel) => moneyModel.index == 0),
-                            ),
+              body: Stack(
+                children: [
+                  for (int index = 0; index < 5; index++)
+                    Align(
+                      alignment: kAlignmentPosition.elementAt(index),
+                      child: MoneyMeter(
+                        ref.watch(
+                          moneyMeterModelListProvider.select(
+                            (state) => state.moneyMeterModelList.firstWhere((moneyModel) => moneyModel.index == index,
+                                orElse: () => const MoneyMeterModel()),
                           ),
-                          isLargeMeter: true,
                         ),
                       ),
-                      // const Align(
-                      //   alignment: Alignment(-1.0, -0.8),
-                      //   child: MoneyMeterSmall(),
-                      // ),
-                      // const Align(
-                      //   alignment: Alignment(1.0, -0.8),
-                      //   child: MoneyMeterSmall(),
-                      // ),
-                      // const Align(
-                      //   alignment: Alignment.center,
-                      //   child: MoneyMeterLarge(),
-                      // ),
-                      // const Align(
-                      //   alignment: Alignment(-1.0, 0.8),
-                      //   child: MoneyMeterSmall(),
-                      // ),
-                      // const Align(
-                      //   alignment: Alignment(1.0, 0.8),
-                      //   child: MoneyMeterSmall(),
-                      // ),
-                    ],
-                  );
-                },
+                    ),
+                ],
               ),
             );
           }

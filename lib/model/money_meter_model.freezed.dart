@@ -20,7 +20,7 @@ MoneyMeterModel _$MoneyMeterModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MoneyMeterModel {
-  bool get isNodata => throw _privateConstructorUsedError;
+  bool get hasdata => throw _privateConstructorUsedError;
   int get index => throw _privateConstructorUsedError;
   bool get isCenterContent => throw _privateConstructorUsedError;
   int get initBalance => throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ abstract class $MoneyMeterModelCopyWith<$Res> {
           MoneyMeterModel value, $Res Function(MoneyMeterModel) then) =
       _$MoneyMeterModelCopyWithImpl<$Res>;
   $Res call(
-      {bool isNodata,
+      {bool hasdata,
       int index,
       bool isCenterContent,
       int initBalance,
@@ -63,7 +63,7 @@ class _$MoneyMeterModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? isNodata = freezed,
+    Object? hasdata = freezed,
     Object? index = freezed,
     Object? isCenterContent = freezed,
     Object? initBalance = freezed,
@@ -73,9 +73,9 @@ class _$MoneyMeterModelCopyWithImpl<$Res>
     Object? moneyConsumptionHistoryModelList = freezed,
   }) {
     return _then(_value.copyWith(
-      isNodata: isNodata == freezed
-          ? _value.isNodata
-          : isNodata // ignore: cast_nullable_to_non_nullable
+      hasdata: hasdata == freezed
+          ? _value.hasdata
+          : hasdata // ignore: cast_nullable_to_non_nullable
               as bool,
       index: index == freezed
           ? _value.index
@@ -118,7 +118,7 @@ abstract class _$$_MoneyMeterModelCopyWith<$Res>
       __$$_MoneyMeterModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {bool isNodata,
+      {bool hasdata,
       int index,
       bool isCenterContent,
       int initBalance,
@@ -141,7 +141,7 @@ class __$$_MoneyMeterModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? isNodata = freezed,
+    Object? hasdata = freezed,
     Object? index = freezed,
     Object? isCenterContent = freezed,
     Object? initBalance = freezed,
@@ -151,9 +151,9 @@ class __$$_MoneyMeterModelCopyWithImpl<$Res>
     Object? moneyConsumptionHistoryModelList = freezed,
   }) {
     return _then(_$_MoneyMeterModel(
-      isNodata: isNodata == freezed
-          ? _value.isNodata
-          : isNodata // ignore: cast_nullable_to_non_nullable
+      hasdata: hasdata == freezed
+          ? _value.hasdata
+          : hasdata // ignore: cast_nullable_to_non_nullable
               as bool,
       index: index == freezed
           ? _value.index
@@ -191,7 +191,7 @@ class __$$_MoneyMeterModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_MoneyMeterModel extends _MoneyMeterModel {
   const _$_MoneyMeterModel(
-      {this.isNodata = false,
+      {this.hasdata = false,
       this.index = 0,
       this.isCenterContent = false,
       this.initBalance = 0,
@@ -208,7 +208,7 @@ class _$_MoneyMeterModel extends _MoneyMeterModel {
 
   @override
   @JsonKey()
-  final bool isNodata;
+  final bool hasdata;
   @override
   @JsonKey()
   final int index;
@@ -237,7 +237,7 @@ class _$_MoneyMeterModel extends _MoneyMeterModel {
 
   @override
   String toString() {
-    return 'MoneyMeterModel(isNodata: $isNodata, index: $index, isCenterContent: $isCenterContent, initBalance: $initBalance, balance: $balance, remainDays: $remainDays, isForwardBalance: $isForwardBalance, moneyConsumptionHistoryModelList: $moneyConsumptionHistoryModelList)';
+    return 'MoneyMeterModel(hasdata: $hasdata, index: $index, isCenterContent: $isCenterContent, initBalance: $initBalance, balance: $balance, remainDays: $remainDays, isForwardBalance: $isForwardBalance, moneyConsumptionHistoryModelList: $moneyConsumptionHistoryModelList)';
   }
 
   @override
@@ -245,7 +245,7 @@ class _$_MoneyMeterModel extends _MoneyMeterModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MoneyMeterModel &&
-            const DeepCollectionEquality().equals(other.isNodata, isNodata) &&
+            const DeepCollectionEquality().equals(other.hasdata, hasdata) &&
             const DeepCollectionEquality().equals(other.index, index) &&
             const DeepCollectionEquality()
                 .equals(other.isCenterContent, isCenterContent) &&
@@ -265,7 +265,7 @@ class _$_MoneyMeterModel extends _MoneyMeterModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(isNodata),
+      const DeepCollectionEquality().hash(hasdata),
       const DeepCollectionEquality().hash(index),
       const DeepCollectionEquality().hash(isCenterContent),
       const DeepCollectionEquality().hash(initBalance),
@@ -287,7 +287,7 @@ class _$_MoneyMeterModel extends _MoneyMeterModel {
 
 abstract class _MoneyMeterModel extends MoneyMeterModel {
   const factory _MoneyMeterModel(
-      {final bool isNodata,
+      {final bool hasdata,
       final int index,
       final bool isCenterContent,
       final int initBalance,
@@ -302,7 +302,7 @@ abstract class _MoneyMeterModel extends MoneyMeterModel {
       _$_MoneyMeterModel.fromJson;
 
   @override
-  bool get isNodata;
+  bool get hasdata;
   @override
   int get index;
   @override

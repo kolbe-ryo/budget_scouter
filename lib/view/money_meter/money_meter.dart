@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'money_meter_additional_widget.dart';
 import 'package:flutter/material.dart';
 
 // Project imports:
@@ -9,23 +10,30 @@ import 'meter_widget.dart';
 import 'money_meter_abstract.dart';
 
 class MoneyMeter extends MoneyMeterAbstract {
-  const MoneyMeter({required this.moneyMeterModel, required this.isLargeMeter, Key? key}) : super(key: key);
+  const MoneyMeter(this.moneyMeterModel, {Key? key}) : super(key: key);
 
   final MoneyMeterModel moneyMeterModel;
-  final bool isLargeMeter;
 
   @override
-  Widget innerTextWidget() {
-    return isLargeMeter ? Text('REMAIN') : Text('56%');
+  Widget? innerTextWidget() {
+    if (moneyMeterModel.hasdata) {
+      return null;
+    }
+    return moneyMeterModel.isCenterContent ? Text('REMAIN') : Text('56%');
   }
 
   @override
-  List<MeterWidget> meterWidgets() {
-    return isLargeMeter
+  List<Widget> meterWidgets() {
+    if (moneyMeterModel.hasdata) {
+      return const [MoneyMeterAdditionalWidget()];
+    }
+    return moneyMeterModel.isCenterContent
+        // LargeMeter in center
         ? [
             const MeterWidget(inOutCircle: MeterInOutEnum.outer, meterRadius: MeterRadiusEnum.largeInner),
             const MeterWidget(inOutCircle: MeterInOutEnum.inner, meterRadius: MeterRadiusEnum.largeOuter),
           ]
+        // SmallMeter in edge
         : [
             const MeterWidget(inOutCircle: MeterInOutEnum.outer, meterRadius: MeterRadiusEnum.smallInner),
             const MeterWidget(inOutCircle: MeterInOutEnum.inner, meterRadius: MeterRadiusEnum.smallOuter),

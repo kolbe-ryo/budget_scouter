@@ -12,7 +12,7 @@ class MoneyMeterModel with _$MoneyMeterModel {
   const MoneyMeterModel._();
 
   const factory MoneyMeterModel({
-    @Default(false) bool isNodata,
+    @Default(false) bool hasdata,
     @Default(0) int index,
     @Default(false) bool isCenterContent,
     @Default(0) int initBalance,
