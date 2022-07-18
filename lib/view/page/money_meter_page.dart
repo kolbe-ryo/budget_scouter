@@ -1,15 +1,14 @@
 // Flutter imports:
-import 'package:budget_scouter/constant/alignment_position.dart';
-import 'package:budget_scouter/model/money_meter_model.dart';
-
-import '../money_meter/money_meter.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
+import '../../constant/alignment_position.dart';
+import '../../model/money_meter_model.dart';
 import '../../model/money_meter_model_list.dart';
+import '../money_meter/money_meter.dart';
 import '../view_model/money_meter_page_view_model.dart';
 
 // Management of MoneyMeterModelList
@@ -44,7 +43,7 @@ class MoneyMeterPage extends ConsumerWidget {
               ),
             );
           }
-          return const Center(child: CircularProgressIndicator());
+          return const SizedBox.shrink();
         });
   }
 }
