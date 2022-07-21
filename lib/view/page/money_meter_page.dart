@@ -13,21 +13,17 @@ import '../view_model/money_meter_page_view_model.dart';
 final moneyMeterProvider =
     StateNotifierProvider<MoneyMeterPageViewModel, MoneyMeterModel>(((ref) => MoneyMeterPageViewModel()));
 
-// Management of MoneyMeterModelList
-final moneyMeterModelListProvider =
-    StateNotifierProvider<MoneyMeterPageViewModel, MoneyMeterModel>((ref) => MoneyMeterPageViewModel());
-
 class MoneyMeterPage extends ConsumerWidget {
   const MoneyMeterPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return FutureBuilder(
-        future: ref.read(moneyMeterModelListProvider.notifier).fetch(),
+        future: ref.read(moneyMeterProvider.notifier).fetch(),
         builder: (context, asyncValue) {
           if (asyncValue.hasData) {
             return Scaffold(
-              body: Center(child: MoneyMeter(ref.watch(moneyMeterModelListProvider))),
+              body: Center(child: MoneyMeter(ref.watch(moneyMeterProvider))),
             );
           }
           return const SizedBox.shrink();
