@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
-import '../../constant/alignment_position.dart';
 import '../../model/money_meter_model.dart';
 import '../money_meter/money_meter.dart';
 import '../view_model/money_meter_page_view_model.dart';
@@ -24,15 +23,7 @@ class MoneyMeterPage extends ConsumerWidget {
         builder: (context, asyncValue) {
           if (asyncValue.hasData) {
             return Scaffold(
-              body: Stack(
-                children: [
-                  for (int index = 0; index < 3; index++)
-                    Align(
-                      alignment: kAlignmentPosition.elementAt(index),
-                      child: MoneyMeter(ref.watch(moneyMeterModelListProvider)),
-                    ),
-                ],
-              ),
+              body: Center(child: MoneyMeter(ref.watch(moneyMeterModelListProvider))),
             );
           }
           return const SizedBox.shrink();

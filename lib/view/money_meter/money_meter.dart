@@ -16,26 +16,19 @@ class MoneyMeter extends MoneyMeterAbstract {
 
   @override
   Widget? innerTextWidget() {
-    if (moneyMeterModel.hasdata) {
-      return moneyMeterModel.isCenterContent ? Text('REMAIN') : Text('56%');
+    if (!moneyMeterModel.hasdata) {
+      return const Text('REMAIN');
     }
     return null;
   }
 
   @override
   List<Widget> meterWidgets() {
-    if (moneyMeterModel.hasdata) {
-      return moneyMeterModel.isCenterContent
-          // LargeMeter in center
-          ? [
-              const MeterWidget(inOutCircle: MeterInOutEnum.outer, meterRadius: MeterRadiusEnum.largeInner),
-              const MeterWidget(inOutCircle: MeterInOutEnum.inner, meterRadius: MeterRadiusEnum.largeOuter),
-            ]
-          // SmallMeter in edge
-          : [
-              const MeterWidget(inOutCircle: MeterInOutEnum.outer, meterRadius: MeterRadiusEnum.smallInner),
-              const MeterWidget(inOutCircle: MeterInOutEnum.inner, meterRadius: MeterRadiusEnum.smallOuter),
-            ];
+    if (!moneyMeterModel.hasdata) {
+      return [
+        const MeterWidget(inOutCircle: MeterInOutEnum.outer, meterRadius: MeterRadiusEnum.largeInner),
+        const MeterWidget(inOutCircle: MeterInOutEnum.inner, meterRadius: MeterRadiusEnum.largeOuter),
+      ];
     }
     return const [MoneyMeterAdditionalWidget()];
   }

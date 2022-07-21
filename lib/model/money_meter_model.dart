@@ -13,8 +13,6 @@ class MoneyMeterModel with _$MoneyMeterModel {
 
   const factory MoneyMeterModel({
     @Default(false) bool hasdata,
-    @Default(0) int index,
-    @Default(false) bool isCenterContent,
     @Default(0) int initBalance,
     @Default(0) int balance,
     @Default(0) int remainDays,

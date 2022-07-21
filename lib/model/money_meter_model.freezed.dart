@@ -21,8 +21,6 @@ MoneyMeterModel _$MoneyMeterModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$MoneyMeterModel {
   bool get hasdata => throw _privateConstructorUsedError;
-  int get index => throw _privateConstructorUsedError;
-  bool get isCenterContent => throw _privateConstructorUsedError;
   int get initBalance => throw _privateConstructorUsedError;
   int get balance => throw _privateConstructorUsedError;
   int get remainDays => throw _privateConstructorUsedError;
@@ -43,8 +41,6 @@ abstract class $MoneyMeterModelCopyWith<$Res> {
       _$MoneyMeterModelCopyWithImpl<$Res>;
   $Res call(
       {bool hasdata,
-      int index,
-      bool isCenterContent,
       int initBalance,
       int balance,
       int remainDays,
@@ -64,8 +60,6 @@ class _$MoneyMeterModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? hasdata = freezed,
-    Object? index = freezed,
-    Object? isCenterContent = freezed,
     Object? initBalance = freezed,
     Object? balance = freezed,
     Object? remainDays = freezed,
@@ -76,14 +70,6 @@ class _$MoneyMeterModelCopyWithImpl<$Res>
       hasdata: hasdata == freezed
           ? _value.hasdata
           : hasdata // ignore: cast_nullable_to_non_nullable
-              as bool,
-      index: index == freezed
-          ? _value.index
-          : index // ignore: cast_nullable_to_non_nullable
-              as int,
-      isCenterContent: isCenterContent == freezed
-          ? _value.isCenterContent
-          : isCenterContent // ignore: cast_nullable_to_non_nullable
               as bool,
       initBalance: initBalance == freezed
           ? _value.initBalance
@@ -119,8 +105,6 @@ abstract class _$$_MoneyMeterModelCopyWith<$Res>
   @override
   $Res call(
       {bool hasdata,
-      int index,
-      bool isCenterContent,
       int initBalance,
       int balance,
       int remainDays,
@@ -142,8 +126,6 @@ class __$$_MoneyMeterModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? hasdata = freezed,
-    Object? index = freezed,
-    Object? isCenterContent = freezed,
     Object? initBalance = freezed,
     Object? balance = freezed,
     Object? remainDays = freezed,
@@ -154,14 +136,6 @@ class __$$_MoneyMeterModelCopyWithImpl<$Res>
       hasdata: hasdata == freezed
           ? _value.hasdata
           : hasdata // ignore: cast_nullable_to_non_nullable
-              as bool,
-      index: index == freezed
-          ? _value.index
-          : index // ignore: cast_nullable_to_non_nullable
-              as int,
-      isCenterContent: isCenterContent == freezed
-          ? _value.isCenterContent
-          : isCenterContent // ignore: cast_nullable_to_non_nullable
               as bool,
       initBalance: initBalance == freezed
           ? _value.initBalance
@@ -192,8 +166,6 @@ class __$$_MoneyMeterModelCopyWithImpl<$Res>
 class _$_MoneyMeterModel extends _MoneyMeterModel {
   const _$_MoneyMeterModel(
       {this.hasdata = false,
-      this.index = 0,
-      this.isCenterContent = false,
       this.initBalance = 0,
       this.balance = 0,
       this.remainDays = 0,
@@ -209,12 +181,6 @@ class _$_MoneyMeterModel extends _MoneyMeterModel {
   @override
   @JsonKey()
   final bool hasdata;
-  @override
-  @JsonKey()
-  final int index;
-  @override
-  @JsonKey()
-  final bool isCenterContent;
   @override
   @JsonKey()
   final int initBalance;
@@ -237,7 +203,7 @@ class _$_MoneyMeterModel extends _MoneyMeterModel {
 
   @override
   String toString() {
-    return 'MoneyMeterModel(hasdata: $hasdata, index: $index, isCenterContent: $isCenterContent, initBalance: $initBalance, balance: $balance, remainDays: $remainDays, isForwardBalance: $isForwardBalance, moneyConsumptionHistoryModelList: $moneyConsumptionHistoryModelList)';
+    return 'MoneyMeterModel(hasdata: $hasdata, initBalance: $initBalance, balance: $balance, remainDays: $remainDays, isForwardBalance: $isForwardBalance, moneyConsumptionHistoryModelList: $moneyConsumptionHistoryModelList)';
   }
 
   @override
@@ -246,9 +212,6 @@ class _$_MoneyMeterModel extends _MoneyMeterModel {
         (other.runtimeType == runtimeType &&
             other is _$_MoneyMeterModel &&
             const DeepCollectionEquality().equals(other.hasdata, hasdata) &&
-            const DeepCollectionEquality().equals(other.index, index) &&
-            const DeepCollectionEquality()
-                .equals(other.isCenterContent, isCenterContent) &&
             const DeepCollectionEquality()
                 .equals(other.initBalance, initBalance) &&
             const DeepCollectionEquality().equals(other.balance, balance) &&
@@ -266,8 +229,6 @@ class _$_MoneyMeterModel extends _MoneyMeterModel {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(hasdata),
-      const DeepCollectionEquality().hash(index),
-      const DeepCollectionEquality().hash(isCenterContent),
       const DeepCollectionEquality().hash(initBalance),
       const DeepCollectionEquality().hash(balance),
       const DeepCollectionEquality().hash(remainDays),
@@ -288,8 +249,6 @@ class _$_MoneyMeterModel extends _MoneyMeterModel {
 abstract class _MoneyMeterModel extends MoneyMeterModel {
   const factory _MoneyMeterModel(
       {final bool hasdata,
-      final int index,
-      final bool isCenterContent,
       final int initBalance,
       final int balance,
       final int remainDays,
@@ -303,10 +262,6 @@ abstract class _MoneyMeterModel extends MoneyMeterModel {
 
   @override
   bool get hasdata;
-  @override
-  int get index;
-  @override
-  bool get isCenterContent;
   @override
   int get initBalance;
   @override

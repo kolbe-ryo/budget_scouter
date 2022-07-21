@@ -18,9 +18,6 @@ abstract class MoneyMeterAbstract extends ConsumerWidget {
       children: [
         ...(meterWidgets().map((widget) => widget)),
         innerTextWidget() ?? const SizedBox.shrink(),
-        ElevatedButton(
-            onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: ((context) => const SettingPage()))),
-            child: Text('Test')),
       ],
     );
   }
