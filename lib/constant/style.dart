@@ -3,10 +3,22 @@ import 'package:flutter/material.dart';
 
 const kSpacing = 16.0;
 
+const kTextStylePrimary = TextStyle(
+  color: kThemeColor,
+  fontSize: 20,
+  fontWeight: FontWeight.w600,
+);
+
 const kTextStyleSecondary = TextStyle(
   color: kDarkTextColor,
-  fontSize: 12,
+  fontSize: 14,
   fontWeight: FontWeight.w600,
+);
+
+const kTextStyleHint = TextStyle(
+  color: kDarkTextColor,
+  fontSize: 14,
+  fontWeight: FontWeight.w300,
 );
 
 const kThemeColor = Colors.deepOrange;

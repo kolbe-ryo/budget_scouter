@@ -16,7 +16,7 @@ class MoneyMeter extends MoneyMeterAbstract {
 
   @override
   Widget? innerTextWidget() {
-    if (!moneyMeterModel.hasdata) {
+    if (moneyMeterModel.hasdata) {
       return const Text('REMAIN');
     }
     return null;
@@ -24,7 +24,7 @@ class MoneyMeter extends MoneyMeterAbstract {
 
   @override
   List<Widget> meterWidgets() {
-    if (!moneyMeterModel.hasdata) {
+    if (moneyMeterModel.hasdata) {
       return [
         const MeterWidget(inOutCircle: MeterInOutEnum.outer, meterRadius: MeterRadiusEnum.largeInner),
         const MeterWidget(inOutCircle: MeterInOutEnum.inner, meterRadius: MeterRadiusEnum.largeOuter),

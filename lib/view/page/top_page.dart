@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/view/common/app_bar.dart';
 import 'package:budget_scouter/view/common/logo_image.dart';
 import 'package:flutter/material.dart';
 
@@ -18,11 +19,7 @@ class TopPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final pageIndex = ref.watch(bottomNavigtionIndex);
     return Scaffold(
-      appBar: AppBar(
-        title: const LogoImage(),
-        backgroundColor: kDarkBackColor,
-        elevation: 0,
-      ),
+      appBar: CustomAppBar.appBar,
       body: Padding(
         padding: const EdgeInsets.all(kSpacing),
         child: BottomNavigationBarEnum.values.map((item) => item.page()).toList()[pageIndex],
