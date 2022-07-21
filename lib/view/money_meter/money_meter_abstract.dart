@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/view/page/setting_page.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -17,6 +18,9 @@ abstract class MoneyMeterAbstract extends ConsumerWidget {
       children: [
         ...(meterWidgets().map((widget) => widget)),
         innerTextWidget() ?? const SizedBox.shrink(),
+        ElevatedButton(
+            onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: ((context) => const SettingPage()))),
+            child: Text('Test')),
       ],
     );
   }

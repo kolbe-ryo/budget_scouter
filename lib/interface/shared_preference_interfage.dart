@@ -1,10 +1,10 @@
 // Project imports:
-import '../model/money_meter_model_list.dart';
+import 'package:budget_scouter/model/money_meter_model.dart';
 
 abstract class SharedPreferenceInterface {
   // Fetch model list from shared preference
-  Future<MoneyMeterModelList?> fetch();
+  Future<MoneyMeterModel?> fetch();
 
   // Save model to shared preference
-  Future<void> save(MoneyMeterModelList value);
+  Future<void> save(MoneyMeterModel value);
 }

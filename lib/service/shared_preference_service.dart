@@ -2,12 +2,12 @@
 import 'dart:convert';
 
 // Package imports:
+import 'package:budget_scouter/model/money_meter_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // Project imports:
 import '../constant/constant_letter.dart';
 import '../interface/shared_preference_interfage.dart';
-import '../model/money_meter_model_list.dart';
 
 class SharedPreferenceService implements SharedPreferenceInterface {
   SharedPreferenceService(this._storage);
@@ -15,17 +15,17 @@ class SharedPreferenceService implements SharedPreferenceInterface {
   final Future<SharedPreferences> _storage;
 
   @override
-  Future<MoneyMeterModelList?> fetch() async {
+  Future<MoneyMeterModel?> fetch() async {
     final storage = await _storage;
     if (!storage.containsKey(kStorageKey)) {
       return null;
     }
     final String? value = storage.getString(kStorageKey);
-    return value != null ? MoneyMeterModelList.fromJson(json.decode(value)) : null;
+    return value != null ? MoneyMeterModel.fromJson(json.decode(value)) : null;
   }
 
   @override
-  Future<void> save(MoneyMeterModelList value) async {
+  Future<void> save(MoneyMeterModel value) async {
     final storage = await _storage;
     final savingItem = json.encode(value.toJson());
     if (storage.containsKey(kStorageKey)) {

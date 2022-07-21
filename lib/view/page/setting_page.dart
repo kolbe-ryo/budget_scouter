@@ -6,6 +6,12 @@ class SettingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(title: Text('Top')),
+      body: ElevatedButton(
+          onPressed: () => Navigator.of(context, rootNavigator: true)
+              .push(MaterialPageRoute(builder: ((context) => const SettingPage()))),
+          child: Text('Test')),
+    );
   }
 }
