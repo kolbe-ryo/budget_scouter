@@ -9,6 +9,10 @@ import '../../model/money_meter_model.dart';
 import '../money_meter/money_meter.dart';
 import '../view_model/money_meter_page_view_model.dart';
 
+// provider for money meter initial setting
+final moneyMeterProvider =
+    StateNotifierProvider<MoneyMeterPageViewModel, MoneyMeterModel>(((ref) => MoneyMeterPageViewModel()));
+
 // Management of MoneyMeterModelList
 final moneyMeterModelListProvider =
     StateNotifierProvider<MoneyMeterPageViewModel, MoneyMeterModel>((ref) => MoneyMeterPageViewModel());

@@ -2,12 +2,12 @@
 import 'dart:convert';
 
 // Package imports:
-import 'package:budget_scouter/model/money_meter_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // Project imports:
 import '../constant/constant_letter.dart';
 import '../interface/shared_preference_interfage.dart';
+import '../model/money_meter_model.dart';
 
 class SharedPreferenceService implements SharedPreferenceInterface {
   SharedPreferenceService(this._storage);

@@ -1,6 +1,9 @@
-import 'package:budget_scouter/constant/style.dart';
-import 'package:budget_scouter/view/common/logo_image.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
+import '../../constant/style.dart';
+import 'logo_image.dart';
 
 class CustomAppBar extends AppBar {
   CustomAppBar({Key? key}) : super(key: key);

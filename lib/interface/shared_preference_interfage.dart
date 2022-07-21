@@ -1,5 +1,5 @@
 // Project imports:
-import 'package:budget_scouter/model/money_meter_model.dart';
+import '../model/money_meter_model.dart';
 
 abstract class SharedPreferenceInterface {
   // Fetch model list from shared preference

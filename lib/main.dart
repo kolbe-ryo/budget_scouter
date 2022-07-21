@@ -1,5 +1,4 @@
 // Flutter imports:
-import 'package:budget_scouter/constant/style.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -8,6 +7,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
+import 'constant/style.dart';
 import 'view/page/top_page.dart';
 
 void main() => runApp(const ProviderScope(child: BudgetScouter()));

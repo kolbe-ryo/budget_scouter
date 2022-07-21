@@ -1,9 +1,13 @@
 // Flutter imports:
-import 'package:budget_scouter/constant/style.dart';
-import 'package:budget_scouter/view/modal/money_meter_initital_setting_modal.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+// Package imports:
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+// Project imports:
+import '../../constant/style.dart';
+import '../modal/money_meter_initital_setting_modal.dart';
 
 class MoneyMeterAdditionalWidget extends StatelessWidget {
   const MoneyMeterAdditionalWidget({Key? key}) : super(key: key);
