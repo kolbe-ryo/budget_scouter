@@ -2,6 +2,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 // Project imports:
+import '../enum/currency_data_enum.dart';
 import 'money_consumption_history_model.dart';
 
 part 'money_meter_model.freezed.dart';
@@ -13,9 +14,11 @@ class MoneyMeterModel with _$MoneyMeterModel {
 
   const factory MoneyMeterModel({
     @Default(false) bool hasdata,
+    @Default('') String target,
     @Default(0) int initBalance,
     @Default(0) int balance,
     @Default(0) int remainDays,
+    @Default(CurrencyDataEnum.dollar) CurrencyDataEnum currency,
     @Default(false) isForwardBalance,
     @Default(<MoneyConsumptionHistoryModel>[]) List<MoneyConsumptionHistoryModel> moneyConsumptionHistoryModelList,
   }) = _MoneyMeterModel;

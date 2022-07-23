@@ -21,9 +21,11 @@ MoneyMeterModel _$MoneyMeterModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$MoneyMeterModel {
   bool get hasdata => throw _privateConstructorUsedError;
+  String get target => throw _privateConstructorUsedError;
   int get initBalance => throw _privateConstructorUsedError;
   int get balance => throw _privateConstructorUsedError;
   int get remainDays => throw _privateConstructorUsedError;
+  CurrencyDataEnum get currency => throw _privateConstructorUsedError;
   dynamic get isForwardBalance => throw _privateConstructorUsedError;
   List<MoneyConsumptionHistoryModel> get moneyConsumptionHistoryModelList =>
       throw _privateConstructorUsedError;
@@ -41,9 +43,11 @@ abstract class $MoneyMeterModelCopyWith<$Res> {
       _$MoneyMeterModelCopyWithImpl<$Res>;
   $Res call(
       {bool hasdata,
+      String target,
       int initBalance,
       int balance,
       int remainDays,
+      CurrencyDataEnum currency,
       dynamic isForwardBalance,
       List<MoneyConsumptionHistoryModel> moneyConsumptionHistoryModelList});
 }
@@ -60,9 +64,11 @@ class _$MoneyMeterModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? hasdata = freezed,
+    Object? target = freezed,
     Object? initBalance = freezed,
     Object? balance = freezed,
     Object? remainDays = freezed,
+    Object? currency = freezed,
     Object? isForwardBalance = freezed,
     Object? moneyConsumptionHistoryModelList = freezed,
   }) {
@@ -71,6 +77,10 @@ class _$MoneyMeterModelCopyWithImpl<$Res>
           ? _value.hasdata
           : hasdata // ignore: cast_nullable_to_non_nullable
               as bool,
+      target: target == freezed
+          ? _value.target
+          : target // ignore: cast_nullable_to_non_nullable
+              as String,
       initBalance: initBalance == freezed
           ? _value.initBalance
           : initBalance // ignore: cast_nullable_to_non_nullable
@@ -83,6 +93,10 @@ class _$MoneyMeterModelCopyWithImpl<$Res>
           ? _value.remainDays
           : remainDays // ignore: cast_nullable_to_non_nullable
               as int,
+      currency: currency == freezed
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as CurrencyDataEnum,
       isForwardBalance: isForwardBalance == freezed
           ? _value.isForwardBalance
           : isForwardBalance // ignore: cast_nullable_to_non_nullable
@@ -105,9 +119,11 @@ abstract class _$$_MoneyMeterModelCopyWith<$Res>
   @override
   $Res call(
       {bool hasdata,
+      String target,
       int initBalance,
       int balance,
       int remainDays,
+      CurrencyDataEnum currency,
       dynamic isForwardBalance,
       List<MoneyConsumptionHistoryModel> moneyConsumptionHistoryModelList});
 }
@@ -126,9 +142,11 @@ class __$$_MoneyMeterModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? hasdata = freezed,
+    Object? target = freezed,
     Object? initBalance = freezed,
     Object? balance = freezed,
     Object? remainDays = freezed,
+    Object? currency = freezed,
     Object? isForwardBalance = freezed,
     Object? moneyConsumptionHistoryModelList = freezed,
   }) {
@@ -137,6 +155,10 @@ class __$$_MoneyMeterModelCopyWithImpl<$Res>
           ? _value.hasdata
           : hasdata // ignore: cast_nullable_to_non_nullable
               as bool,
+      target: target == freezed
+          ? _value.target
+          : target // ignore: cast_nullable_to_non_nullable
+              as String,
       initBalance: initBalance == freezed
           ? _value.initBalance
           : initBalance // ignore: cast_nullable_to_non_nullable
@@ -149,6 +171,10 @@ class __$$_MoneyMeterModelCopyWithImpl<$Res>
           ? _value.remainDays
           : remainDays // ignore: cast_nullable_to_non_nullable
               as int,
+      currency: currency == freezed
+          ? _value.currency
+          : currency // ignore: cast_nullable_to_non_nullable
+              as CurrencyDataEnum,
       isForwardBalance: isForwardBalance == freezed
           ? _value.isForwardBalance
           : isForwardBalance,
@@ -166,9 +192,11 @@ class __$$_MoneyMeterModelCopyWithImpl<$Res>
 class _$_MoneyMeterModel extends _MoneyMeterModel {
   const _$_MoneyMeterModel(
       {this.hasdata = false,
+      this.target = '',
       this.initBalance = 0,
       this.balance = 0,
       this.remainDays = 0,
+      this.currency = CurrencyDataEnum.dollar,
       this.isForwardBalance = false,
       final List<MoneyConsumptionHistoryModel> moneyConsumptionHistoryModelList =
           const <MoneyConsumptionHistoryModel>[]})
@@ -183,6 +211,9 @@ class _$_MoneyMeterModel extends _MoneyMeterModel {
   final bool hasdata;
   @override
   @JsonKey()
+  final String target;
+  @override
+  @JsonKey()
   final int initBalance;
   @override
   @JsonKey()
@@ -190,6 +221,9 @@ class _$_MoneyMeterModel extends _MoneyMeterModel {
   @override
   @JsonKey()
   final int remainDays;
+  @override
+  @JsonKey()
+  final CurrencyDataEnum currency;
   @override
   @JsonKey()
   final dynamic isForwardBalance;
@@ -203,7 +237,7 @@ class _$_MoneyMeterModel extends _MoneyMeterModel {
 
   @override
   String toString() {
-    return 'MoneyMeterModel(hasdata: $hasdata, initBalance: $initBalance, balance: $balance, remainDays: $remainDays, isForwardBalance: $isForwardBalance, moneyConsumptionHistoryModelList: $moneyConsumptionHistoryModelList)';
+    return 'MoneyMeterModel(hasdata: $hasdata, target: $target, initBalance: $initBalance, balance: $balance, remainDays: $remainDays, currency: $currency, isForwardBalance: $isForwardBalance, moneyConsumptionHistoryModelList: $moneyConsumptionHistoryModelList)';
   }
 
   @override
@@ -212,11 +246,13 @@ class _$_MoneyMeterModel extends _MoneyMeterModel {
         (other.runtimeType == runtimeType &&
             other is _$_MoneyMeterModel &&
             const DeepCollectionEquality().equals(other.hasdata, hasdata) &&
+            const DeepCollectionEquality().equals(other.target, target) &&
             const DeepCollectionEquality()
                 .equals(other.initBalance, initBalance) &&
             const DeepCollectionEquality().equals(other.balance, balance) &&
             const DeepCollectionEquality()
                 .equals(other.remainDays, remainDays) &&
+            const DeepCollectionEquality().equals(other.currency, currency) &&
             const DeepCollectionEquality()
                 .equals(other.isForwardBalance, isForwardBalance) &&
             const DeepCollectionEquality().equals(
@@ -229,9 +265,11 @@ class _$_MoneyMeterModel extends _MoneyMeterModel {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(hasdata),
+      const DeepCollectionEquality().hash(target),
       const DeepCollectionEquality().hash(initBalance),
       const DeepCollectionEquality().hash(balance),
       const DeepCollectionEquality().hash(remainDays),
+      const DeepCollectionEquality().hash(currency),
       const DeepCollectionEquality().hash(isForwardBalance),
       const DeepCollectionEquality().hash(_moneyConsumptionHistoryModelList));
 
@@ -249,9 +287,11 @@ class _$_MoneyMeterModel extends _MoneyMeterModel {
 abstract class _MoneyMeterModel extends MoneyMeterModel {
   const factory _MoneyMeterModel(
       {final bool hasdata,
+      final String target,
       final int initBalance,
       final int balance,
       final int remainDays,
+      final CurrencyDataEnum currency,
       final dynamic isForwardBalance,
       final List<MoneyConsumptionHistoryModel>
           moneyConsumptionHistoryModelList}) = _$_MoneyMeterModel;
@@ -263,11 +303,15 @@ abstract class _MoneyMeterModel extends MoneyMeterModel {
   @override
   bool get hasdata;
   @override
+  String get target;
+  @override
   int get initBalance;
   @override
   int get balance;
   @override
   int get remainDays;
+  @override
+  CurrencyDataEnum get currency;
   @override
   dynamic get isForwardBalance;
   @override

@@ -19,12 +19,12 @@ class SelectedIconButton extends ConsumerWidget {
     return Column(
       children: [
         IconButton(
-          onPressed: () {},
           icon: FaIcon(
             genreData.icon,
             color: kThemeColor,
             size: 25,
           ),
+          onPressed: () {},
         ),
         DefaultTextStyle(
           style: kTextStyleSecondary,
