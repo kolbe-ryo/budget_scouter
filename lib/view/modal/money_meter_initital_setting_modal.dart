@@ -1,5 +1,8 @@
 // Flutter imports:
+import 'package:budget_scouter/model/money_meter_model.dart';
+import 'package:budget_scouter/view/money_meter/money_meter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
 import '../../constant/style.dart';
@@ -7,6 +10,9 @@ import '../common/app_bar.dart';
 import '../common/currency_select_tile.dart';
 import '../common/input_tile.dart';
 import '../common/check_reset_balance_radio_button.dart';
+
+// Temp state
+final initialMoneyMeterStateProvider = StateProvider(((ref) => const MoneyMeterModel()));
 
 class MoneyMeterInitialSettingModal extends StatelessWidget {
   const MoneyMeterInitialSettingModal({Key? key}) : super(key: key);
