@@ -197,7 +197,7 @@ class _$_MoneyMeterModel extends _MoneyMeterModel {
       this.balance = 0,
       this.remainDays = 0,
       this.currency = CurrencyDataEnum.dollar,
-      this.isForwardBalance = false,
+      this.isForwardBalance = true,
       final List<MoneyConsumptionHistoryModel> moneyConsumptionHistoryModelList =
           const <MoneyConsumptionHistoryModel>[]})
       : _moneyConsumptionHistoryModelList = moneyConsumptionHistoryModelList,

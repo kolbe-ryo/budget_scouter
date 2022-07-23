@@ -16,7 +16,7 @@ _$_MoneyMeterModel _$$_MoneyMeterModelFromJson(Map<String, dynamic> json) =>
       currency:
           $enumDecodeNullable(_$CurrencyDataEnumEnumMap, json['currency']) ??
               CurrencyDataEnum.dollar,
-      isForwardBalance: json['isForwardBalance'] ?? false,
+      isForwardBalance: json['isForwardBalance'] ?? true,
       moneyConsumptionHistoryModelList:
           (json['moneyConsumptionHistoryModelList'] as List<dynamic>?)
                   ?.map((e) => MoneyConsumptionHistoryModel.fromJson(

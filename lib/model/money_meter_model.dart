@@ -19,7 +19,7 @@ class MoneyMeterModel with _$MoneyMeterModel {
     @Default(0) int balance,
     @Default(0) int remainDays,
     @Default(CurrencyDataEnum.dollar) CurrencyDataEnum currency,
-    @Default(false) isForwardBalance,
+    @Default(true) isForwardBalance,
     @Default(<MoneyConsumptionHistoryModel>[]) List<MoneyConsumptionHistoryModel> moneyConsumptionHistoryModelList,
   }) = _MoneyMeterModel;
 
