@@ -18,17 +18,20 @@ class CurrencySelectTile extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       children: [
-        ListTile(
-          contentPadding: const EdgeInsets.only(top: kSpacing),
+        const ListTile(
+          contentPadding: EdgeInsets.only(top: kSpacing),
           title: Text(
             'Currency',
             style: kTextStylePrimary,
           ),
         ),
-        Wrap(
+        Row(
           children: CurrencyDataEnum.values
               .map(
-                (value) => SelectedIconButton(value),
+                (value) => Padding(
+                  padding: const EdgeInsets.only(right: kSpacing),
+                  child: SelectedIconButton(value),
+                ),
               )
               .toList(),
         ),

@@ -1,6 +1,9 @@
-import 'package:budget_scouter/constant/style.dart';
-import 'package:budget_scouter/enum/radio_button_enum.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
+import '../../constant/style.dart';
+import '../../enum/radio_button_enum.dart';
 
 class RadioButtonTiles extends StatelessWidget {
   const RadioButtonTiles({Key? key, required this.title, required this.description}) : super(key: key);
@@ -31,6 +34,7 @@ class RadioButtonTiles extends StatelessWidget {
               onChanged: (_) => print('yes'),
             ),
             Text(RadioButtonEnum.yes.name, style: kTextStyleSecondary),
+            const SizedBox(width: kSpacing),
             Radio(
               activeColor: kThemeColor,
               value: RadioButtonEnum.no,

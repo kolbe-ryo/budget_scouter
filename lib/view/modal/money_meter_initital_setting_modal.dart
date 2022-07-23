@@ -1,5 +1,4 @@
 // Flutter imports:
-import 'package:budget_scouter/view/common/radio_button_tiles.dart';
 import 'package:flutter/material.dart';
 
 // Project imports:
@@ -7,6 +6,7 @@ import '../../constant/style.dart';
 import '../common/app_bar.dart';
 import '../common/currency_select_tile.dart';
 import '../common/input_tile.dart';
+import '../common/radio_button_tiles.dart';
 
 class MoneyMeterInitialSettingModal extends StatelessWidget {
   const MoneyMeterInitialSettingModal({Key? key}) : super(key: key);
