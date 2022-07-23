@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/view/common/radio_button_tiles.dart';
 import 'package:flutter/material.dart';
 
 // Project imports:
@@ -31,10 +32,9 @@ class MoneyMeterInitialSettingModal extends StatelessWidget {
                   hintText: 'Setting your budget for money meter',
                   numOnly: true,
                 ),
-                InputTile(
+                RadioButtonTiles(
                   title: 'Reset Balance',
-                  hintText: 'Reset or not balance at the beginning of month',
-                  numOnly: true,
+                  description: 'Reset or not balance at the beginning of month',
                 ),
                 CurrencySelectTile(),
               ],
