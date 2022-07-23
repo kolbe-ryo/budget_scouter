@@ -23,12 +23,15 @@ class SelectedIconButton extends ConsumerWidget {
           icon: FaIcon(
             genreData.icon,
             color: kThemeColor,
-            size: 30,
+            size: 25,
           ),
         ),
-        Text(
-          genreData.name,
+        DefaultTextStyle(
           style: kTextStyleSecondary,
+          child: Text(
+            genreData.name,
+            style: TextStyle(color: kThemeColor),
+          ),
         )
       ],
     );

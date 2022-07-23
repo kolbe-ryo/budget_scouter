@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import '../../constant/style.dart';
 import '../../enum/radio_button_enum.dart';
 
-class RadioButtonTiles extends StatelessWidget {
-  const RadioButtonTiles({Key? key, required this.title, required this.description}) : super(key: key);
+class CheckResetBalanceRadioButton extends StatelessWidget {
+  const CheckResetBalanceRadioButton({Key? key, required this.title, required this.description}) : super(key: key);
 
   final String title;
   final String description;
@@ -18,11 +18,10 @@ class RadioButtonTiles extends StatelessWidget {
       children: [
         ListTile(
           contentPadding: const EdgeInsets.only(top: kSpacing),
-          title: Text(
-            title,
-            style: kTextStylePrimary,
-          ),
+          title: Text(title, style: kTextStylePrimary),
         ),
+        Text(description, style: kTextStyleHint),
+        const SizedBox(height: kSpacing),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,

@@ -6,7 +6,7 @@ import '../../constant/style.dart';
 import '../common/app_bar.dart';
 import '../common/currency_select_tile.dart';
 import '../common/input_tile.dart';
-import '../common/radio_button_tiles.dart';
+import '../common/check_reset_balance_radio_button.dart';
 
 class MoneyMeterInitialSettingModal extends StatelessWidget {
   const MoneyMeterInitialSettingModal({Key? key}) : super(key: key);
@@ -32,7 +32,7 @@ class MoneyMeterInitialSettingModal extends StatelessWidget {
                   hintText: 'Setting your budget for money meter',
                   numOnly: true,
                 ),
-                RadioButtonTiles(
+                CheckResetBalanceRadioButton(
                   title: 'Reset Balance',
                   description: 'Reset or not balance at the beginning of month',
                 ),
