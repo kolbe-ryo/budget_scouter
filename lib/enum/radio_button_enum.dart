@@ -12,4 +12,13 @@ extension RadioButtonEnumExt on RadioButtonEnum {
         return 'No';
     }
   }
+
+  bool get boolean {
+    switch (this) {
+      case RadioButtonEnum.yes:
+        return true;
+      case RadioButtonEnum.no:
+        return false;
+    }
+  }
 }
