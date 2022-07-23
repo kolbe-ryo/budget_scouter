@@ -33,4 +33,10 @@ class SharedPreferenceService implements SharedPreferenceInterface {
     }
     return;
   }
+
+  @override
+  Future<void> delete() async {
+    final storage = await _storage;
+    await storage.clear();
+  }
 }

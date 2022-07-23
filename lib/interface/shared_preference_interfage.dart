@@ -7,4 +7,7 @@ abstract class SharedPreferenceInterface {
 
   // Save model to shared preference
   Future<void> save(MoneyMeterModel value);
+
+  // Delete model to shared preference
+  Future<void> delete();
 }

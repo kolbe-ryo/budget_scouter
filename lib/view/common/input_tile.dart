@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
 import '../../constant/style.dart';
+import '../modal/money_meter_initital_setting_modal.dart';
 
 // Project imports:
 
@@ -15,12 +16,14 @@ class InputTile extends ConsumerWidget {
     required this.title,
     required this.hintText,
     required this.numOnly,
+    required this.isTarget,
     Key? key,
   }) : super(key: key);
 
   final String title;
   final String hintText;
   final bool numOnly;
+  final bool isTarget;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -40,12 +43,11 @@ class InputTile extends ConsumerWidget {
           ),
           initialValue: '',
           inputFormatters: numOnly ? [FilteringTextInputFormatter.digitsOnly] : null,
-          onChanged: (String text) => print(text),
-          onEditingComplete: () => print('onEditingComplete'),
-          onFieldSubmitted: (_) => print('onFieldSubmitted'),
-          onSaved: (_) => print('onSaved'),
           keyboardType: numOnly ? TextInputType.number : null,
           style: kTextStyleSecondary,
+          onChanged: (String text) => ref.read(initialMoneyMeterStateProvider.state).update(
+                (state) => isTarget ? state.copyWith(target: text) : state.copyWith(initBalance: int.parse(text)),
+              ),
         ),
       ],
     );

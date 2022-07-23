@@ -1,17 +1,18 @@
 // Flutter imports:
+import 'package:budget_scouter/view/page/money_meter_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SettingPage extends StatelessWidget {
+class SettingPage extends ConsumerWidget {
   const SettingPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(title: Text('Top')),
       body: ElevatedButton(
-          onPressed: () => Navigator.of(context, rootNavigator: true)
-              .push(MaterialPageRoute(builder: ((context) => const SettingPage()))),
-          child: Text('Test')),
+        onPressed: () => ref.read(moneyMeterProvider.notifier).delete(context),
+        child: Text('Test'),
+      ),
     );
   }
 }

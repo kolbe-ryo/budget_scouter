@@ -18,15 +18,8 @@ class MoneyMeterPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return FutureBuilder(
-        future: ref.read(moneyMeterProvider.notifier).fetch(),
-        builder: (context, asyncValue) {
-          if (asyncValue.hasData) {
-            return Scaffold(
-              body: Center(child: MoneyMeter(ref.watch(moneyMeterProvider))),
-            );
-          }
-          return const SizedBox.shrink();
-        });
+    return Scaffold(
+      body: Center(child: MoneyMeter(ref.watch(moneyMeterProvider))),
+    );
   }
 }

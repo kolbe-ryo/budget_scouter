@@ -8,9 +8,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../constant/style.dart';
 import '../../model/money_meter_model.dart';
 import '../common/app_bar.dart';
+import '../common/app_dialog.dart';
 import '../common/check_reset_balance_radio_button.dart';
 import '../common/currency_select_tile.dart';
 import '../common/input_tile.dart';
+import '../page/money_meter_page.dart';
 
 // Temp state
 final initialMoneyMeterStateProvider = StateProvider(((ref) => const MoneyMeterModel()));
@@ -40,11 +42,13 @@ class MoneyMeterInitialSettingModal extends ConsumerWidget {
                     title: 'Target',
                     hintText: 'Name for your target money',
                     numOnly: false,
+                    isTarget: true,
                   ),
                   InputTile(
                     title: 'Initial Balance',
                     hintText: 'Setting your budget for money meter',
                     numOnly: true,
+                    isTarget: false,
                   ),
                   CheckResetBalanceRadioButton(
                     title: 'Reset Balance',
@@ -60,7 +64,18 @@ class MoneyMeterInitialSettingModal extends ConsumerWidget {
           child: const Icon(Icons.add),
           backgroundColor: kThemeColor,
           onPressed: () async {
-            Navigator.pop(context);
+            final moneyMeterModel = ref.watch(initialMoneyMeterStateProvider);
+
+            // Validate for nothing to input
+            if (moneyMeterModel.target.isNotEmpty && moneyMeterModel.initBalance > 0) {
+              ref.read(moneyMeterProvider.notifier).save(moneyMeterModel);
+              Navigator.pop(context);
+            } else {
+              showDialog(
+                context: context,
+                builder: (context) => const AppDialog('Target and Initial Balance field are required'),
+              );
+            }
           },
         ),
       ),
