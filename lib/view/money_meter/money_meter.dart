@@ -29,16 +29,26 @@ class MoneyMeter extends MoneyMeterAbstract {
             'Balance',
             style: kTextStyleCaption(color: kDarkTextColor),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              FaIcon(moneyMeterModel.currency.icon),
-              const SizedBox(width: kSpacing / 2),
-              Text(
-                NumberFormatter.currencyFormatter(moneyMeterModel.balance).toString(),
-                style: kTextStyleCaption(color: kDarkTextColor),
-              ),
-            ],
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: kSpacing),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FaIcon(
+                  moneyMeterModel.currency.icon,
+                  color: kThemeColor,
+                ),
+                const SizedBox(width: kSpacing / 2),
+                Text(
+                  NumberFormatter.currencyFormatter(moneyMeterModel.balance).toString(),
+                  style: kTextStyleCaption(),
+                ),
+              ],
+            ),
+          ),
+          Text(
+            '/ ${NumberFormatter.currencyFormatter(moneyMeterModel.initBalance)}',
+            style: kTextStyleCaption(color: kDarkTextColor, size: 20),
           ),
         ],
       );

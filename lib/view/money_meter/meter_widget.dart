@@ -43,7 +43,7 @@ class MeterWidget extends ConsumerWidget {
           initialAngleInDegree: 270,
           legendOptions: const LegendOptions(showLegends: false),
           ringStrokeWidth: 20,
-          totalValue: 100,
+          totalValue: ref.watch(moneyMeterProvider.select((state) => state.initBalance.toDouble())),
         ),
       );
     });

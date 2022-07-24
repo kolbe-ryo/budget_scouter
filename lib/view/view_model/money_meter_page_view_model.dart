@@ -8,7 +8,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 // Project imports:
 import '../../model/money_meter_model.dart';
 import '../../service/shared_preference_service.dart';
-import '../page/top_page.dart';
 
 class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterModel> {
   MoneyMeterPageViewModel() : super(const MoneyMeterModel());
@@ -28,6 +27,16 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterModel> {
     await _storage.save(state);
   }
 
+  // Use money
+  Future<void> use(int money) async {
+    final remaining = state.balance - money;
+    state = state.copyWith(balance: remaining);
+    await _storage.save(state);
+  }
+
+  // Go back to previous value
+  Future<void> goBack() async {}
+
   // Delete state to SharedPreference
   Future<void> delete(BuildContext context) async {
     await _storage.delete();
@@ -40,6 +49,5 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterModel> {
     final dayMonth = DateTime(now.year, now.month, 0).day;
     final remainDays = dayMonth - elapsedDay + 1;
     return remainDays != 1 ? '$remainDays Days' : '$remainDays Day';
-    // return '';
   }
 }

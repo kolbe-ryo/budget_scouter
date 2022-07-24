@@ -26,7 +26,7 @@ class MoneyMeterModel with _$MoneyMeterModel {
 
   String get balanceRatio {
     try {
-      return ((balance / initBalance).ceil() * 100).toString();
+      return (((balance / initBalance) * 100).ceil()).toString();
     } catch (error) {
       return 0.toString();
     }

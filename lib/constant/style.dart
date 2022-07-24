@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 const kSpacing = 16.0;
 
-kTextStyleCaption({Color color = kThemeColor}) => TextStyle(
+kTextStyleCaption({Color? color = kThemeColor, double? size = 35}) => TextStyle(
       color: color,
-      fontSize: 30,
+      fontSize: size,
       fontWeight: FontWeight.w600,
     );
 
