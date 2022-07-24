@@ -1,9 +1,13 @@
 // Flutter imports:
-import 'package:budget_scouter/constant/style.dart';
-import 'package:budget_scouter/view/page/money_meter_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
+
+// Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+// Project imports:
+import '../../constant/style.dart';
+import '../page/money_meter_page.dart';
 
 class AppDialog extends StatelessWidget {
   const AppDialog(this.message, {Key? key}) : super(key: key);

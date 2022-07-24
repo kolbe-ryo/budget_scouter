@@ -15,18 +15,17 @@ class MeterWidget extends ConsumerWidget {
     Key? key,
     required this.inOutCircle,
     required this.meterRadius,
-    this.used = 0,
   }) : super(key: key);
 
   final MeterInOutEnum inOutCircle;
   final MeterRadiusEnum meterRadius;
-  final double used;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final amountUse = inOutCircle == MeterInOutEnum.inner
+    final amountUse = inOutCircle == MeterInOutEnum.outer
         ? ref.watch(moneyMeterProvider.select((state) => state.balance.toDouble()))
-        : used;
+        : 0.0;
+    final initBalance = ref.watch(moneyMeterProvider.select((state) => state.initBalance.toDouble()));
     return LayoutBuilder(builder: (context, _constraints) {
       return ConstrainedBox(
         constraints: BoxConstraints(
@@ -34,16 +33,17 @@ class MeterWidget extends ConsumerWidget {
           maxWidth: meterRadius.constraints(_constraints),
         ),
         child: PieChart(
+          animationDuration: const Duration(seconds: 1),
           baseChartColor: inOutCircle.color(),
           chartRadius: meterRadius.radius(_constraints),
           chartType: ChartType.ring,
           chartValuesOptions: const ChartValuesOptions(showChartValues: false),
           colorList: const [Colors.black],
-          dataMap: {"usedMoney": amountUse},
+          dataMap: {"usedMoney": initBalance - amountUse},
           initialAngleInDegree: 270,
           legendOptions: const LegendOptions(showLegends: false),
           ringStrokeWidth: 20,
-          totalValue: ref.watch(moneyMeterProvider.select((state) => state.initBalance.toDouble())),
+          totalValue: initBalance,
         ),
       );
     });
