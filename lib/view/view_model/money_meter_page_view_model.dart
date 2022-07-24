@@ -15,7 +15,7 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterModel> {
   final SharedPreferenceService _storage = SharedPreferenceService(SharedPreferences.getInstance());
 
   // Fetch list from SharedPreference
-  Future<bool> fetch() async {
+  Future<bool?> fetch() async {
     final moneyMeterModel = await _storage.fetch();
     state = moneyMeterModel ?? state;
     return true;

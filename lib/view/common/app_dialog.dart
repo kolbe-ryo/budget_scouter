@@ -35,7 +35,7 @@ class InputDialog extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     String money = '0';
     return CupertinoAlertDialog(
-      title: const Text('Use Money'),
+      title: const Text('Input Use Money'),
       content: Padding(
         padding: const EdgeInsets.only(top: kSpacing),
         child: CupertinoTextField(

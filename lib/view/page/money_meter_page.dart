@@ -34,7 +34,7 @@ class MoneyMeterPage extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(kSpacing, kSpacing * 2, 0, kSpacing * 2),
+                    padding: const EdgeInsets.fromLTRB(kSpacing, 0, 0, kSpacing * 2),
                     child: TopCaptionTexts(
                       title: 'Target',
                       content: hadData ? ref.watch(moneyMeterProvider.select((state) => state.target)) : 'No Data',
@@ -42,7 +42,9 @@ class MoneyMeterPage extends ConsumerWidget {
                   ),
                   GestureDetector(
                     child: MoneyMeter(ref.watch(moneyMeterProvider)),
-                    onTap: () => showDialog(context: context, builder: (context) => const InputDialog()),
+                    onTap: () async {
+                      await showDialog(context: context, builder: (context) => const InputDialog());
+                    },
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: kSpacing * 2, horizontal: kSpacing),

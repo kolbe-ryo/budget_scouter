@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/util/admob.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -23,10 +24,24 @@ class TopPage extends ConsumerWidget {
         padding: const EdgeInsets.all(kSpacing),
         child: BottomNavigationBarEnum.values.map((item) => item.page()).toList()[pageIndex],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: BottomNavigationBarEnum.values.map((item) => item.bottomNavigationBarItem(context)).toList(),
-        currentIndex: pageIndex,
-        onTap: (int index) => ref.read(bottomNavigtionIndex.notifier).update((state) => state = index),
+      bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          FutureBuilder(
+            future: Admob.getBannerWidget(context: context),
+            builder: ((context, snapshot) {
+              if (snapshot.hasData) {
+                return snapshot.data as Widget;
+              }
+              return const Center(child: CircularProgressIndicator());
+            }),
+          ),
+          BottomNavigationBar(
+            items: BottomNavigationBarEnum.values.map((item) => item.bottomNavigationBarItem(context)).toList(),
+            currentIndex: pageIndex,
+            onTap: (int index) => ref.read(bottomNavigtionIndex.notifier).update((state) => state = index),
+          ),
+        ],
       ),
     );
   }
