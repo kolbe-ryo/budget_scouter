@@ -1,7 +1,11 @@
 // Flutter imports:
-import 'package:budget_scouter/view/page/money_meter_page.dart';
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+// Project imports:
+import 'money_meter_page.dart';
 
 class SettingPage extends ConsumerWidget {
   const SettingPage({Key? key}) : super(key: key);

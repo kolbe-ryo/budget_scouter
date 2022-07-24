@@ -68,7 +68,9 @@ class MoneyMeterInitialSettingModal extends ConsumerWidget {
 
             // Validate for nothing to input
             if (moneyMeterModel.target.isNotEmpty && moneyMeterModel.initBalance > 0) {
-              ref.read(moneyMeterProvider.notifier).save(moneyMeterModel);
+              ref
+                  .read(moneyMeterProvider.notifier)
+                  .save(moneyMeterModel.copyWith(balance: moneyMeterModel.initBalance));
               Navigator.pop(context);
             } else {
               showDialog(

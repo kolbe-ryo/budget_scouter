@@ -16,7 +16,7 @@ extension MeterRadiusEnumExt on MeterRadiusEnum {
       case MeterRadiusEnum.smallOuter:
         return constraints.maxWidth / 3;
       case MeterRadiusEnum.largeInner:
-        return constraints.maxWidth - 30;
+        return constraints.maxWidth - 45;
       case MeterRadiusEnum.largeOuter:
         return constraints.maxWidth;
     }

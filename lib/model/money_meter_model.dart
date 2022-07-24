@@ -17,7 +17,6 @@ class MoneyMeterModel with _$MoneyMeterModel {
     @Default('') String target,
     @Default(0) int initBalance,
     @Default(0) int balance,
-    @Default(0) int remainDays,
     @Default(CurrencyDataEnum.dollar) CurrencyDataEnum currency,
     @Default(true) isForwardBalance,
     @Default(<MoneyConsumptionHistoryModel>[]) List<MoneyConsumptionHistoryModel> moneyConsumptionHistoryModelList,
@@ -25,5 +24,11 @@ class MoneyMeterModel with _$MoneyMeterModel {
 
   factory MoneyMeterModel.fromJson(Map<String, dynamic> json) => _$MoneyMeterModelFromJson(json);
 
-  int get balanceRatio => (balance / initBalance).ceil();
+  String get balanceRatio {
+    try {
+      return ((balance / initBalance).ceil() * 100).toString();
+    } catch (error) {
+      return 0.toString();
+    }
+  }
 }

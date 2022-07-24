@@ -2,13 +2,15 @@
 import 'package:flutter/material.dart';
 
 // Package imports:
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pie_chart/pie_chart.dart';
 
 // Project imports:
 import '../../enum/meter_in_out_enum.dart';
 import '../../enum/meter_radius_enum.dart';
+import '../page/money_meter_page.dart';
 
-class MeterWidget extends StatelessWidget {
+class MeterWidget extends ConsumerWidget {
   const MeterWidget({
     Key? key,
     required this.inOutCircle,
@@ -21,7 +23,10 @@ class MeterWidget extends StatelessWidget {
   final double used;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final amountUse = inOutCircle == MeterInOutEnum.inner
+        ? ref.watch(moneyMeterProvider.select((state) => state.balance.toDouble()))
+        : used;
     return LayoutBuilder(builder: (context, _constraints) {
       return ConstrainedBox(
         constraints: BoxConstraints(
@@ -34,10 +39,10 @@ class MeterWidget extends StatelessWidget {
           chartType: ChartType.ring,
           chartValuesOptions: const ChartValuesOptions(showChartValues: false),
           colorList: const [Colors.black],
-          dataMap: {"usedMoney": used},
+          dataMap: {"usedMoney": amountUse},
           initialAngleInDegree: 270,
           legendOptions: const LegendOptions(showLegends: false),
-          ringStrokeWidth: 10,
+          ringStrokeWidth: 20,
           totalValue: 100,
         ),
       );

@@ -12,7 +12,6 @@ _$_MoneyMeterModel _$$_MoneyMeterModelFromJson(Map<String, dynamic> json) =>
       target: json['target'] as String? ?? '',
       initBalance: json['initBalance'] as int? ?? 0,
       balance: json['balance'] as int? ?? 0,
-      remainDays: json['remainDays'] as int? ?? 0,
       currency:
           $enumDecodeNullable(_$CurrencyDataEnumEnumMap, json['currency']) ??
               CurrencyDataEnum.dollar,
@@ -31,7 +30,6 @@ Map<String, dynamic> _$$_MoneyMeterModelToJson(_$_MoneyMeterModel instance) =>
       'target': instance.target,
       'initBalance': instance.initBalance,
       'balance': instance.balance,
-      'remainDays': instance.remainDays,
       'currency': _$CurrencyDataEnumEnumMap[instance.currency]!,
       'isForwardBalance': instance.isForwardBalance,
       'moneyConsumptionHistoryModelList':
