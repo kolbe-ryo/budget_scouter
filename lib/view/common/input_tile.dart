@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/view/modal/use_money_input_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -17,6 +18,7 @@ class InputTile extends ConsumerWidget {
     required this.hintText,
     required this.numOnly,
     required this.isTarget,
+    this.isUseMoney = false,
     Key? key,
   }) : super(key: key);
 
@@ -24,6 +26,7 @@ class InputTile extends ConsumerWidget {
   final String hintText;
   final bool numOnly;
   final bool isTarget;
+  final bool isUseMoney;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -37,22 +40,24 @@ class InputTile extends ConsumerWidget {
           ),
         ),
         TextFormField(
-          decoration: InputDecoration(
-            hintText: hintText,
-            hintStyle: kTextStyleHint,
-          ),
-          initialValue: '',
-          inputFormatters: numOnly ? [FilteringTextInputFormatter.digitsOnly] : null,
-          keyboardType: numOnly ? TextInputType.number : null,
-          style: kTextStyleSecondary,
-          onChanged: (String text) => ref.read(initialMoneyMeterStateProvider.state).update(
-                (state) => isTarget
-                    ? state.copyWith(target: text)
-                    : state.copyWith(
-                        initBalance: int.parse(text),
-                      ),
-              ),
-        ),
+            autofocus: isUseMoney,
+            decoration: InputDecoration(
+              hintText: hintText,
+              hintStyle: kTextStyleHint,
+            ),
+            initialValue: '',
+            inputFormatters: numOnly ? [FilteringTextInputFormatter.digitsOnly] : null,
+            keyboardType: numOnly ? TextInputType.number : null,
+            style: kTextStyleSecondary,
+            onChanged: (String text) {
+              if (isUseMoney) {
+                ref.read(useMoneyState.state).update((state) => int.parse(text));
+              } else {
+                ref.read(initialMoneyMeterStateProvider.state).update(
+                      (state) => isTarget ? state.copyWith(target: text) : state.copyWith(initBalance: int.parse(text)),
+                    );
+              }
+            }),
       ],
     );
   }

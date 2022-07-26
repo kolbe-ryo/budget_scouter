@@ -28,9 +28,7 @@ class SharedPreferenceService implements SharedPreferenceInterface {
   Future<void> save(MoneyMeterModel value) async {
     final storage = await _storage;
     final savingItem = json.encode(value.toJson());
-    if (storage.containsKey(kStorageKey)) {
-      await storage.setString(kStorageKey, savingItem);
-    }
+    await storage.setString(kStorageKey, savingItem);
     return;
   }
 
