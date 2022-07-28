@@ -5,10 +5,16 @@ import 'package:flutter/material.dart';
 import '../../constant/style.dart';
 
 class TopCaptionTexts extends StatelessWidget {
-  const TopCaptionTexts({Key? key, required this.title, required this.content}) : super(key: key);
+  const TopCaptionTexts({
+    Key? key,
+    required this.title,
+    required this.content,
+    required this.isNodata,
+  }) : super(key: key);
 
   final String title;
   final String content;
+  final bool isNodata;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +25,7 @@ class TopCaptionTexts extends StatelessWidget {
         const SizedBox(height: kSpacing / 2),
         Text(
           content,
-          style: kTextStyleCaption(),
+          style: kTextStyleCaption(color: isNodata ? kDarkTextColor : kThemeColor),
         ),
       ],
     );

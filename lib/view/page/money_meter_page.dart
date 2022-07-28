@@ -1,11 +1,11 @@
 // Flutter imports:
-import 'package:budget_scouter/view/modal/use_money_input_model.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
+import '../modal/use_money_input_model.dart';
 import '../../constant/style.dart';
 import '../../model/money_meter_model.dart';
 import '../common/top_caption_texts.dart';
@@ -23,7 +23,7 @@ class MoneyMeterPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final hadData = ref.watch(moneyMeterProvider.select((state) => state.hasdata));
+    final hasData = ref.watch(moneyMeterProvider.select((state) => state.hasdata));
     AsyncValue<MoneyMeterModel> moneyMeterModel = ref.watch(moneyData);
 
     return Scaffold(
@@ -33,14 +33,15 @@ class MoneyMeterPage extends ConsumerWidget {
         data: (data) => SingleChildScrollView(
           physics: const NeverScrollableScrollPhysics(),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Padding(
                 padding: const EdgeInsets.fromLTRB(kSpacing, 0, 0, kSpacing * 2),
                 child: TopCaptionTexts(
                   title: 'Target',
-                  content: hadData ? ref.watch(moneyMeterProvider.select((state) => state.target)) : 'No Data',
+                  content: hasData ? ref.watch(moneyMeterProvider.select((state) => state.target)) : 'No Data',
+                  isNodata: !hasData,
                 ),
               ),
               GestureDetector(
@@ -61,13 +62,15 @@ class MoneyMeterPage extends ConsumerWidget {
                   children: [
                     TopCaptionTexts(
                       title: 'Remain Days',
-                      content: hadData ? ref.watch(moneyMeterProvider.notifier).remainDays : 'No Data',
+                      content: hasData ? ref.watch(moneyMeterProvider.notifier).remainDays : 'No Data',
+                      isNodata: !hasData,
                     ),
                     TopCaptionTexts(
                       title: 'Use Rate',
-                      content: hadData
+                      content: hasData
                           ? '${ref.watch(moneyMeterProvider.select((state) => state.balanceRatio))}%'
                           : 'No Data',
+                      isNodata: !hasData,
                     ),
                   ],
                 ),

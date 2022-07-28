@@ -7,7 +7,7 @@ enum MeterInOutEnum {
 }
 
 extension MeterInOutEnumExt on MeterInOutEnum {
-  Color color() {
+  Color get color {
     switch (this) {
       case MeterInOutEnum.inner:
         return Colors.black;

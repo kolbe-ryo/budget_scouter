@@ -1,11 +1,11 @@
 // Flutter imports:
-import 'package:budget_scouter/util/admob.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
+import '../../util/admob.dart';
 import '../../constant/style.dart';
 import '../../enum/bottom_navigation_bar_enum.dart';
 import '../common/app_bar.dart';
