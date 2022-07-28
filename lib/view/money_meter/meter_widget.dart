@@ -33,6 +33,7 @@ class MeterWidget extends ConsumerWidget {
           maxWidth: meterRadius.constraints(_constraints),
         ),
         child: PieChart(
+          animationDuration: const Duration(seconds: 3),
           baseChartColor: inOutCircle.color,
           chartRadius: meterRadius.radius(_constraints),
           chartType: ChartType.ring,
