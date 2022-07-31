@@ -21,7 +21,8 @@ MoneyConsumptionHistoryModel _$MoneyConsumptionHistoryModelFromJson(
 
 /// @nodoc
 mixin _$MoneyConsumptionHistoryModel {
-  String get createdAt => throw _privateConstructorUsedError;
+  int get year => throw _privateConstructorUsedError;
+  int get month => throw _privateConstructorUsedError;
   int get initBalance => throw _privateConstructorUsedError;
   int get remainedBalance => throw _privateConstructorUsedError;
 
@@ -37,7 +38,7 @@ abstract class $MoneyConsumptionHistoryModelCopyWith<$Res> {
           MoneyConsumptionHistoryModel value,
           $Res Function(MoneyConsumptionHistoryModel) then) =
       _$MoneyConsumptionHistoryModelCopyWithImpl<$Res>;
-  $Res call({String createdAt, int initBalance, int remainedBalance});
+  $Res call({int year, int month, int initBalance, int remainedBalance});
 }
 
 /// @nodoc
@@ -51,15 +52,20 @@ class _$MoneyConsumptionHistoryModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? createdAt = freezed,
+    Object? year = freezed,
+    Object? month = freezed,
     Object? initBalance = freezed,
     Object? remainedBalance = freezed,
   }) {
     return _then(_value.copyWith(
-      createdAt: createdAt == freezed
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
+      year: year == freezed
+          ? _value.year
+          : year // ignore: cast_nullable_to_non_nullable
+              as int,
+      month: month == freezed
+          ? _value.month
+          : month // ignore: cast_nullable_to_non_nullable
+              as int,
       initBalance: initBalance == freezed
           ? _value.initBalance
           : initBalance // ignore: cast_nullable_to_non_nullable
@@ -80,7 +86,7 @@ abstract class _$$_MoneyConsumptionHistoryModelCopyWith<$Res>
           $Res Function(_$_MoneyConsumptionHistoryModel) then) =
       __$$_MoneyConsumptionHistoryModelCopyWithImpl<$Res>;
   @override
-  $Res call({String createdAt, int initBalance, int remainedBalance});
+  $Res call({int year, int month, int initBalance, int remainedBalance});
 }
 
 /// @nodoc
@@ -98,15 +104,20 @@ class __$$_MoneyConsumptionHistoryModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? createdAt = freezed,
+    Object? year = freezed,
+    Object? month = freezed,
     Object? initBalance = freezed,
     Object? remainedBalance = freezed,
   }) {
     return _then(_$_MoneyConsumptionHistoryModel(
-      createdAt: createdAt == freezed
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
+      year: year == freezed
+          ? _value.year
+          : year // ignore: cast_nullable_to_non_nullable
+              as int,
+      month: month == freezed
+          ? _value.month
+          : month // ignore: cast_nullable_to_non_nullable
+              as int,
       initBalance: initBalance == freezed
           ? _value.initBalance
           : initBalance // ignore: cast_nullable_to_non_nullable
@@ -123,7 +134,10 @@ class __$$_MoneyConsumptionHistoryModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_MoneyConsumptionHistoryModel extends _MoneyConsumptionHistoryModel {
   const _$_MoneyConsumptionHistoryModel(
-      {this.createdAt = '', this.initBalance = 0, this.remainedBalance = 0})
+      {this.year = 0,
+      this.month = 0,
+      this.initBalance = 0,
+      this.remainedBalance = 0})
       : super._();
 
   factory _$_MoneyConsumptionHistoryModel.fromJson(Map<String, dynamic> json) =>
@@ -131,7 +145,10 @@ class _$_MoneyConsumptionHistoryModel extends _MoneyConsumptionHistoryModel {
 
   @override
   @JsonKey()
-  final String createdAt;
+  final int year;
+  @override
+  @JsonKey()
+  final int month;
   @override
   @JsonKey()
   final int initBalance;
@@ -141,7 +158,7 @@ class _$_MoneyConsumptionHistoryModel extends _MoneyConsumptionHistoryModel {
 
   @override
   String toString() {
-    return 'MoneyConsumptionHistoryModel(createdAt: $createdAt, initBalance: $initBalance, remainedBalance: $remainedBalance)';
+    return 'MoneyConsumptionHistoryModel(year: $year, month: $month, initBalance: $initBalance, remainedBalance: $remainedBalance)';
   }
 
   @override
@@ -149,7 +166,8 @@ class _$_MoneyConsumptionHistoryModel extends _MoneyConsumptionHistoryModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MoneyConsumptionHistoryModel &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            const DeepCollectionEquality().equals(other.year, year) &&
+            const DeepCollectionEquality().equals(other.month, month) &&
             const DeepCollectionEquality()
                 .equals(other.initBalance, initBalance) &&
             const DeepCollectionEquality()
@@ -160,7 +178,8 @@ class _$_MoneyConsumptionHistoryModel extends _MoneyConsumptionHistoryModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(createdAt),
+      const DeepCollectionEquality().hash(year),
+      const DeepCollectionEquality().hash(month),
       const DeepCollectionEquality().hash(initBalance),
       const DeepCollectionEquality().hash(remainedBalance));
 
@@ -179,7 +198,8 @@ class _$_MoneyConsumptionHistoryModel extends _MoneyConsumptionHistoryModel {
 abstract class _MoneyConsumptionHistoryModel
     extends MoneyConsumptionHistoryModel {
   const factory _MoneyConsumptionHistoryModel(
-      {final String createdAt,
+      {final int year,
+      final int month,
       final int initBalance,
       final int remainedBalance}) = _$_MoneyConsumptionHistoryModel;
   const _MoneyConsumptionHistoryModel._() : super._();
@@ -188,7 +208,9 @@ abstract class _MoneyConsumptionHistoryModel
       _$_MoneyConsumptionHistoryModel.fromJson;
 
   @override
-  String get createdAt;
+  int get year;
+  @override
+  int get month;
   @override
   int get initBalance;
   @override

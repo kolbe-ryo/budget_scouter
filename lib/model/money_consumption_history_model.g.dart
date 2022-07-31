@@ -9,7 +9,8 @@ part of 'money_consumption_history_model.dart';
 _$_MoneyConsumptionHistoryModel _$$_MoneyConsumptionHistoryModelFromJson(
         Map<String, dynamic> json) =>
     _$_MoneyConsumptionHistoryModel(
-      createdAt: json['createdAt'] as String? ?? '',
+      year: json['year'] as int? ?? 0,
+      month: json['month'] as int? ?? 0,
       initBalance: json['initBalance'] as int? ?? 0,
       remainedBalance: json['remainedBalance'] as int? ?? 0,
     );
@@ -17,7 +18,8 @@ _$_MoneyConsumptionHistoryModel _$$_MoneyConsumptionHistoryModelFromJson(
 Map<String, dynamic> _$$_MoneyConsumptionHistoryModelToJson(
         _$_MoneyConsumptionHistoryModel instance) =>
     <String, dynamic>{
-      'createdAt': instance.createdAt,
+      'year': instance.year,
+      'month': instance.month,
       'initBalance': instance.initBalance,
       'remainedBalance': instance.remainedBalance,
     };

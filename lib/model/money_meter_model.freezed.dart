@@ -26,7 +26,8 @@ mixin _$MoneyMeterModel {
   int get balance => throw _privateConstructorUsedError;
   CurrencyDataEnum get currency => throw _privateConstructorUsedError;
   dynamic get isForwardBalance => throw _privateConstructorUsedError;
-  String get createdAt => throw _privateConstructorUsedError;
+  int get year => throw _privateConstructorUsedError;
+  int get month => throw _privateConstructorUsedError;
   List<MoneyConsumptionHistoryModel> get moneyConsumptionHistoryModelList =>
       throw _privateConstructorUsedError;
 
@@ -48,7 +49,8 @@ abstract class $MoneyMeterModelCopyWith<$Res> {
       int balance,
       CurrencyDataEnum currency,
       dynamic isForwardBalance,
-      String createdAt,
+      int year,
+      int month,
       List<MoneyConsumptionHistoryModel> moneyConsumptionHistoryModelList});
 }
 
@@ -69,7 +71,8 @@ class _$MoneyMeterModelCopyWithImpl<$Res>
     Object? balance = freezed,
     Object? currency = freezed,
     Object? isForwardBalance = freezed,
-    Object? createdAt = freezed,
+    Object? year = freezed,
+    Object? month = freezed,
     Object? moneyConsumptionHistoryModelList = freezed,
   }) {
     return _then(_value.copyWith(
@@ -97,10 +100,14 @@ class _$MoneyMeterModelCopyWithImpl<$Res>
           ? _value.isForwardBalance
           : isForwardBalance // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      createdAt: createdAt == freezed
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
+      year: year == freezed
+          ? _value.year
+          : year // ignore: cast_nullable_to_non_nullable
+              as int,
+      month: month == freezed
+          ? _value.month
+          : month // ignore: cast_nullable_to_non_nullable
+              as int,
       moneyConsumptionHistoryModelList: moneyConsumptionHistoryModelList ==
               freezed
           ? _value.moneyConsumptionHistoryModelList
@@ -124,7 +131,8 @@ abstract class _$$_MoneyMeterModelCopyWith<$Res>
       int balance,
       CurrencyDataEnum currency,
       dynamic isForwardBalance,
-      String createdAt,
+      int year,
+      int month,
       List<MoneyConsumptionHistoryModel> moneyConsumptionHistoryModelList});
 }
 
@@ -147,7 +155,8 @@ class __$$_MoneyMeterModelCopyWithImpl<$Res>
     Object? balance = freezed,
     Object? currency = freezed,
     Object? isForwardBalance = freezed,
-    Object? createdAt = freezed,
+    Object? year = freezed,
+    Object? month = freezed,
     Object? moneyConsumptionHistoryModelList = freezed,
   }) {
     return _then(_$_MoneyMeterModel(
@@ -174,10 +183,14 @@ class __$$_MoneyMeterModelCopyWithImpl<$Res>
       isForwardBalance: isForwardBalance == freezed
           ? _value.isForwardBalance
           : isForwardBalance,
-      createdAt: createdAt == freezed
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
+      year: year == freezed
+          ? _value.year
+          : year // ignore: cast_nullable_to_non_nullable
+              as int,
+      month: month == freezed
+          ? _value.month
+          : month // ignore: cast_nullable_to_non_nullable
+              as int,
       moneyConsumptionHistoryModelList: moneyConsumptionHistoryModelList ==
               freezed
           ? _value._moneyConsumptionHistoryModelList
@@ -197,7 +210,8 @@ class _$_MoneyMeterModel extends _MoneyMeterModel {
       this.balance = 0,
       this.currency = CurrencyDataEnum.dollar,
       this.isForwardBalance = true,
-      this.createdAt = '',
+      this.year = 0,
+      this.month = 0,
       final List<MoneyConsumptionHistoryModel> moneyConsumptionHistoryModelList =
           const <MoneyConsumptionHistoryModel>[]})
       : _moneyConsumptionHistoryModelList = moneyConsumptionHistoryModelList,
@@ -226,7 +240,10 @@ class _$_MoneyMeterModel extends _MoneyMeterModel {
   final dynamic isForwardBalance;
   @override
   @JsonKey()
-  final String createdAt;
+  final int year;
+  @override
+  @JsonKey()
+  final int month;
   final List<MoneyConsumptionHistoryModel> _moneyConsumptionHistoryModelList;
   @override
   @JsonKey()
@@ -237,7 +254,7 @@ class _$_MoneyMeterModel extends _MoneyMeterModel {
 
   @override
   String toString() {
-    return 'MoneyMeterModel(hasdata: $hasdata, target: $target, initBalance: $initBalance, balance: $balance, currency: $currency, isForwardBalance: $isForwardBalance, createdAt: $createdAt, moneyConsumptionHistoryModelList: $moneyConsumptionHistoryModelList)';
+    return 'MoneyMeterModel(hasdata: $hasdata, target: $target, initBalance: $initBalance, balance: $balance, currency: $currency, isForwardBalance: $isForwardBalance, year: $year, month: $month, moneyConsumptionHistoryModelList: $moneyConsumptionHistoryModelList)';
   }
 
   @override
@@ -253,7 +270,8 @@ class _$_MoneyMeterModel extends _MoneyMeterModel {
             const DeepCollectionEquality().equals(other.currency, currency) &&
             const DeepCollectionEquality()
                 .equals(other.isForwardBalance, isForwardBalance) &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+            const DeepCollectionEquality().equals(other.year, year) &&
+            const DeepCollectionEquality().equals(other.month, month) &&
             const DeepCollectionEquality().equals(
                 other._moneyConsumptionHistoryModelList,
                 _moneyConsumptionHistoryModelList));
@@ -269,7 +287,8 @@ class _$_MoneyMeterModel extends _MoneyMeterModel {
       const DeepCollectionEquality().hash(balance),
       const DeepCollectionEquality().hash(currency),
       const DeepCollectionEquality().hash(isForwardBalance),
-      const DeepCollectionEquality().hash(createdAt),
+      const DeepCollectionEquality().hash(year),
+      const DeepCollectionEquality().hash(month),
       const DeepCollectionEquality().hash(_moneyConsumptionHistoryModelList));
 
   @JsonKey(ignore: true)
@@ -291,7 +310,8 @@ abstract class _MoneyMeterModel extends MoneyMeterModel {
       final int balance,
       final CurrencyDataEnum currency,
       final dynamic isForwardBalance,
-      final String createdAt,
+      final int year,
+      final int month,
       final List<MoneyConsumptionHistoryModel>
           moneyConsumptionHistoryModelList}) = _$_MoneyMeterModel;
   const _MoneyMeterModel._() : super._();
@@ -312,7 +332,9 @@ abstract class _MoneyMeterModel extends MoneyMeterModel {
   @override
   dynamic get isForwardBalance;
   @override
-  String get createdAt;
+  int get year;
+  @override
+  int get month;
   @override
   List<MoneyConsumptionHistoryModel> get moneyConsumptionHistoryModelList;
   @override

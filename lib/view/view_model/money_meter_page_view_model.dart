@@ -1,5 +1,6 @@
 // Flutter imports:
 import 'package:budget_scouter/model/money_consumption_history_model.dart';
+import 'package:budget_scouter/util/number_formatter.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -17,9 +18,9 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterModel> {
 
   // Fetch list from SharedPreference
   Future<MoneyMeterModel> fetch() async {
-    _updateMonth();
     final moneyMeterModel = await _storage.fetch();
     state = moneyMeterModel ?? state;
+    _initDateTime();
     return state;
   }
 
@@ -46,28 +47,49 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterModel> {
   Future<void> update(dynamic object) async {}
 
   // Initiate model on first of month
-  void _updateMonth() {
-    // TODO: 現在の日時とmodel内の日時を比較し、異なる場合に処理する
-    // 前月だった場合、
-    // 前々月などだった場合
-    if (false) {
-      // Reset or not balannce
-      final balance = state.isForwardBalance ? state.initBalance - state.balance : state.initBalance;
-
-      // Generate history
-      final lastMonthHistoryModel = MoneyConsumptionHistoryModel(
-        createdAt: state.createdAt,
-        initBalance: state.initBalance,
-        remainedBalance: state.balance,
-      );
-
-      state = state.copyWith(
-        balance: balance,
-        createdAt: createdAtYM,
-        moneyConsumptionHistoryModelList: [...state.moneyConsumptionHistoryModelList, lastMonthHistoryModel],
-      );
-      save(state);
+  void _initDateTime() {
+    // 同じcreatedAtの場合処理しない
+    final nowDateTime = DateTime.now();
+    final createdAtYM = NumberFormatter.createdAtFotmat(state.year, state.month);
+    if (nowYM == createdAtYM || state.moneyConsumptionHistoryModelList.isEmpty) {
+      return;
     }
+
+    List<MoneyConsumptionHistoryModel> historyList = [];
+    // modelが前月だった場合
+    if ((nowDateTime.month - 1) == state.month) {
+      // Generate history
+      historyList.add(MoneyConsumptionHistoryModel(
+        year: nowDateTime.year,
+        month: nowDateTime.month,
+      ));
+    } else {
+      final preMonth = state.moneyConsumptionHistoryModelList.last.month;
+      // 現時点の前月から一月ずつ、前回最後に利用した月まで戻って空のhistoryを代入する
+      for (int decreaseMonth = nowDateTime.month - 1; decreaseMonth != preMonth; decreaseMonth--) {
+        // 戻った年月のDateTime
+        final dateTime = DateTime(nowDateTime.year, decreaseMonth);
+        historyList = [
+          MoneyConsumptionHistoryModel(
+            year: dateTime.year,
+            month: dateTime.month,
+          ),
+          ...historyList
+        ];
+      }
+    }
+
+    // Reset or not balannce
+    final balance = state.isForwardBalance ? state.initBalance - state.balance : state.initBalance;
+
+    state = state.copyWith(
+      balance: balance,
+      year: nowDateTime.year,
+      month: nowDateTime.month,
+      moneyConsumptionHistoryModelList: [...state.moneyConsumptionHistoryModelList, ...historyList],
+    );
+    save(state);
+    return;
   }
 
   // Go back to previous value
@@ -76,12 +98,12 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterModel> {
   String get remainDays {
     final now = DateTime.now();
     final elapsedDay = DateTime(now.year, now.month, now.day).day;
-    final dayMonth = DateTime(now.year, now.month, 0).day;
+    final dayMonth = DateTime(now.year, now.month + 1, 1).add(const Duration(days: -1)).day;
     final remainDays = dayMonth - elapsedDay + 1;
     return remainDays != 1 ? '$remainDays Days' : '$remainDays Day';
   }
 
-  String get createdAtYM {
+  String get nowYM {
     final DateTime dateTime = DateTime.now();
     return '${dateTime.year}-${dateTime.month}';
   }

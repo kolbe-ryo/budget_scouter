@@ -72,7 +72,8 @@ class MoneyMeterInitialSettingModal extends ConsumerWidget {
               ref.read(moneyMeterProvider.notifier).save(inititalMoneyMeterModel.copyWith(
                     hasdata: true,
                     balance: inititalMoneyMeterModel.initBalance,
-                    createdAt: viewModel.createdAtYM,
+                    year: DateTime.now().year,
+                    month: DateTime.now().month,
                   ));
               Navigator.pop(context);
             } else {

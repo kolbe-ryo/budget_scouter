@@ -6,4 +6,8 @@ class NumberFormatter {
     final formatter = NumberFormat("#,###");
     return formatter.format(currency);
   }
+
+  static createdAtFotmat(int year, int month) {
+    return '$year-$month';
+  }
 }

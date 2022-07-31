@@ -19,7 +19,8 @@ class MoneyMeterModel with _$MoneyMeterModel {
     @Default(0) int balance,
     @Default(CurrencyDataEnum.dollar) CurrencyDataEnum currency,
     @Default(true) isForwardBalance,
-    @Default('') String createdAt,
+    @Default(0) int year,
+    @Default(0) int month,
     @Default(<MoneyConsumptionHistoryModel>[]) List<MoneyConsumptionHistoryModel> moneyConsumptionHistoryModelList,
   }) = _MoneyMeterModel;
 
