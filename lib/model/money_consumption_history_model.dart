@@ -9,8 +9,7 @@ class MoneyConsumptionHistoryModel with _$MoneyConsumptionHistoryModel {
   const MoneyConsumptionHistoryModel._();
 
   const factory MoneyConsumptionHistoryModel({
-    @Default('') String year,
-    @Default('') String month,
+    @Default('') String createdAt,
     @Default(0) int initBalance,
     @Default(0) int remainedBalance,
   }) = _MoneyConsumptionHistoryModel;

@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/model/money_consumption_history_model.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -16,15 +17,38 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterModel> {
 
   // Fetch list from SharedPreference
   Future<MoneyMeterModel> fetch() async {
+    // TODO: ここで日付跨ぎの処理を追記する
     final moneyMeterModel = await _storage.fetch();
     state = moneyMeterModel ?? state;
     return state;
-    // return true;
+  }
+
+  void updateMonth() {
+    // TODO: 現在の日時とmodel内の日時を比較し、異なる場合に処理する
+    // 前月だった場合、
+    // 前々月などだった場合
+
+    // Reset or not balannce
+    final balance = state.isForwardBalance ? state.initBalance - state.balance : state.initBalance;
+
+    // Generate history
+    final lastMonthHistoryModel = MoneyConsumptionHistoryModel(
+      createdAt: state.createdAt,
+      initBalance: state.initBalance,
+      remainedBalance: state.balance,
+    );
+
+    state = state.copyWith(
+      balance: balance,
+      createdAt: createdAtYM,
+      moneyConsumptionHistoryModelList: [...state.moneyConsumptionHistoryModelList, lastMonthHistoryModel],
+    );
+    save(state);
   }
 
   // Save state to SharedPreference
   Future<void> save(MoneyMeterModel moneyMeterModel) async {
-    state = moneyMeterModel.copyWith(hasdata: true);
+    state = moneyMeterModel;
     await _storage.save(state);
   }
 
@@ -50,5 +74,10 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterModel> {
     final dayMonth = DateTime(now.year, now.month, 0).day;
     final remainDays = dayMonth - elapsedDay + 1;
     return remainDays != 1 ? '$remainDays Days' : '$remainDays Day';
+  }
+
+  String get createdAtYM {
+    final DateTime dateTime = DateTime.now();
+    return '${dateTime.year}-${dateTime.month}';
   }
 }

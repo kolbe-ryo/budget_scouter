@@ -11,7 +11,7 @@ import '../../enum/meter_radius_enum.dart';
 import '../page/money_meter_page.dart';
 
 class MeterWidget extends ConsumerWidget {
-  const MeterWidget({
+  MeterWidget({
     Key? key,
     required this.inOutCircle,
     required this.meterRadius,
@@ -38,7 +38,11 @@ class MeterWidget extends ConsumerWidget {
           chartRadius: meterRadius.radius(_constraints),
           chartType: ChartType.ring,
           chartValuesOptions: const ChartValuesOptions(showChartValues: false),
-          colorList: const [Colors.black],
+          colorList: const [
+            Colors.black,
+            // TODO: 初期値を上回っている時のみ、内側の円グラフのカラーを変更する
+            // Colors.greenAccent,
+          ],
           dataMap: {"usedMoney": initBalance - amountUse},
           initialAngleInDegree: 270,
           legendOptions: const LegendOptions(showLegends: false),
