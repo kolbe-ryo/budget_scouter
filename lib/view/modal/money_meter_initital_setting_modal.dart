@@ -65,7 +65,6 @@ class MoneyMeterInitialSettingModal extends ConsumerWidget {
           backgroundColor: kThemeColor,
           onPressed: () async {
             final inititalMoneyMeterModel = ref.watch(initialMoneyMeterStateProvider);
-            final viewModel = ref.read(moneyMeterProvider.notifier);
 
             // Validate for nothing to input
             if (inititalMoneyMeterModel.target.isNotEmpty && inititalMoneyMeterModel.initBalance > 0) {
