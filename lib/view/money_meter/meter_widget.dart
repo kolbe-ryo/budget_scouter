@@ -21,6 +21,7 @@ class MeterWidget extends ConsumerWidget {
         : 0.0;
     final initBalance = ref.watch(moneyMeterProvider.select((state) => state.initBalance.toDouble()));
     final isForward = ref.watch(moneyMeterProvider.select((state) => state.initBalance < state.balance));
+
     return LayoutBuilder(builder: (context, _constraints) {
       return ConstrainedBox(
         constraints: BoxConstraints(

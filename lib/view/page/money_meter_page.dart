@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
-import '../modal/use_money_input_model.dart';
 import '../../constant/style.dart';
 import '../../model/money_meter_model.dart';
 import '../common/top_caption_texts.dart';
+import '../modal/use_money_input_model.dart';
 import '../money_meter/money_meter.dart';
 import '../view_model/money_meter_page_view_model.dart';
 
@@ -16,7 +16,11 @@ import '../view_model/money_meter_page_view_model.dart';
 final moneyMeterProvider =
     StateNotifierProvider<MoneyMeterPageViewModel, MoneyMeterModel>(((ref) => MoneyMeterPageViewModel()));
 
+// fetch from local data
 final moneyData = FutureProvider<MoneyMeterModel>(((ref) => ref.read(moneyMeterProvider.notifier).fetch()));
+
+// go-back state provider
+final goBackStateProvider = StateProvider(((ref) => null));
 
 class MoneyMeterPage extends ConsumerWidget {
   const MoneyMeterPage({Key? key}) : super(key: key);

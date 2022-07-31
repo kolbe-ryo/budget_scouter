@@ -1,6 +1,4 @@
 // Flutter imports:
-import 'package:budget_scouter/model/money_consumption_history_model.dart';
-import 'package:budget_scouter/util/number_formatter.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -8,8 +6,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // Project imports:
+import '../../model/money_consumption_history_model.dart';
 import '../../model/money_meter_model.dart';
 import '../../service/shared_preference_service.dart';
+import '../../util/number_formatter.dart';
 
 class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterModel> {
   MoneyMeterPageViewModel() : super(const MoneyMeterModel());
@@ -95,9 +95,6 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterModel> {
     save(state);
     return;
   }
-
-  // Go back to previous value
-  Future<void> goBack() async {}
 
   String get remainDays {
     final now = DateTime.now();
