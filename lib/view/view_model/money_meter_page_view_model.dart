@@ -23,6 +23,29 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterModel> {
     return state;
   }
 
+  // Save state to SharedPreference
+  Future<void> save(MoneyMeterModel moneyMeterModel) async {
+    state = moneyMeterModel;
+    await _storage.save(state);
+  }
+
+  // Delete state to SharedPreference
+  Future<void> delete(BuildContext context) async {
+    await _storage.delete();
+    state = const MoneyMeterModel();
+  }
+
+  // Use money
+  Future<void> use(int money) async {
+    final remaining = state.balance - money;
+    state = state.copyWith(balance: remaining);
+    await _storage.save(state);
+  }
+
+  // Update model
+  Future<void> update(dynamic object) async {}
+
+  // Initiate model on first of month
   void _updateMonth() {
     // TODO: 現在の日時とmodel内の日時を比較し、異なる場合に処理する
     // 前月だった場合、
@@ -47,27 +70,8 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterModel> {
     }
   }
 
-  // Save state to SharedPreference
-  Future<void> save(MoneyMeterModel moneyMeterModel) async {
-    state = moneyMeterModel;
-    await _storage.save(state);
-  }
-
-  // Use money
-  Future<void> use(int money) async {
-    final remaining = state.balance - money;
-    state = state.copyWith(balance: remaining);
-    await _storage.save(state);
-  }
-
   // Go back to previous value
   Future<void> goBack() async {}
-
-  // Delete state to SharedPreference
-  Future<void> delete(BuildContext context) async {
-    await _storage.delete();
-    state = const MoneyMeterModel();
-  }
 
   String get remainDays {
     final now = DateTime.now();
