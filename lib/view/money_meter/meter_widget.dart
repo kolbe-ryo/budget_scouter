@@ -33,7 +33,7 @@ class MeterWidget extends ConsumerWidget {
           chartRadius: inOutCircle.radius(_constraints),
           chartType: ChartType.ring,
           chartValuesOptions: const ChartValuesOptions(showChartValues: false),
-          colorList: [isForward && inOutCircle == MeterInOutEnum.outer ? Colors.greenAccent : Colors.black],
+          colorList: [isForward && inOutCircle == MeterInOutEnum.outer ? Colors.orangeAccent : Colors.black],
           dataMap: {"usedMoney": initBalance - amountUse},
           initialAngleInDegree: 270,
           legendOptions: const LegendOptions(showLegends: false),
