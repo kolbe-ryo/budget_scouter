@@ -64,14 +64,15 @@ class MoneyMeterInitialSettingModal extends ConsumerWidget {
           child: const Icon(Icons.add),
           backgroundColor: kThemeColor,
           onPressed: () async {
-            final moneyMeterModel = ref.watch(initialMoneyMeterStateProvider);
+            final inititalMoneyMeterModel = ref.watch(initialMoneyMeterStateProvider);
+            final viewModel = ref.read(moneyMeterProvider.notifier);
 
             // Validate for nothing to input
-            if (moneyMeterModel.target.isNotEmpty && moneyMeterModel.initBalance > 0) {
-              ref.read(moneyMeterProvider.notifier).save(moneyMeterModel.copyWith(
+            if (inititalMoneyMeterModel.target.isNotEmpty && inititalMoneyMeterModel.initBalance > 0) {
+              ref.read(moneyMeterProvider.notifier).save(inititalMoneyMeterModel.copyWith(
                     hasdata: true,
-                    balance: moneyMeterModel.initBalance,
-                    createdAt: moneyMeterModel.createdAt,
+                    balance: inititalMoneyMeterModel.initBalance,
+                    createdAt: viewModel.createdAtYM,
                   ));
               Navigator.pop(context);
             } else {

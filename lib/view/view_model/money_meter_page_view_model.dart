@@ -17,33 +17,34 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterModel> {
 
   // Fetch list from SharedPreference
   Future<MoneyMeterModel> fetch() async {
-    // TODO: ここで日付跨ぎの処理を追記する
+    _updateMonth();
     final moneyMeterModel = await _storage.fetch();
     state = moneyMeterModel ?? state;
     return state;
   }
 
-  void updateMonth() {
+  void _updateMonth() {
     // TODO: 現在の日時とmodel内の日時を比較し、異なる場合に処理する
     // 前月だった場合、
     // 前々月などだった場合
+    if (false) {
+      // Reset or not balannce
+      final balance = state.isForwardBalance ? state.initBalance - state.balance : state.initBalance;
 
-    // Reset or not balannce
-    final balance = state.isForwardBalance ? state.initBalance - state.balance : state.initBalance;
+      // Generate history
+      final lastMonthHistoryModel = MoneyConsumptionHistoryModel(
+        createdAt: state.createdAt,
+        initBalance: state.initBalance,
+        remainedBalance: state.balance,
+      );
 
-    // Generate history
-    final lastMonthHistoryModel = MoneyConsumptionHistoryModel(
-      createdAt: state.createdAt,
-      initBalance: state.initBalance,
-      remainedBalance: state.balance,
-    );
-
-    state = state.copyWith(
-      balance: balance,
-      createdAt: createdAtYM,
-      moneyConsumptionHistoryModelList: [...state.moneyConsumptionHistoryModelList, lastMonthHistoryModel],
-    );
-    save(state);
+      state = state.copyWith(
+        balance: balance,
+        createdAt: createdAtYM,
+        moneyConsumptionHistoryModelList: [...state.moneyConsumptionHistoryModelList, lastMonthHistoryModel],
+      );
+      save(state);
+    }
   }
 
   // Save state to SharedPreference
