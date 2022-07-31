@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
-import '../../util/admob.dart';
 import '../../constant/style.dart';
 import '../../enum/bottom_navigation_bar_enum.dart';
+import '../../util/admob.dart';
 import '../common/app_bar.dart';
 
 final bottomNavigtionIndex = StateProvider<int>(((ref) => 0));
