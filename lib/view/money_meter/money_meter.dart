@@ -8,7 +8,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../constant/style.dart';
 import '../../enum/currency_data_enum.dart';
 import '../../enum/meter_in_out_enum.dart';
-import '../../enum/meter_radius_enum.dart';
 import '../../model/money_meter_model.dart';
 import '../../util/number_formatter.dart';
 import 'meter_widget.dart';
@@ -60,8 +59,8 @@ class MoneyMeter extends MoneyMeterAbstract {
   List<Widget> meterWidgets() {
     if (moneyMeterModel.hasdata) {
       return [
-        const MeterWidget(inOutCircle: MeterInOutEnum.outer, meterRadius: MeterRadiusEnum.largeInner),
-        const MeterWidget(inOutCircle: MeterInOutEnum.inner, meterRadius: MeterRadiusEnum.largeOuter),
+        const MeterWidget(inOutCircle: MeterInOutEnum.outer),
+        const MeterWidget(inOutCircle: MeterInOutEnum.inner),
       ];
     }
     return const [MoneyMeterAdditionalWidget()];

@@ -20,7 +20,7 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterModel> {
   Future<MoneyMeterModel> fetch() async {
     final moneyMeterModel = await _storage.fetch();
     state = moneyMeterModel ?? state;
-    _initDateTime();
+    _initOnFirstDate();
     return state;
   }
 
@@ -46,19 +46,23 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterModel> {
   // Update model
   Future<void> update(dynamic object) async {}
 
+  // Update model (from setting)
+  Future<void> updateSetting(dynamic object) async {}
+
   // Initiate model on first of month
-  void _initDateTime() {
-    // 同じcreatedAtの場合処理しない
+  void _initOnFirstDate() {
     final nowDateTime = DateTime.now();
     final createdAtYM = NumberFormatter.createdAtFotmat(state.year, state.month);
+
+    // 同じcreatedAtの場合処理しない
     if (nowYM == createdAtYM || state.moneyConsumptionHistoryModelList.isEmpty) {
       return;
     }
 
     List<MoneyConsumptionHistoryModel> historyList = [];
+
     // modelが前月だった場合
     if ((nowDateTime.month - 1) == state.month) {
-      // Generate history
       historyList.add(MoneyConsumptionHistoryModel(
         year: nowDateTime.year,
         month: nowDateTime.month,
@@ -80,7 +84,7 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterModel> {
     }
 
     // Reset or not balannce
-    final balance = state.isForwardBalance ? state.initBalance - state.balance : state.initBalance;
+    final balance = state.isForwardBalance ? state.initBalance + state.balance : state.initBalance;
 
     state = state.copyWith(
       balance: balance,

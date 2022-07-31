@@ -15,4 +15,21 @@ extension MeterInOutEnumExt on MeterInOutEnum {
         return Colors.deepOrange;
     }
   }
+
+  double radius(BoxConstraints constraints) {
+    switch (this) {
+      case MeterInOutEnum.inner:
+        return constraints.maxWidth;
+      case MeterInOutEnum.outer:
+        return constraints.maxWidth - 45;
+    }
+  }
+
+  double constraints(BoxConstraints constraints) {
+    switch (this) {
+      case MeterInOutEnum.inner:
+      case MeterInOutEnum.outer:
+        return constraints.maxWidth;
+    }
+  }
 }
