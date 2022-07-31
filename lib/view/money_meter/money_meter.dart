@@ -60,8 +60,8 @@ class MoneyMeter extends MoneyMeterAbstract {
   List<Widget> meterWidgets() {
     if (moneyMeterModel.hasdata) {
       return [
-        MeterWidget(inOutCircle: MeterInOutEnum.outer, meterRadius: MeterRadiusEnum.largeInner),
-        MeterWidget(inOutCircle: MeterInOutEnum.inner, meterRadius: MeterRadiusEnum.largeOuter),
+        const MeterWidget(inOutCircle: MeterInOutEnum.outer, meterRadius: MeterRadiusEnum.largeInner),
+        const MeterWidget(inOutCircle: MeterInOutEnum.inner, meterRadius: MeterRadiusEnum.largeOuter),
       ];
     }
     return const [MoneyMeterAdditionalWidget()];

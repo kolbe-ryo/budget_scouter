@@ -11,7 +11,7 @@ import '../../enum/meter_radius_enum.dart';
 import '../page/money_meter_page.dart';
 
 class MeterWidget extends ConsumerWidget {
-  MeterWidget({
+  const MeterWidget({
     Key? key,
     required this.inOutCircle,
     required this.meterRadius,
