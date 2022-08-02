@@ -1,5 +1,4 @@
 // Flutter imports:
-import 'package:budget_scouter/view/state/go_back_state.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -11,6 +10,7 @@ import '../../model/money_consumption_history_model.dart';
 import '../../model/money_meter_model.dart';
 import '../../service/shared_preference_service.dart';
 import '../../util/number_formatter.dart';
+import '../state/go_back_state.dart';
 import '../state/money_meter_page_state.dart';
 
 class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterPageState> {

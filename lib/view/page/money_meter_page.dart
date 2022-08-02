@@ -1,5 +1,4 @@
 // Flutter imports:
-import 'package:budget_scouter/view/common/go_back_icon_button.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -9,6 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // Project imports:
 import '../../constant/style.dart';
 import '../../model/money_meter_model.dart';
+import '../common/go_back_icon_button.dart';
 import '../common/top_caption_texts.dart';
 import '../modal/use_money_input_model.dart';
 import '../money_meter/money_meter.dart';
