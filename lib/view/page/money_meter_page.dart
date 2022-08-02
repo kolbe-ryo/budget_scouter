@@ -1,8 +1,10 @@
 // Flutter imports:
+import 'package:budget_scouter/view/common/go_back_icon_button.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // Project imports:
 import '../../constant/style.dart';
@@ -19,9 +21,6 @@ final moneyMeterProvider =
 
 // fetch from local data
 final moneyData = FutureProvider<MoneyMeterModel>(((ref) => ref.read(moneyMeterProvider.notifier).fetch()));
-
-// go-back state provider
-final goBackStateProvider = StateProvider(((ref) => null));
 
 class MoneyMeterPage extends ConsumerWidget {
   const MoneyMeterPage({Key? key}) : super(key: key);
@@ -53,12 +52,19 @@ class MoneyMeterPage extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(kSpacing, 0, 0, kSpacing * 2),
-          child: TopCaptionTexts(
-            title: 'Target',
-            content:
-                hasData ? ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.target)) : 'No Data',
-            isNodata: !hasData,
+          padding: const EdgeInsets.fromLTRB(kSpacing, 0, kSpacing, kSpacing),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              TopCaptionTexts(
+                title: 'Target',
+                content:
+                    hasData ? ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.target)) : 'No Data',
+                isNodata: !hasData,
+              ),
+              const GoBackIconButton()
+            ],
           ),
         ),
         GestureDetector(
@@ -73,7 +79,7 @@ class MoneyMeterPage extends ConsumerWidget {
           },
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: kSpacing * 2, horizontal: kSpacing),
+          padding: const EdgeInsets.fromLTRB(kSpacing, kSpacing * 2, kSpacing, 0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
