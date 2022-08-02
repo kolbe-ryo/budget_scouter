@@ -29,9 +29,16 @@ class Keyboard extends ConsumerWidget {
                 key.value,
                 style: kTextStyleCaption(size: 30),
               ),
-              onPressed: () {
+              onPressed: () async {
                 final isBack = _setValue(key, ref);
                 if (isBack) {
+                  // Loading
+                  showProgressDialog(context);
+                  await Future.delayed(const Duration(seconds: 1));
+                  Navigator.of(context).pop();
+
+                  // Back to top page
+                  ref.read(useMoneyState.state).update((state) => 0);
                   Navigator.of(context).pop();
                 }
               },
@@ -55,11 +62,24 @@ class Keyboard extends ConsumerWidget {
       case KeyboardValue.ok:
         final money = ref.watch(useMoneyState);
         ref.read(moneyMeterProvider.notifier).use(money);
-        ref.read(useMoneyState.state).update((state) => 0);
         return true;
       default:
         ref.read(useMoneyState.state).update((state) => int.parse(state.toString() + key.value));
         return false;
     }
+  }
+
+  void showProgressDialog(BuildContext context) {
+    showGeneralDialog(
+      context: context,
+      barrierDismissible: false,
+      transitionDuration: const Duration(milliseconds: 300),
+      barrierColor: Colors.black.withOpacity(0.5),
+      pageBuilder: (BuildContext context, Animation animation, Animation secondaryAnimation) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
   }
 }
