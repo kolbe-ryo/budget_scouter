@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/view/state/go_back_state.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -49,6 +50,48 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterPageState> {
 
   // Update model (from setting)
   Future<void> updateSetting(dynamic object) async {}
+
+  // Update GoBack state
+  Future<void> updateGoBack(bool? isBack) async {
+    final memorizedMoney = state.goBackState.memorizedValue;
+
+    if (isBack == null) {
+      state = state.copyWith(
+        goBackState: GoBackState(
+          canBack: true,
+          canGo: false,
+          memorizedValue: state.moneyMeterModel.balance,
+        ),
+      );
+      return;
+    }
+
+    // バックボタン押下
+    if (isBack) {
+      state = state.copyWith(
+        goBackState: GoBackState(
+          canBack: false,
+          canGo: true,
+          memorizedValue: state.moneyMeterModel.balance,
+        ),
+      );
+    }
+
+    // ゴーボタン押下
+    if (!isBack) {
+      state = state.copyWith(
+        goBackState: GoBackState(
+          canBack: true,
+          canGo: false,
+          memorizedValue: state.moneyMeterModel.balance,
+        ),
+      );
+    }
+    state = state.copyWith(
+      moneyMeterModel: state.moneyMeterModel.copyWith(balance: memorizedMoney),
+    );
+    save(state.moneyMeterModel);
+  }
 
   // Initiate model on first of month
   void _initOnFirstDate() {

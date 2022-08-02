@@ -18,8 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$GoBackState {
   bool get canBack => throw _privateConstructorUsedError;
   bool get canGo => throw _privateConstructorUsedError;
-  int get previousValue => throw _privateConstructorUsedError;
-  int get forwardValue => throw _privateConstructorUsedError;
+  int get memorizedValue => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GoBackStateCopyWith<GoBackState> get copyWith =>
@@ -31,7 +30,7 @@ abstract class $GoBackStateCopyWith<$Res> {
   factory $GoBackStateCopyWith(
           GoBackState value, $Res Function(GoBackState) then) =
       _$GoBackStateCopyWithImpl<$Res>;
-  $Res call({bool canBack, bool canGo, int previousValue, int forwardValue});
+  $Res call({bool canBack, bool canGo, int memorizedValue});
 }
 
 /// @nodoc
@@ -46,8 +45,7 @@ class _$GoBackStateCopyWithImpl<$Res> implements $GoBackStateCopyWith<$Res> {
   $Res call({
     Object? canBack = freezed,
     Object? canGo = freezed,
-    Object? previousValue = freezed,
-    Object? forwardValue = freezed,
+    Object? memorizedValue = freezed,
   }) {
     return _then(_value.copyWith(
       canBack: canBack == freezed
@@ -58,13 +56,9 @@ class _$GoBackStateCopyWithImpl<$Res> implements $GoBackStateCopyWith<$Res> {
           ? _value.canGo
           : canGo // ignore: cast_nullable_to_non_nullable
               as bool,
-      previousValue: previousValue == freezed
-          ? _value.previousValue
-          : previousValue // ignore: cast_nullable_to_non_nullable
-              as int,
-      forwardValue: forwardValue == freezed
-          ? _value.forwardValue
-          : forwardValue // ignore: cast_nullable_to_non_nullable
+      memorizedValue: memorizedValue == freezed
+          ? _value.memorizedValue
+          : memorizedValue // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -77,7 +71,7 @@ abstract class _$$_GoBackStateCopyWith<$Res>
           _$_GoBackState value, $Res Function(_$_GoBackState) then) =
       __$$_GoBackStateCopyWithImpl<$Res>;
   @override
-  $Res call({bool canBack, bool canGo, int previousValue, int forwardValue});
+  $Res call({bool canBack, bool canGo, int memorizedValue});
 }
 
 /// @nodoc
@@ -94,8 +88,7 @@ class __$$_GoBackStateCopyWithImpl<$Res> extends _$GoBackStateCopyWithImpl<$Res>
   $Res call({
     Object? canBack = freezed,
     Object? canGo = freezed,
-    Object? previousValue = freezed,
-    Object? forwardValue = freezed,
+    Object? memorizedValue = freezed,
   }) {
     return _then(_$_GoBackState(
       canBack: canBack == freezed
@@ -106,13 +99,9 @@ class __$$_GoBackStateCopyWithImpl<$Res> extends _$GoBackStateCopyWithImpl<$Res>
           ? _value.canGo
           : canGo // ignore: cast_nullable_to_non_nullable
               as bool,
-      previousValue: previousValue == freezed
-          ? _value.previousValue
-          : previousValue // ignore: cast_nullable_to_non_nullable
-              as int,
-      forwardValue: forwardValue == freezed
-          ? _value.forwardValue
-          : forwardValue // ignore: cast_nullable_to_non_nullable
+      memorizedValue: memorizedValue == freezed
+          ? _value.memorizedValue
+          : memorizedValue // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -122,10 +111,7 @@ class __$$_GoBackStateCopyWithImpl<$Res> extends _$GoBackStateCopyWithImpl<$Res>
 
 class _$_GoBackState implements _GoBackState {
   const _$_GoBackState(
-      {this.canBack = false,
-      this.canGo = false,
-      this.previousValue = 0,
-      this.forwardValue = 0});
+      {this.canBack = false, this.canGo = false, this.memorizedValue = 0});
 
   @override
   @JsonKey()
@@ -135,14 +121,11 @@ class _$_GoBackState implements _GoBackState {
   final bool canGo;
   @override
   @JsonKey()
-  final int previousValue;
-  @override
-  @JsonKey()
-  final int forwardValue;
+  final int memorizedValue;
 
   @override
   String toString() {
-    return 'GoBackState(canBack: $canBack, canGo: $canGo, previousValue: $previousValue, forwardValue: $forwardValue)';
+    return 'GoBackState(canBack: $canBack, canGo: $canGo, memorizedValue: $memorizedValue)';
   }
 
   @override
@@ -153,9 +136,7 @@ class _$_GoBackState implements _GoBackState {
             const DeepCollectionEquality().equals(other.canBack, canBack) &&
             const DeepCollectionEquality().equals(other.canGo, canGo) &&
             const DeepCollectionEquality()
-                .equals(other.previousValue, previousValue) &&
-            const DeepCollectionEquality()
-                .equals(other.forwardValue, forwardValue));
+                .equals(other.memorizedValue, memorizedValue));
   }
 
   @override
@@ -163,8 +144,7 @@ class _$_GoBackState implements _GoBackState {
       runtimeType,
       const DeepCollectionEquality().hash(canBack),
       const DeepCollectionEquality().hash(canGo),
-      const DeepCollectionEquality().hash(previousValue),
-      const DeepCollectionEquality().hash(forwardValue));
+      const DeepCollectionEquality().hash(memorizedValue));
 
   @JsonKey(ignore: true)
   @override
@@ -176,17 +156,14 @@ abstract class _GoBackState implements GoBackState {
   const factory _GoBackState(
       {final bool canBack,
       final bool canGo,
-      final int previousValue,
-      final int forwardValue}) = _$_GoBackState;
+      final int memorizedValue}) = _$_GoBackState;
 
   @override
   bool get canBack;
   @override
   bool get canGo;
   @override
-  int get previousValue;
-  @override
-  int get forwardValue;
+  int get memorizedValue;
   @override
   @JsonKey(ignore: true)
   _$$_GoBackStateCopyWith<_$_GoBackState> get copyWith =>

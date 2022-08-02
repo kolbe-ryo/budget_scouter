@@ -8,7 +8,6 @@ class GoBackState with _$GoBackState {
   const factory GoBackState({
     @Default(false) bool canBack,
     @Default(false) bool canGo,
-    @Default(0) int previousValue,
-    @Default(0) int forwardValue,
+    @Default(0) int memorizedValue,
   }) = _GoBackState;
 }
