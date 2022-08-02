@@ -17,10 +17,11 @@ class MeterWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final amountUse = inOutCircle == MeterInOutEnum.outer
-        ? ref.watch(moneyMeterProvider.select((state) => state.balance.toDouble()))
+        ? ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.balance.toDouble()))
         : 0.0;
-    final initBalance = ref.watch(moneyMeterProvider.select((state) => state.initBalance.toDouble()));
-    final isForward = ref.watch(moneyMeterProvider.select((state) => state.initBalance < state.balance));
+    final initBalance = ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.initBalance.toDouble()));
+    final isForward = ref
+        .watch(moneyMeterProvider.select((state) => state.moneyMeterModel.initBalance < state.moneyMeterModel.balance));
 
     return LayoutBuilder(builder: (context, _constraints) {
       return ConstrainedBox(

@@ -40,7 +40,7 @@ class UsemoneyInpuModal extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   FaIcon(
-                    ref.watch(moneyMeterProvider.select((state) => state.currency)).icon,
+                    ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.currency)).icon,
                     color: kDarkTextColor,
                     size: 35,
                   ),

@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/view/state/money_meter_page_state.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -14,7 +15,7 @@ import '../view_model/money_meter_page_view_model.dart';
 
 // provider for money meter initial setting
 final moneyMeterProvider =
-    StateNotifierProvider<MoneyMeterPageViewModel, MoneyMeterModel>(((ref) => MoneyMeterPageViewModel()));
+    StateNotifierProvider<MoneyMeterPageViewModel, MoneyMeterPageState>(((ref) => MoneyMeterPageViewModel()));
 
 // fetch from local data
 final moneyData = FutureProvider<MoneyMeterModel>(((ref) => ref.read(moneyMeterProvider.notifier).fetch()));
@@ -27,7 +28,7 @@ class MoneyMeterPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final hasData = ref.watch(moneyMeterProvider.select((state) => state.hasdata));
+    final hasData = ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.hasdata));
     AsyncValue<MoneyMeterModel> moneyMeterModel = ref.watch(moneyData);
     return Scaffold(
       body: moneyMeterModel.when(
@@ -55,12 +56,13 @@ class MoneyMeterPage extends ConsumerWidget {
           padding: const EdgeInsets.fromLTRB(kSpacing, 0, 0, kSpacing * 2),
           child: TopCaptionTexts(
             title: 'Target',
-            content: hasData ? ref.watch(moneyMeterProvider.select((state) => state.target)) : 'No Data',
+            content:
+                hasData ? ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.target)) : 'No Data',
             isNodata: !hasData,
           ),
         ),
         GestureDetector(
-          child: MoneyMeter(ref.watch(moneyMeterProvider)),
+          child: MoneyMeter(ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel))),
           onTap: () {
             Navigator.of(context).push(
               MaterialPageRoute(
@@ -82,8 +84,9 @@ class MoneyMeterPage extends ConsumerWidget {
               ),
               TopCaptionTexts(
                 title: 'Use Rate',
-                content:
-                    hasData ? '${ref.watch(moneyMeterProvider.select((state) => state.balanceRatio))}%' : 'No Data',
+                content: hasData
+                    ? '${ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.balanceRatio))}%'
+                    : 'No Data',
                 isNodata: !hasData,
               ),
             ],

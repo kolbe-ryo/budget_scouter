@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/view/state/money_meter_page_state.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -11,36 +12,36 @@ import '../../model/money_meter_model.dart';
 import '../../service/shared_preference_service.dart';
 import '../../util/number_formatter.dart';
 
-class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterModel> {
-  MoneyMeterPageViewModel() : super(const MoneyMeterModel());
+class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterPageState> {
+  MoneyMeterPageViewModel() : super(MoneyMeterPageState());
 
   final SharedPreferenceService _storage = SharedPreferenceService(SharedPreferences.getInstance());
 
   // Fetch list from SharedPreference
   Future<MoneyMeterModel> fetch() async {
     final moneyMeterModel = await _storage.fetch();
-    state = moneyMeterModel ?? state;
+    state = state.copyWith(moneyMeterModel: moneyMeterModel ?? state.moneyMeterModel);
     _initOnFirstDate();
-    return state;
+    return state.moneyMeterModel;
   }
 
   // Save state to SharedPreference
   Future<void> save(MoneyMeterModel moneyMeterModel) async {
-    state = moneyMeterModel;
-    await _storage.save(state);
+    state = state.copyWith(moneyMeterModel: moneyMeterModel);
+    await _storage.save(state.moneyMeterModel);
   }
 
   // Delete state to SharedPreference
   Future<void> delete(BuildContext context) async {
     await _storage.delete();
-    state = const MoneyMeterModel();
+    state = MoneyMeterPageState();
   }
 
   // Use money
   Future<void> use(int money) async {
-    final remaining = state.balance - money;
-    state = state.copyWith(balance: remaining);
-    await _storage.save(state);
+    final remaining = state.moneyMeterModel.balance - money;
+    state = state.copyWith(moneyMeterModel: state.moneyMeterModel.copyWith(balance: remaining));
+    await _storage.save(state.moneyMeterModel);
   }
 
   // Update model
@@ -52,23 +53,29 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterModel> {
   // Initiate model on first of month
   void _initOnFirstDate() {
     final nowDateTime = DateTime.now();
-    final createdAtYM = NumberFormatter.createdAtFotmat(state.year, state.month);
+    final createdAtYM = NumberFormatter.createdAtFotmat(state.moneyMeterModel.year, state.moneyMeterModel.month);
 
     // 同じcreatedAtの場合処理しない
-    if (nowYM == createdAtYM || state.moneyConsumptionHistoryModelList.isEmpty) {
+    if (nowYM == createdAtYM) {
       return;
     }
 
     List<MoneyConsumptionHistoryModel> historyList = [];
 
     // modelが前月だった場合
-    if ((nowDateTime.month - 1) == state.month) {
-      historyList.add(MoneyConsumptionHistoryModel(
-        year: nowDateTime.year,
-        month: nowDateTime.month,
-      ));
-    } else {
-      final preMonth = state.moneyConsumptionHistoryModelList.last.month;
+    if ((nowDateTime.month - 1) == state.moneyMeterModel.month) {
+      historyList.add(
+        MoneyConsumptionHistoryModel(
+          year: nowDateTime.year,
+          month: nowDateTime.month,
+          initBalance: state.moneyMeterModel.initBalance,
+          remainedBalance: state.moneyMeterModel.balance,
+        ),
+      );
+    }
+    // 一ヶ月以上使用していなかった場合は以下の処理
+    else {
+      final preMonth = state.moneyMeterModel.moneyConsumptionHistoryModelList.last.month;
       // 現時点の前月から一月ずつ、前回最後に利用した月まで戻って空のhistoryを代入する
       for (int decreaseMonth = nowDateTime.month - 1; decreaseMonth != preMonth; decreaseMonth--) {
         // 戻った年月のDateTime
@@ -84,15 +91,19 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterModel> {
     }
 
     // Reset or not balannce
-    final balance = state.isForwardBalance ? state.initBalance + state.balance : state.initBalance;
+    final balance = state.moneyMeterModel.isForwardBalance
+        ? state.moneyMeterModel.initBalance + state.moneyMeterModel.balance
+        : state.moneyMeterModel.initBalance;
 
     state = state.copyWith(
-      balance: balance,
-      year: nowDateTime.year,
-      month: nowDateTime.month,
-      moneyConsumptionHistoryModelList: [...state.moneyConsumptionHistoryModelList, ...historyList],
+      moneyMeterModel: state.moneyMeterModel.copyWith(
+        balance: balance,
+        year: nowDateTime.year,
+        month: nowDateTime.month,
+        moneyConsumptionHistoryModelList: [...state.moneyMeterModel.moneyConsumptionHistoryModelList, ...historyList],
+      ),
     );
-    save(state);
+    save(state.moneyMeterModel);
     return;
   }
 
