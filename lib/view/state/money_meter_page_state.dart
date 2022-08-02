@@ -1,6 +1,9 @@
-import 'package:budget_scouter/model/money_meter_model.dart';
-import 'package:budget_scouter/view/state/go_back_state.dart';
+// Package imports:
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+// Project imports:
+import '../../model/money_meter_model.dart';
+import 'go_back_state.dart';
 
 part 'money_meter_page_state.freezed.dart';
 

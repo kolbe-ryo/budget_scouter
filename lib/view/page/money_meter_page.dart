@@ -1,5 +1,4 @@
 // Flutter imports:
-import 'package:budget_scouter/view/state/money_meter_page_state.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -11,6 +10,7 @@ import '../../model/money_meter_model.dart';
 import '../common/top_caption_texts.dart';
 import '../modal/use_money_input_model.dart';
 import '../money_meter/money_meter.dart';
+import '../state/money_meter_page_state.dart';
 import '../view_model/money_meter_page_view_model.dart';
 
 // provider for money meter initial setting
