@@ -18,20 +18,22 @@ class GoBackIconButton extends ConsumerWidget {
     final isGoBack = goBackState.canBack || goBackState.canGo;
     return IconButton(
       icon: FaIcon(
-        FontAwesomeIcons.arrowRotateLeft,
+        goBackState.canBack ? FontAwesomeIcons.arrowRotateLeft : FontAwesomeIcons.arrowRotateRight,
         size: 30,
         color: isGoBack ? kThemeColor : null,
       ),
-      onPressed: () {
-        if (goBackState.canBack) {
-          ref.read(moneyMeterProvider.notifier).updateGoBack(true);
-          return;
-        }
-        if (goBackState.canGo) {
-          ref.read(moneyMeterProvider.notifier).updateGoBack(true);
-          return;
-        }
-      },
+      onPressed: isGoBack
+          ? () {
+              if (goBackState.canBack) {
+                ref.read(moneyMeterProvider.notifier).updateGoBack(true);
+                return;
+              }
+              if (goBackState.canGo) {
+                ref.read(moneyMeterProvider.notifier).updateGoBack(false);
+                return;
+              }
+            }
+          : null,
     );
   }
 }

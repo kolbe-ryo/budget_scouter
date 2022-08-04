@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/view/chart/bar_chart.dart';
 import 'package:flutter/material.dart';
 
 class AnalysisPage extends StatelessWidget {
@@ -6,6 +7,6 @@ class AnalysisPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const Center(child: BarChartSample3());
   }
 }
