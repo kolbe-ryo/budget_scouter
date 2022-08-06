@@ -31,18 +31,19 @@ class MoneyMeterPage extends ConsumerWidget {
     AsyncValue<MoneyMeterModel> moneyMeterModel = ref.watch(moneyData);
     return Scaffold(
       body: moneyMeterModel.when(
-          loading: () => const SizedBox.shrink(),
-          error: (err, stack) => Text('$err'),
-          data: (data) {
-            if (hasData) {
-              return SingleChildScrollView(
-                physics: const NeverScrollableScrollPhysics(),
-                child: _body(context, ref, hasData),
-              );
-            } else {
-              return _body(context, ref, hasData);
-            }
-          }),
+        loading: () => const SizedBox.shrink(),
+        error: (err, stack) => Text('$err'),
+        data: (data) {
+          if (hasData) {
+            return SingleChildScrollView(
+              physics: const NeverScrollableScrollPhysics(),
+              child: _body(context, ref, hasData),
+            );
+          } else {
+            return _body(context, ref, hasData);
+          }
+        },
+      ),
     );
   }
 
