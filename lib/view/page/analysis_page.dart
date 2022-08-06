@@ -1,5 +1,4 @@
 // Flutter imports:
-import 'package:budget_scouter/model/money_consumption_history_model.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -15,15 +14,13 @@ import 'money_meter_page.dart';
 // page index state
 final pageIndexProvider = StateProvider<int>(
   ((ref) =>
-      ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.moneyConsumptionHistoryModelList.length)) > 0
-          ? ref
-                  .watch(moneyMeterProvider.select((state) => state.moneyMeterModel.moneyConsumptionHistoryModelList))
-                  .map((state) => state.year)
-                  .toSet()
-                  .toList()
-                  .length -
-              1
-          : 0),
+      ref
+          .watch(moneyMeterProvider.select((state) => state.moneyMeterModel.moneyConsumptionHistoryModelList))
+          .map((state) => state.year)
+          .toSet()
+          .toList()
+          .length -
+      1),
 );
 
 class AnalysisPage extends ConsumerWidget {

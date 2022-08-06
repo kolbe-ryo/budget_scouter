@@ -1,11 +1,11 @@
 // Flutter imports:
-import 'package:budget_scouter/model/money_consumption_history_model.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
+import '../../model/money_consumption_history_model.dart';
 import 'money_meter_page.dart';
 
 class SettingPage extends ConsumerWidget {

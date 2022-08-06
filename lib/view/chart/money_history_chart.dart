@@ -1,12 +1,14 @@
 // Flutter imports:
-import 'package:budget_scouter/constant/style.dart';
-import 'package:budget_scouter/model/money_consumption_history_model.dart';
-import 'package:budget_scouter/view/page/money_meter_page.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+// Project imports:
+import '../../constant/style.dart';
+import '../../model/money_consumption_history_model.dart';
+import '../page/money_meter_page.dart';
 
 class MoneyHistoryChart extends ConsumerWidget {
   const MoneyHistoryChart(this.year, {Key? key}) : super(key: key);
