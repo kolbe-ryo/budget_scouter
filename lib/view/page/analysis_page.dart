@@ -48,7 +48,7 @@ class AnalysisPage extends ConsumerWidget {
                       content: ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.target)),
                       isNodata: false,
                     ),
-                    TopCaptionTexts(
+                    const TopCaptionTexts(
                       title: 'Year',
                       content: '2022',
                       isNodata: false,
