@@ -46,12 +46,6 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterPageState> {
     await _storage.save(state.moneyMeterModel);
   }
 
-  // Update model
-  Future<void> update(dynamic object) async {}
-
-  // Update model (from setting)
-  Future<void> updateSetting(dynamic object) async {}
-
   // Update GoBack state
   Future<void> updateGoBack(bool? isBack) async {
     final memorizedMoney = state.goBackState.memorizedValue;
@@ -160,6 +154,8 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterPageState> {
     save(state.moneyMeterModel);
     return;
   }
+
+  SharedPreferenceInterface get storage => _storage;
 
   String get remainDays {
     final now = DateTime.now();

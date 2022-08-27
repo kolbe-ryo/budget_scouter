@@ -11,8 +11,9 @@ class AnalysisPageState with _$AnalysisPageState {
   const AnalysisPageState._();
 
   const factory AnalysisPageState({
+    @Default(false) bool hasData,
     @Default('') String target,
     @Default(0) int year,
-    @Default(MoneyConsumptionHistoryModel()) MoneyConsumptionHistoryModel currentExpentiture,
+    @Default([MoneyConsumptionHistoryModel()]) List<MoneyConsumptionHistoryModel> currentExpentiture,
   }) = _AnalysisPageState;
 }

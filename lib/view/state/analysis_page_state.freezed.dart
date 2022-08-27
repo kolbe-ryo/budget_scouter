@@ -16,9 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AnalysisPageState {
+  bool get hasData => throw _privateConstructorUsedError;
   String get target => throw _privateConstructorUsedError;
   int get year => throw _privateConstructorUsedError;
-  MoneyConsumptionHistoryModel get currentExpentiture =>
+  List<MoneyConsumptionHistoryModel> get currentExpentiture =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -32,11 +33,10 @@ abstract class $AnalysisPageStateCopyWith<$Res> {
           AnalysisPageState value, $Res Function(AnalysisPageState) then) =
       _$AnalysisPageStateCopyWithImpl<$Res>;
   $Res call(
-      {String target,
+      {bool hasData,
+      String target,
       int year,
-      MoneyConsumptionHistoryModel currentExpentiture});
-
-  $MoneyConsumptionHistoryModelCopyWith<$Res> get currentExpentiture;
+      List<MoneyConsumptionHistoryModel> currentExpentiture});
 }
 
 /// @nodoc
@@ -50,11 +50,16 @@ class _$AnalysisPageStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? hasData = freezed,
     Object? target = freezed,
     Object? year = freezed,
     Object? currentExpentiture = freezed,
   }) {
     return _then(_value.copyWith(
+      hasData: hasData == freezed
+          ? _value.hasData
+          : hasData // ignore: cast_nullable_to_non_nullable
+              as bool,
       target: target == freezed
           ? _value.target
           : target // ignore: cast_nullable_to_non_nullable
@@ -66,16 +71,8 @@ class _$AnalysisPageStateCopyWithImpl<$Res>
       currentExpentiture: currentExpentiture == freezed
           ? _value.currentExpentiture
           : currentExpentiture // ignore: cast_nullable_to_non_nullable
-              as MoneyConsumptionHistoryModel,
+              as List<MoneyConsumptionHistoryModel>,
     ));
-  }
-
-  @override
-  $MoneyConsumptionHistoryModelCopyWith<$Res> get currentExpentiture {
-    return $MoneyConsumptionHistoryModelCopyWith<$Res>(
-        _value.currentExpentiture, (value) {
-      return _then(_value.copyWith(currentExpentiture: value));
-    });
   }
 }
 
@@ -87,12 +84,10 @@ abstract class _$$_AnalysisPageStateCopyWith<$Res>
       __$$_AnalysisPageStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String target,
+      {bool hasData,
+      String target,
       int year,
-      MoneyConsumptionHistoryModel currentExpentiture});
-
-  @override
-  $MoneyConsumptionHistoryModelCopyWith<$Res> get currentExpentiture;
+      List<MoneyConsumptionHistoryModel> currentExpentiture});
 }
 
 /// @nodoc
@@ -108,11 +103,16 @@ class __$$_AnalysisPageStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? hasData = freezed,
     Object? target = freezed,
     Object? year = freezed,
     Object? currentExpentiture = freezed,
   }) {
     return _then(_$_AnalysisPageState(
+      hasData: hasData == freezed
+          ? _value.hasData
+          : hasData // ignore: cast_nullable_to_non_nullable
+              as bool,
       target: target == freezed
           ? _value.target
           : target // ignore: cast_nullable_to_non_nullable
@@ -122,9 +122,9 @@ class __$$_AnalysisPageStateCopyWithImpl<$Res>
           : year // ignore: cast_nullable_to_non_nullable
               as int,
       currentExpentiture: currentExpentiture == freezed
-          ? _value.currentExpentiture
+          ? _value._currentExpentiture
           : currentExpentiture // ignore: cast_nullable_to_non_nullable
-              as MoneyConsumptionHistoryModel,
+              as List<MoneyConsumptionHistoryModel>,
     ));
   }
 }
@@ -133,24 +133,35 @@ class __$$_AnalysisPageStateCopyWithImpl<$Res>
 
 class _$_AnalysisPageState extends _AnalysisPageState {
   const _$_AnalysisPageState(
-      {this.target = '',
+      {this.hasData = false,
+      this.target = '',
       this.year = 0,
-      this.currentExpentiture = const MoneyConsumptionHistoryModel()})
-      : super._();
+      final List<MoneyConsumptionHistoryModel> currentExpentiture = const [
+        MoneyConsumptionHistoryModel()
+      ]})
+      : _currentExpentiture = currentExpentiture,
+        super._();
 
+  @override
+  @JsonKey()
+  final bool hasData;
   @override
   @JsonKey()
   final String target;
   @override
   @JsonKey()
   final int year;
+  final List<MoneyConsumptionHistoryModel> _currentExpentiture;
   @override
   @JsonKey()
-  final MoneyConsumptionHistoryModel currentExpentiture;
+  List<MoneyConsumptionHistoryModel> get currentExpentiture {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_currentExpentiture);
+  }
 
   @override
   String toString() {
-    return 'AnalysisPageState(target: $target, year: $year, currentExpentiture: $currentExpentiture)';
+    return 'AnalysisPageState(hasData: $hasData, target: $target, year: $year, currentExpentiture: $currentExpentiture)';
   }
 
   @override
@@ -158,18 +169,20 @@ class _$_AnalysisPageState extends _AnalysisPageState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AnalysisPageState &&
+            const DeepCollectionEquality().equals(other.hasData, hasData) &&
             const DeepCollectionEquality().equals(other.target, target) &&
             const DeepCollectionEquality().equals(other.year, year) &&
             const DeepCollectionEquality()
-                .equals(other.currentExpentiture, currentExpentiture));
+                .equals(other._currentExpentiture, _currentExpentiture));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(hasData),
       const DeepCollectionEquality().hash(target),
       const DeepCollectionEquality().hash(year),
-      const DeepCollectionEquality().hash(currentExpentiture));
+      const DeepCollectionEquality().hash(_currentExpentiture));
 
   @JsonKey(ignore: true)
   @override
@@ -180,18 +193,21 @@ class _$_AnalysisPageState extends _AnalysisPageState {
 
 abstract class _AnalysisPageState extends AnalysisPageState {
   const factory _AnalysisPageState(
-          {final String target,
+          {final bool hasData,
+          final String target,
           final int year,
-          final MoneyConsumptionHistoryModel currentExpentiture}) =
+          final List<MoneyConsumptionHistoryModel> currentExpentiture}) =
       _$_AnalysisPageState;
   const _AnalysisPageState._() : super._();
 
+  @override
+  bool get hasData;
   @override
   String get target;
   @override
   int get year;
   @override
-  MoneyConsumptionHistoryModel get currentExpentiture;
+  List<MoneyConsumptionHistoryModel> get currentExpentiture;
   @override
   @JsonKey(ignore: true)
   _$$_AnalysisPageStateCopyWith<_$_AnalysisPageState> get copyWith =>
