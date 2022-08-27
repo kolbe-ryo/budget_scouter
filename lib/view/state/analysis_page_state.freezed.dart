@@ -16,6 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AnalysisPageState {
+  String get target => throw _privateConstructorUsedError;
+  int get year => throw _privateConstructorUsedError;
   MoneyConsumptionHistoryModel get currentExpentiture =>
       throw _privateConstructorUsedError;
 
@@ -29,7 +31,10 @@ abstract class $AnalysisPageStateCopyWith<$Res> {
   factory $AnalysisPageStateCopyWith(
           AnalysisPageState value, $Res Function(AnalysisPageState) then) =
       _$AnalysisPageStateCopyWithImpl<$Res>;
-  $Res call({MoneyConsumptionHistoryModel currentExpentiture});
+  $Res call(
+      {String target,
+      int year,
+      MoneyConsumptionHistoryModel currentExpentiture});
 
   $MoneyConsumptionHistoryModelCopyWith<$Res> get currentExpentiture;
 }
@@ -45,9 +50,19 @@ class _$AnalysisPageStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? target = freezed,
+    Object? year = freezed,
     Object? currentExpentiture = freezed,
   }) {
     return _then(_value.copyWith(
+      target: target == freezed
+          ? _value.target
+          : target // ignore: cast_nullable_to_non_nullable
+              as String,
+      year: year == freezed
+          ? _value.year
+          : year // ignore: cast_nullable_to_non_nullable
+              as int,
       currentExpentiture: currentExpentiture == freezed
           ? _value.currentExpentiture
           : currentExpentiture // ignore: cast_nullable_to_non_nullable
@@ -71,7 +86,10 @@ abstract class _$$_AnalysisPageStateCopyWith<$Res>
           $Res Function(_$_AnalysisPageState) then) =
       __$$_AnalysisPageStateCopyWithImpl<$Res>;
   @override
-  $Res call({MoneyConsumptionHistoryModel currentExpentiture});
+  $Res call(
+      {String target,
+      int year,
+      MoneyConsumptionHistoryModel currentExpentiture});
 
   @override
   $MoneyConsumptionHistoryModelCopyWith<$Res> get currentExpentiture;
@@ -90,9 +108,19 @@ class __$$_AnalysisPageStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? target = freezed,
+    Object? year = freezed,
     Object? currentExpentiture = freezed,
   }) {
     return _then(_$_AnalysisPageState(
+      target: target == freezed
+          ? _value.target
+          : target // ignore: cast_nullable_to_non_nullable
+              as String,
+      year: year == freezed
+          ? _value.year
+          : year // ignore: cast_nullable_to_non_nullable
+              as int,
       currentExpentiture: currentExpentiture == freezed
           ? _value.currentExpentiture
           : currentExpentiture // ignore: cast_nullable_to_non_nullable
@@ -103,17 +131,26 @@ class __$$_AnalysisPageStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AnalysisPageState implements _AnalysisPageState {
-  _$_AnalysisPageState(
-      {this.currentExpentiture = const MoneyConsumptionHistoryModel()});
+class _$_AnalysisPageState extends _AnalysisPageState {
+  const _$_AnalysisPageState(
+      {this.target = '',
+      this.year = 0,
+      this.currentExpentiture = const MoneyConsumptionHistoryModel()})
+      : super._();
 
+  @override
+  @JsonKey()
+  final String target;
+  @override
+  @JsonKey()
+  final int year;
   @override
   @JsonKey()
   final MoneyConsumptionHistoryModel currentExpentiture;
 
   @override
   String toString() {
-    return 'AnalysisPageState(currentExpentiture: $currentExpentiture)';
+    return 'AnalysisPageState(target: $target, year: $year, currentExpentiture: $currentExpentiture)';
   }
 
   @override
@@ -121,13 +158,18 @@ class _$_AnalysisPageState implements _AnalysisPageState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AnalysisPageState &&
+            const DeepCollectionEquality().equals(other.target, target) &&
+            const DeepCollectionEquality().equals(other.year, year) &&
             const DeepCollectionEquality()
                 .equals(other.currentExpentiture, currentExpentiture));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(currentExpentiture));
+      runtimeType,
+      const DeepCollectionEquality().hash(target),
+      const DeepCollectionEquality().hash(year),
+      const DeepCollectionEquality().hash(currentExpentiture));
 
   @JsonKey(ignore: true)
   @override
@@ -136,11 +178,18 @@ class _$_AnalysisPageState implements _AnalysisPageState {
           this, _$identity);
 }
 
-abstract class _AnalysisPageState implements AnalysisPageState {
-  factory _AnalysisPageState(
-          {final MoneyConsumptionHistoryModel currentExpentiture}) =
+abstract class _AnalysisPageState extends AnalysisPageState {
+  const factory _AnalysisPageState(
+          {final String target,
+          final int year,
+          final MoneyConsumptionHistoryModel currentExpentiture}) =
       _$_AnalysisPageState;
+  const _AnalysisPageState._() : super._();
 
+  @override
+  String get target;
+  @override
+  int get year;
   @override
   MoneyConsumptionHistoryModel get currentExpentiture;
   @override
