@@ -70,7 +70,7 @@ class MoneyMeterInitialSettingModal extends ConsumerWidget {
             if (inititalMoneyMeterModel.target.isNotEmpty && inititalMoneyMeterModel.initBalance > 0) {
               ref.read(moneyMeterProvider.notifier).save(inititalMoneyMeterModel.copyWith(
                     hasdata: true,
-                    balance: 21000,
+                    balance: inititalMoneyMeterModel.initBalance,
                     year: DateTime.now().year,
                     month: DateTime.now().month,
                   ));

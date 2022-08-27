@@ -32,24 +32,30 @@ class UsemoneyInpuModal extends ConsumerWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text(
-                'Use Money',
-                style: kTextStyleCaption(),
+              Padding(
+                padding: const EdgeInsets.only(bottom: kSpacing * 2),
+                child: Text(
+                  'Expenditure',
+                  style: kTextStyleCaption(),
+                ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  FaIcon(
-                    ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.currency)).icon,
-                    color: kDarkTextColor,
-                    size: 35,
-                  ),
-                  const SizedBox(width: kSpacing),
-                  Text(
-                    NumberFormatter.currencyFormatter(ref.watch(useMoneyState)),
-                    style: kTextStyleCaption(color: kDarkTextColor),
-                  ),
-                ],
+              Padding(
+                padding: const EdgeInsets.only(bottom: kSpacing * 2),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    FaIcon(
+                      ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.currency)).icon,
+                      color: kDarkTextColor,
+                      size: 35,
+                    ),
+                    const SizedBox(width: kSpacing),
+                    Text(
+                      NumberFormatter.currencyFormatter(ref.watch(useMoneyState)),
+                      style: kTextStyleCaption(color: kDarkTextColor),
+                    ),
+                  ],
+                ),
               ),
               const Keyboard(),
             ],

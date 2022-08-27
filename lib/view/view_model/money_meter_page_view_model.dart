@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/interface/shared_preference_interfage.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -16,7 +17,7 @@ import '../state/money_meter_page_state.dart';
 class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterPageState> {
   MoneyMeterPageViewModel() : super(MoneyMeterPageState());
 
-  final SharedPreferenceService _storage = SharedPreferenceService(SharedPreferences.getInstance());
+  final SharedPreferenceInterface _storage = SharedPreferenceService(SharedPreferences.getInstance());
 
   // Fetch list from SharedPreference
   Future<MoneyMeterModel> fetch() async {
@@ -96,6 +97,18 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterPageState> {
   // Initiate model on first of month
   void _initOnFirstDate() {
     final nowDateTime = DateTime.now();
+
+    // 初回のみ現在の年月を書き込む
+    if (state.moneyMeterModel.year == 0) {
+      state = state.copyWith(
+        moneyMeterModel: state.moneyMeterModel.copyWith(
+          year: nowDateTime.year,
+          month: nowDateTime.month,
+        ),
+      );
+    }
+
+    // TODO: メソッド内にエラーあり
     final createdAtYM = NumberFormatter.createdAtFotmat(state.moneyMeterModel.year, state.moneyMeterModel.month);
 
     // 同じcreatedAtの場合処理しない

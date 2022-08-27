@@ -15,13 +15,13 @@ class Keyboard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height / 2,
+    return Expanded(
       child: GridView.count(
         childAspectRatio: 1.2,
         crossAxisCount: 3,
         crossAxisSpacing: 5.0,
         mainAxisSpacing: 5.0,
+        physics: const NeverScrollableScrollPhysics(),
         children: KeyboardValue.values.map((key) {
           return GridTile(
             child: ElevatedButton(
@@ -34,7 +34,7 @@ class Keyboard extends ConsumerWidget {
                 if (isBack) {
                   // Loading
                   showProgressDialog(context);
-                  await Future.delayed(const Duration(seconds: 1));
+                  await Future.delayed(const Duration(milliseconds: 500));
                   Navigator.of(context).pop();
 
                   // Back to top page
