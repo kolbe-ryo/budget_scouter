@@ -1,5 +1,4 @@
 // Flutter imports:
-import 'package:budget_scouter/interface/shared_preference_interfage.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -7,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 // Project imports:
+import '../../interface/shared_preference_interfage.dart';
 import '../../model/money_consumption_history_model.dart';
 import '../../model/money_meter_model.dart';
 import '../../service/shared_preference_service.dart';
@@ -107,8 +107,6 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterPageState> {
         ),
       );
     }
-
-    // TODO: メソッド内にエラーあり
     final createdAtYM = NumberFormatter.createdAtFotmat(state.moneyMeterModel.year, state.moneyMeterModel.month);
 
     // 同じcreatedAtの場合処理しない
