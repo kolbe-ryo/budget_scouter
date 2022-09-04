@@ -121,6 +121,7 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterPageState> {
     }
 
     List<MoneyConsumptionHistoryModel> historyList = [];
+    int lastBalance = 0;
 
     // modelが前月だった場合
     if ((nowDateTime.month - 1) == state.moneyMeterModel.month) {
@@ -132,6 +133,7 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterPageState> {
           remainedBalance: state.moneyMeterModel.balance,
         ),
       );
+      lastBalance = state.moneyMeterModel.balance;
     }
     // 一ヶ月以上使用していなかった場合は以下の処理
     else {
@@ -152,7 +154,7 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterPageState> {
 
     // Reset or not balannce
     final balance = state.moneyMeterModel.isForwardBalance
-        ? state.moneyMeterModel.initBalance + state.moneyMeterModel.balance
+        ? state.moneyMeterModel.initBalance + lastBalance
         : state.moneyMeterModel.initBalance;
 
     state = state.copyWith(

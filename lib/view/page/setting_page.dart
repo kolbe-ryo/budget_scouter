@@ -26,6 +26,12 @@ class SettingPage extends ConsumerWidget {
                 ref.read(moneyMeterProvider.notifier).save(model.copyWith(moneyConsumptionHistoryModelList: _list)),
             child: Text('履歴追加'),
           ),
+          ElevatedButton(
+            onPressed: () => ref
+                .read(moneyMeterProvider.notifier)
+                .save(model.copyWith(hasdata: true, initBalance: 50000, balance: -1000, year: 2022, month: 6)),
+            child: Text('初期データ追加'),
+          ),
         ],
       ),
     );
@@ -81,16 +87,16 @@ const _list = [
     initBalance: 50000,
     remainedBalance: 1000,
   ),
-  MoneyConsumptionHistoryModel(
-    year: 2022,
-    month: 7,
-    initBalance: 50000,
-    remainedBalance: -3000,
-  ),
-  MoneyConsumptionHistoryModel(
-    year: 2022,
-    month: 8,
-    initBalance: 50000,
-    remainedBalance: 0,
-  ),
+  // MoneyConsumptionHistoryModel(
+  //   year: 2022,
+  //   month: 7,
+  //   initBalance: 50000,
+  //   remainedBalance: -3000,
+  // ),
+  // MoneyConsumptionHistoryModel(
+  //   year: 2022,
+  //   month: 8,
+  //   initBalance: 50000,
+  //   remainedBalance: 0,
+  // ),
 ];
