@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/model/money_consumption_history_model.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -68,12 +69,22 @@ class MoneyMeterInitialSettingModal extends ConsumerWidget {
 
             // Validate for nothing to input
             if (inititalMoneyMeterModel.target.isNotEmpty && inititalMoneyMeterModel.initBalance > 0) {
-              ref.read(moneyMeterProvider.notifier).save(inititalMoneyMeterModel.copyWith(
-                    hasdata: true,
-                    balance: inititalMoneyMeterModel.initBalance,
-                    year: DateTime.now().year,
-                    month: DateTime.now().month,
-                  ));
+              ref.read(moneyMeterProvider.notifier).save(
+                    inititalMoneyMeterModel.copyWith(
+                      hasdata: true,
+                      balance: inititalMoneyMeterModel.initBalance,
+                      year: DateTime.now().year,
+                      month: DateTime.now().month,
+                      moneyConsumptionHistoryModelList: [
+                        MoneyConsumptionHistoryModel(
+                          year: DateTime.now().year,
+                          month: DateTime.now().month,
+                          initBalance: inititalMoneyMeterModel.initBalance,
+                          remainedBalance: inititalMoneyMeterModel.initBalance,
+                        ),
+                      ],
+                    ),
+                  );
               Navigator.pop(context);
             } else {
               showDialog(

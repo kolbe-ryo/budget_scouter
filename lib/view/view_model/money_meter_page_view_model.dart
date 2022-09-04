@@ -101,6 +101,7 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterPageState> {
         ),
       );
     }
+
     final createdAtYM = NumberFormatter.createdAtFotmat(state.moneyMeterModel.year, state.moneyMeterModel.month);
 
     // 同じcreatedAtの場合処理しない

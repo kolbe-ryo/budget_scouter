@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -26,11 +27,15 @@ class MoneyHistoryChart extends ConsumerWidget {
         barTouchData: barTouchData,
         titlesData: titlesData(historyList),
         borderData: borderData,
-        barGroups: barGroups,
+        barGroups: barGroups(historyList),
         gridData: FlGridData(show: false),
         alignment: BarChartAlignment.spaceAround,
-        maxY: 5000,
-        minY: -5000,
+        maxY: historyList.map((e) => e.remainedBalance).toList().reduce((value, element) => max(value, element)) * 1.2,
+        minY: historyList
+            .map((e) => e.remainedBalance > 0 ? 0 : e.remainedBalance)
+            .toList()
+            .reduce((value, element) => min(value, element))
+            .toDouble(),
       ),
     );
   }
@@ -80,9 +85,7 @@ class MoneyHistoryChart extends ConsumerWidget {
     );
   }
 
-  FlBorderData get borderData => FlBorderData(
-        show: false,
-      );
+  FlBorderData get borderData => FlBorderData(show: false);
 
   final _barsGradient = const LinearGradient(
     colors: [
@@ -93,66 +96,20 @@ class MoneyHistoryChart extends ConsumerWidget {
     end: Alignment.topCenter,
   );
 
-  List<BarChartGroupData> get barGroups => [
-        BarChartGroupData(
-          x: 0,
+  List<BarChartGroupData> barGroups(List<MoneyConsumptionHistoryModel> histories) => histories
+      .asMap()
+      .entries
+      .map(
+        (element) => BarChartGroupData(
+          x: element.key,
           barRods: [
             BarChartRodData(
-              toY: -4,
+              toY: element.value.remainedBalance.toDouble(),
               gradient: _barsGradient,
             )
           ],
           showingTooltipIndicators: [0],
         ),
-        BarChartGroupData(
-          x: 1,
-          barRods: [
-            BarChartRodData(
-              toY: 10,
-              gradient: _barsGradient,
-            )
-          ],
-          showingTooltipIndicators: [0],
-        ),
-        // BarChartGroupData(
-        //   x: 2,
-        //   barRods: [
-        //     BarChartRodData(
-        //       toY: 14,
-        //       gradient: _barsGradient,
-        //     )
-        //   ],
-        //   showingTooltipIndicators: [0],
-        // ),
-        // BarChartGroupData(
-        //   x: 3,
-        //   barRods: [
-        //     BarChartRodData(
-        //       toY: 15,
-        //       gradient: _barsGradient,
-        //     )
-        //   ],
-        //   showingTooltipIndicators: [0],
-        // ),
-        // BarChartGroupData(
-        //   x: 4,
-        //   barRods: [
-        //     BarChartRodData(
-        //       toY: 13,
-        //       gradient: _barsGradient,
-        //     )
-        //   ],
-        //   showingTooltipIndicators: [0],
-        // ),
-        // BarChartGroupData(
-        //   x: 5,
-        //   barRods: [
-        //     BarChartRodData(
-        //       toY: 10,
-        //       gradient: _barsGradient,
-        //     )
-        //   ],
-        //   showingTooltipIndicators: [0],
-        // ),
-      ];
+      )
+      .toList();
 }
