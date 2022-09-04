@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/model/money_consumption_history_model.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -29,9 +30,8 @@ class AnalysisPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final hasData = ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.hasdata));
-    final histories =
-        ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.moneyConsumptionHistoryModelList));
-    final years = histories.map((history) => history.year).toSet().toList();
+    var years = ref.watch(moneyMeterProvider.select((state) =>
+        state.moneyMeterModel.moneyConsumptionHistoryModelList.map((history) => history.year).toSet().toList()));
     final controller = PageController(initialPage: ref.watch(pageIndexProvider));
 
     return hasData

@@ -30,12 +30,18 @@ class MoneyHistoryChart extends ConsumerWidget {
         barGroups: barGroups(historyList),
         gridData: FlGridData(show: false),
         alignment: BarChartAlignment.spaceAround,
-        maxY: historyList.map((e) => e.remainedBalance).toList().reduce((value, element) => max(value, element)) * 1.2,
+        maxY: historyList
+                .map((e) => e.remainedBalance)
+                .toList()
+                .reduce((value, element) => max(value, element) > 0 ? max(value, element) : 1000) *
+            1.5,
         minY: historyList
-            .map((e) => e.remainedBalance > 0 ? 0 : e.remainedBalance)
-            .toList()
-            .reduce((value, element) => min(value, element))
-            .toDouble(),
+                .map((e) => e.remainedBalance > 0 ? 0 : e.remainedBalance)
+                .toList()
+                .reduce((value, element) => min(value, element)) *
+            1.5,
+        // maxY: 0,
+        // minY: -5000,
       ),
     );
   }
@@ -44,7 +50,7 @@ class MoneyHistoryChart extends ConsumerWidget {
         enabled: false,
         touchTooltipData: BarTouchTooltipData(
           tooltipBgColor: Colors.transparent,
-          tooltipMargin: 4,
+          tooltipMargin: 0.0,
           getTooltipItem: (
             BarChartGroupData group,
             int groupIndex,
@@ -52,7 +58,7 @@ class MoneyHistoryChart extends ConsumerWidget {
             int rodIndex,
           ) {
             return BarTooltipItem(
-              rod.toY.round().toString(),
+              rod.toY != 0 ? rod.toY.round().toString() : rod.fromY.round().toString(),
               kTextStyleHint,
             );
           },
@@ -77,6 +83,7 @@ class MoneyHistoryChart extends ConsumerWidget {
         sideTitles: SideTitles(
           showTitles: true,
           getTitlesWidget: (value, meta) => getTitles(value, meta, histories),
+          reservedSize: 32.0,
         ),
       ),
       leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
@@ -87,10 +94,19 @@ class MoneyHistoryChart extends ConsumerWidget {
 
   FlBorderData get borderData => FlBorderData(show: false);
 
-  final _barsGradient = const LinearGradient(
+  final _plusGradient = const LinearGradient(
     colors: [
       Colors.lightBlueAccent,
       Colors.greenAccent,
+    ],
+    begin: Alignment.bottomCenter,
+    end: Alignment.topCenter,
+  );
+
+  final _minusGradient = const LinearGradient(
+    colors: [
+      Colors.deepOrange,
+      Colors.orangeAccent,
     ],
     begin: Alignment.bottomCenter,
     end: Alignment.topCenter,
@@ -103,10 +119,17 @@ class MoneyHistoryChart extends ConsumerWidget {
         (element) => BarChartGroupData(
           x: element.key,
           barRods: [
-            BarChartRodData(
-              toY: element.value.remainedBalance.toDouble(),
-              gradient: _barsGradient,
-            )
+            if (element.value.remainedBalance >= 0)
+              BarChartRodData(
+                toY: element.value.remainedBalance.toDouble(),
+                gradient: _plusGradient,
+              ),
+            if (element.value.remainedBalance < 0)
+              BarChartRodData(
+                fromY: element.value.remainedBalance.toDouble(),
+                toY: 0,
+                gradient: _minusGradient,
+              ),
           ],
           showingTooltipIndicators: [0],
         ),

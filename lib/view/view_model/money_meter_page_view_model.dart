@@ -42,7 +42,18 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterPageState> {
   // Use money
   Future<void> use(int money) async {
     final remaining = state.moneyMeterModel.balance - money;
-    state = state.copyWith(moneyMeterModel: state.moneyMeterModel.copyWith(balance: remaining));
+    final currentHistory =
+        state.moneyMeterModel.moneyConsumptionHistoryModelList.last.copyWith(remainedBalance: remaining);
+
+    final historyList = state.moneyMeterModel.moneyConsumptionHistoryModelList;
+
+    state = state.copyWith(
+      moneyMeterModel: state.moneyMeterModel.copyWith(
+        balance: remaining,
+        moneyConsumptionHistoryModelList:
+            historyList.asMap().entries.map((e) => e.key != historyList.length - 1 ? e.value : currentHistory).toList(),
+      ),
+    );
     await _storage.save(state.moneyMeterModel);
   }
 
