@@ -1,5 +1,4 @@
 // Flutter imports:
-import 'package:budget_scouter/model/money_consumption_history_model.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -48,9 +47,9 @@ class AnalysisPage extends ConsumerWidget {
                       content: ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.target)),
                       isNodata: false,
                     ),
-                    const TopCaptionTexts(
+                    TopCaptionTexts(
                       title: 'Year',
-                      content: '2022',
+                      content: years[ref.watch(pageIndexProvider)].toString(),
                       isNodata: false,
                     ),
                   ],
