@@ -9,8 +9,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../constant/style.dart';
 import '../chart/money_history_chart.dart';
 import '../common/top_caption_texts.dart';
-import '../state/analysis_page_state.dart';
-import '../view_model/analysis_page_view_model.dart';
 import 'money_meter_page.dart';
 
 // page index state
@@ -24,13 +22,6 @@ final pageIndexProvider = StateProvider<int>(
           .length -
       1),
 );
-
-// provider for analysis page
-final analysisPageProvider =
-    StateNotifierProvider<AnalysisPageViewModel, AnalysisPageState>(((ref) => AnalysisPageViewModel()));
-
-// fetch from local data
-final moneyData = FutureProvider<void>(((ref) => ref.read(analysisPageProvider.notifier).fetch()));
 
 class AnalysisPage extends ConsumerWidget {
   const AnalysisPage({Key? key}) : super(key: key);

@@ -64,6 +64,7 @@ class Keyboard extends ConsumerWidget {
         // 使用前にその金額を保存しておく
         ref.read(moneyMeterProvider.notifier).updateGoBack(null);
         ref.read(moneyMeterProvider.notifier).use(money);
+        // TODO: 使用時にグラフを更新する
         return true;
       default:
         ref.read(useMoneyState.state).update((state) => int.parse(state.toString() + key.value));
