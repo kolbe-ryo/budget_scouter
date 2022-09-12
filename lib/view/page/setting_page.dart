@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/view/common/setting_tile.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -17,6 +18,21 @@ class SettingPage extends ConsumerWidget {
     return Scaffold(
       body: Column(
         children: [
+          SettingTile(
+            title: '編集する',
+            icon: Icons.edit,
+            onTap: () async => null,
+          ),
+          SettingTile(
+            title: 'リセット',
+            icon: Icons.delete,
+            onTap: () => null,
+          ),
+          SettingTile(
+            title: 'このアプリについて',
+            icon: Icons.app_registration,
+            onTap: () => null,
+          ),
           ElevatedButton(
             onPressed: () => ref.read(moneyMeterProvider.notifier).delete(context),
             child: Text('削除'),
