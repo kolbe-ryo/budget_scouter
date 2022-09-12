@@ -12,7 +12,7 @@ import '../common/top_caption_texts.dart';
 import 'money_meter_page.dart';
 
 // page index state
-final pageIndexProvider = StateProvider<int>(
+final initPageIndexProvider = StateProvider<int>(
   ((ref) =>
       ref
           .watch(moneyMeterProvider.select((state) => state.moneyMeterModel.moneyConsumptionHistoryModelList))
@@ -29,9 +29,9 @@ class AnalysisPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final hasData = ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.hasdata));
-    var years = ref.watch(moneyMeterProvider.select((state) =>
+    final years = ref.watch(moneyMeterProvider.select((state) =>
         state.moneyMeterModel.moneyConsumptionHistoryModelList.map((history) => history.year).toSet().toList()));
-    final controller = PageController(initialPage: ref.watch(pageIndexProvider));
+    final controller = PageController(initialPage: ref.watch(initPageIndexProvider));
 
     return hasData
         ? Column(
@@ -49,7 +49,7 @@ class AnalysisPage extends ConsumerWidget {
                     ),
                     TopCaptionTexts(
                       title: 'Year',
-                      content: years[ref.watch(pageIndexProvider)].toString(),
+                      content: years[ref.watch(initPageIndexProvider)].toString(),
                       isNodata: false,
                     ),
                   ],
@@ -61,6 +61,9 @@ class AnalysisPage extends ConsumerWidget {
                   itemCount: years.length,
                   itemBuilder: (context, index) {
                     years.sort(((a, b) => a.compareTo(b)));
+                    WidgetsBinding.instance.addPostFrameCallback(
+                      (timeStamp) => ref.read(initPageIndexProvider.notifier).update(((state) => index)),
+                    );
                     return MoneyHistoryChart(years[index]);
                   },
                   controller: controller,

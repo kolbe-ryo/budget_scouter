@@ -27,9 +27,17 @@ class SettingPage extends ConsumerWidget {
             child: Text('履歴追加'),
           ),
           ElevatedButton(
-            onPressed: () => ref
-                .read(moneyMeterProvider.notifier)
-                .save(model.copyWith(hasdata: true, initBalance: 50000, balance: -1000, year: 2022, month: 6)),
+            onPressed: () => ref.read(moneyMeterProvider.notifier).save(
+                  model.copyWith(
+                    hasdata: true,
+                    initBalance: 50000,
+                    balance: -1000,
+                    year: 2022,
+                    month: 6,
+                    target: 'Test',
+                    isForwardBalance: true,
+                  ),
+                ),
             child: Text('初期データ追加'),
           ),
         ],
