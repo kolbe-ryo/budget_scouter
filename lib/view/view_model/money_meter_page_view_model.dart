@@ -57,48 +57,6 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterPageState> {
     await _storage.save(state.moneyMeterModel);
   }
 
-  // Update GoBack state
-  Future<void> updateGoBack(bool? isBack) async {
-    final memorizedMoney = state.goBackState.memorizedValue;
-
-    if (isBack == null) {
-      state = state.copyWith(
-        goBackState: GoBackState(
-          canBack: true,
-          canGo: false,
-          memorizedValue: state.moneyMeterModel.balance,
-        ),
-      );
-      return;
-    }
-
-    // バックボタン押下
-    if (isBack) {
-      state = state.copyWith(
-        goBackState: GoBackState(
-          canBack: false,
-          canGo: true,
-          memorizedValue: state.moneyMeterModel.balance,
-        ),
-      );
-    }
-
-    // ゴーボタン押下
-    if (!isBack) {
-      state = state.copyWith(
-        goBackState: GoBackState(
-          canBack: true,
-          canGo: false,
-          memorizedValue: state.moneyMeterModel.balance,
-        ),
-      );
-    }
-    state = state.copyWith(
-      moneyMeterModel: state.moneyMeterModel.copyWith(balance: memorizedMoney),
-    );
-    save(state.moneyMeterModel);
-  }
-
   // Initiate model on first of month
   void _initOnFirstDate() {
     final nowDateTime = DateTime.now();

@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/util/number_formatter.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -7,7 +8,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 // Project imports:
 import '../../constant/style.dart';
 import '../../model/money_meter_model.dart';
-import '../common/go_back_icon_button.dart';
 import '../common/top_caption_texts.dart';
 import '../modal/use_money_input_model.dart';
 import '../money_meter/money_meter.dart';
@@ -63,7 +63,11 @@ class MoneyMeterPage extends ConsumerWidget {
                     hasData ? ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.target)) : 'No Data',
                 isNodata: !hasData,
               ),
-              const GoBackIconButton()
+              TopCaptionTexts(
+                title: 'Year',
+                content: NumberFormatter.createdAtFotmat(DateTime.now().year, DateTime.now().month),
+                isNodata: false,
+              ),
             ],
           ),
         ),
