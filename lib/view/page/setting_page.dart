@@ -1,5 +1,4 @@
 // Flutter imports:
-import 'package:budget_scouter/view/common/setting_tile.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -7,6 +6,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
 import '../../model/money_consumption_history_model.dart';
+import '../common/setting_tile.dart';
+import 'about_app_webview.dart';
 import 'money_meter_page.dart';
 
 class SettingPage extends ConsumerWidget {
@@ -21,17 +22,23 @@ class SettingPage extends ConsumerWidget {
           SettingTile(
             title: '編集する',
             icon: Icons.edit,
+            // TODO: 初期設定画面へ遷移し、初期テキストを設定しておく
             onTap: () async => null,
           ),
           SettingTile(
             title: 'リセット',
             icon: Icons.delete,
+            // TODO: モーダルで確認し、全ての設定をリセットする
             onTap: () => null,
           ),
           SettingTile(
             title: 'このアプリについて',
             icon: Icons.app_registration,
-            onTap: () => null,
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: ((context) => const AboutAppWebview()),
+              ),
+            ),
           ),
           ElevatedButton(
             onPressed: () => ref.read(moneyMeterProvider.notifier).delete(context),

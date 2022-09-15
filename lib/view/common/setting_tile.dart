@@ -1,6 +1,8 @@
 // Flutter imports:
-import 'package:budget_scouter/constant/style.dart';
 import 'package:flutter/material.dart';
+
+// Project imports:
+import '../../constant/style.dart';
 
 class SettingTile extends StatelessWidget {
   const SettingTile({

@@ -1,5 +1,4 @@
 // Flutter imports:
-import 'package:budget_scouter/util/number_formatter.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -8,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 // Project imports:
 import '../../constant/style.dart';
 import '../../model/money_meter_model.dart';
+import '../../util/number_formatter.dart';
 import '../common/top_caption_texts.dart';
 import '../modal/use_money_input_model.dart';
 import '../money_meter/money_meter.dart';
