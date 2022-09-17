@@ -23,6 +23,8 @@ class MeterWidget extends ConsumerWidget {
     final isForward = ref
         .watch(moneyMeterProvider.select((state) => state.moneyMeterModel.initBalance < state.moneyMeterModel.balance));
 
+    final chartColor = amountUse > initBalance / 3 ? Colors.greenAccent : Colors.deepOrange;
+
     return LayoutBuilder(builder: (context, _constraints) {
       return ConstrainedBox(
         constraints: BoxConstraints(
@@ -31,11 +33,12 @@ class MeterWidget extends ConsumerWidget {
         ),
         child: PieChart(
           animationDuration: const Duration(seconds: 3),
-          baseChartColor: inOutCircle.color,
+          // TODO: 段階に応じてチャートカラーを変更する
+          baseChartColor: inOutCircle == MeterInOutEnum.outer ? chartColor : Colors.black,
           chartRadius: inOutCircle.radius(_constraints),
           chartType: ChartType.ring,
           chartValuesOptions: const ChartValuesOptions(showChartValues: false),
-          colorList: [isForward && inOutCircle == MeterInOutEnum.outer ? Colors.orangeAccent : Colors.black],
+          colorList: const [Colors.black],
           dataMap: {"usedMoney": initBalance - amountUse},
           initialAngleInDegree: 270,
           legendOptions: const LegendOptions(showLegends: false),

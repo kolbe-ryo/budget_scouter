@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/view/common/app_dialog.dart';
 import 'package:budget_scouter/view/modal/money_meter_initital_setting_modal.dart';
 import 'package:flutter/material.dart';
 
@@ -23,28 +24,39 @@ class SettingPage extends ConsumerWidget {
           SettingTile(
             title: '編集する',
             icon: Icons.edit,
-            onTap: () {
-              ref.read(initialMoneyMeterStateProvider.notifier).update(
-                    (state) => state.copyWith(
-                      target: model.target,
-                      initBalance: model.initBalance,
-                      isForwardBalance: model.isForwardBalance,
-                      currency: model.currency,
+            onTap: model.hasdata
+                ? () {
+                    ref.read(initialMoneyMeterStateProvider.notifier).update(
+                          (state) => state.copyWith(
+                            target: model.target,
+                            initBalance: model.initBalance,
+                            isForwardBalance: model.isForwardBalance,
+                            currency: model.currency,
+                          ),
+                        );
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: ((context) => const MoneyMeterInitialSettingModal()),
+                        fullscreenDialog: true,
+                      ),
+                    );
+                  }
+                : () => showDialog(
+                      context: context,
+                      builder: (context) => const AppDialog('Target and Initial Balance field are required'),
                     ),
-                  );
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: ((context) => const MoneyMeterInitialSettingModal()),
-                  fullscreenDialog: true,
-                ),
-              );
-            },
           ),
           SettingTile(
             title: 'リセット',
             icon: Icons.delete,
-            // TODO: モーダルで確認し、全ての設定をリセットする
-            onTap: () => null,
+            onTap: model.hasdata
+                ? () {
+                    // TODO: モーダルで確認し、全ての設定をリセットする
+                  }
+                : () => showDialog(
+                      context: context,
+                      builder: (context) => const AppDialog('Target and Initial Balance field are required'),
+                    ),
           ),
           SettingTile(
             title: 'このアプリについて',
@@ -57,12 +69,12 @@ class SettingPage extends ConsumerWidget {
           ),
           ElevatedButton(
             onPressed: () => ref.read(moneyMeterProvider.notifier).delete(context),
-            child: Text('削除'),
+            child: const Text('削除'),
           ),
           ElevatedButton(
             onPressed: () =>
                 ref.read(moneyMeterProvider.notifier).save(model.copyWith(moneyConsumptionHistoryModelList: _list)),
-            child: Text('履歴追加'),
+            child: const Text('履歴追加'),
           ),
           ElevatedButton(
             onPressed: () => ref.read(moneyMeterProvider.notifier).save(

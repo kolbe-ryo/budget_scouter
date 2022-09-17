@@ -65,7 +65,7 @@ class MoneyMeterInitialSettingModal extends ConsumerWidget {
         floatingActionButton: FloatingActionButton(
           child: hadData ? const Icon(Icons.edit) : const Icon(Icons.add),
           backgroundColor: kThemeColor,
-          onPressed: () async {
+          onPressed: () {
             final inititalMoneyMeterModel = ref.watch(initialMoneyMeterStateProvider);
             final moneyMeterModel = ref.watch(moneyMeterProvider.select((value) => value.moneyMeterModel));
 

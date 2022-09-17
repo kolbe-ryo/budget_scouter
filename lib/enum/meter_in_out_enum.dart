@@ -6,6 +6,7 @@ enum MeterInOutEnum {
   outer,
 }
 
+// TODO: 段階に応じてチャートカラーを変更する
 extension MeterInOutEnumExt on MeterInOutEnum {
   Color get color {
     switch (this) {

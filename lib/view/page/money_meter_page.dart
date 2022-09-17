@@ -65,8 +65,11 @@ class MoneyMeterPage extends ConsumerWidget {
               ),
               TopCaptionTexts(
                 title: 'Year',
-                content: NumberFormatter.createdAtFotmat(DateTime.now().year, DateTime.now().month),
-                isNodata: false,
+                content: hasData
+                    ? ref.watch(moneyMeterProvider.select((state) =>
+                        NumberFormatter.createdAtFotmat(state.moneyMeterModel.year, state.moneyMeterModel.month)))
+                    : 'No Data',
+                isNodata: !hasData,
               ),
             ],
           ),

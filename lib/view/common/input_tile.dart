@@ -52,6 +52,9 @@ class InputTile extends ConsumerWidget {
           keyboardType: numOnly ? TextInputType.number : null,
           style: kTextStyleSecondary,
           onChanged: (String text) {
+            if (text.isEmpty) {
+              text = '0';
+            }
             ref.read(initialMoneyMeterStateProvider.state).update(
                   (state) => isTarget ? state.copyWith(target: text) : state.copyWith(initBalance: int.parse(text)),
                 );
