@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/view/page/money_meter_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -27,6 +28,11 @@ class InputTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final initialText = ref.watch(
+      moneyMeterProvider.select(
+        (value) => isTarget ? value.moneyMeterModel.target : value.moneyMeterModel.initBalance.toString(),
+      ),
+    );
     return Column(
       children: [
         ListTile(
@@ -41,7 +47,7 @@ class InputTile extends ConsumerWidget {
             hintText: hintText,
             hintStyle: kTextStyleHint,
           ),
-          initialValue: '',
+          initialValue: initialText,
           inputFormatters: numOnly ? [FilteringTextInputFormatter.digitsOnly] : null,
           keyboardType: numOnly ? TextInputType.number : null,
           style: kTextStyleSecondary,

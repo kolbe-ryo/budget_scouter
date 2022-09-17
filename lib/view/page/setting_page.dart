@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/view/modal/money_meter_initital_setting_modal.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -22,8 +23,22 @@ class SettingPage extends ConsumerWidget {
           SettingTile(
             title: '編集する',
             icon: Icons.edit,
-            // TODO: 初期設定画面へ遷移し、初期テキストを設定しておく
-            onTap: () async => null,
+            onTap: () {
+              ref.read(initialMoneyMeterStateProvider.notifier).update(
+                    (state) => state.copyWith(
+                      target: model.target,
+                      initBalance: model.initBalance,
+                      isForwardBalance: model.isForwardBalance,
+                      currency: model.currency,
+                    ),
+                  );
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: ((context) => const MoneyMeterInitialSettingModal()),
+                  fullscreenDialog: true,
+                ),
+              );
+            },
           ),
           SettingTile(
             title: 'リセット',

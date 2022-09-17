@@ -28,6 +28,7 @@ class MoneyMeterInitialSettingModal extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final hadData = ref.watch(moneyMeterProvider.select((value) => value.moneyMeterModel.hasdata));
     return WillPopScope(
       onWillPop: () async => _dipose(ref),
       child: Scaffold(
@@ -62,13 +63,24 @@ class MoneyMeterInitialSettingModal extends ConsumerWidget {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.add),
+          child: hadData ? const Icon(Icons.edit) : const Icon(Icons.add),
           backgroundColor: kThemeColor,
           onPressed: () async {
             final inititalMoneyMeterModel = ref.watch(initialMoneyMeterStateProvider);
+            final moneyMeterModel = ref.watch(moneyMeterProvider.select((value) => value.moneyMeterModel));
 
             // Validate for nothing to input
-            if (inititalMoneyMeterModel.target.isNotEmpty && inititalMoneyMeterModel.initBalance > 0) {
+            if (moneyMeterModel.hasdata) {
+              ref.read(moneyMeterProvider.notifier).save(
+                    moneyMeterModel.copyWith(
+                      target: inititalMoneyMeterModel.target,
+                      initBalance: inititalMoneyMeterModel.initBalance,
+                      isForwardBalance: inititalMoneyMeterModel.isForwardBalance,
+                      currency: inititalMoneyMeterModel.currency,
+                    ),
+                  );
+              Navigator.pop(context);
+            } else if (inititalMoneyMeterModel.target.isNotEmpty && inititalMoneyMeterModel.initBalance > 0) {
               ref.read(moneyMeterProvider.notifier).save(
                     inititalMoneyMeterModel.copyWith(
                       hasdata: true,
