@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/main.dart';
 import 'package:budget_scouter/view/page/money_meter_page.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +26,7 @@ class SelectedIconButton extends ConsumerWidget {
         IconButton(
           icon: FaIcon(
             currency.icon,
-            color: isSelectedThis ? kThemeColor : kDarkTextColor,
+            color: isSelectedThis ? ref.watch(colorThemeProvider) : kDarkTextColor,
             size: isSelectedThis ? 25 : 20,
           ),
           onPressed: () =>
@@ -35,7 +36,7 @@ class SelectedIconButton extends ConsumerWidget {
           style: kTextStyleHint,
           child: Text(
             currency.name,
-            style: TextStyle(color: isSelectedThis ? kThemeColor : kDarkTextColor),
+            style: TextStyle(color: isSelectedThis ? ref.watch(colorThemeProvider) : kDarkTextColor),
           ),
         )
       ],

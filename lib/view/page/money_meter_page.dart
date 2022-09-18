@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/main.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -75,7 +76,8 @@ class MoneyMeterPage extends ConsumerWidget {
           ),
         ),
         GestureDetector(
-          child: MoneyMeter(ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel))),
+          child: MoneyMeter(
+              ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel)), ref.watch(colorThemeProvider)),
           onTap: () {
             Navigator.of(context).push(
               MaterialPageRoute(

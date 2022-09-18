@@ -15,9 +15,10 @@ import 'money_meter_abstract.dart';
 import 'money_meter_additional_widget.dart';
 
 class MoneyMeter extends MoneyMeterAbstract {
-  const MoneyMeter(this.moneyMeterModel, {Key? key}) : super(key: key);
+  const MoneyMeter(this.moneyMeterModel, this.color, {Key? key}) : super(key: key);
 
   final MoneyMeterModel moneyMeterModel;
+  final Color color;
 
   @override
   Widget? innerTextWidget() {
@@ -35,12 +36,12 @@ class MoneyMeter extends MoneyMeterAbstract {
               children: [
                 FaIcon(
                   moneyMeterModel.currency.icon,
-                  color: kThemeColor,
+                  color: color,
                 ),
                 const SizedBox(width: kSpacing / 2),
                 Text(
                   NumberFormatter.currencyFormatter(moneyMeterModel.balance).toString(),
-                  style: kTextStyleCaption(),
+                  style: kTextStyleCaption(color: color),
                 ),
               ],
             ),

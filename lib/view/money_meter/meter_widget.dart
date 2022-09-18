@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/main.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -20,10 +21,6 @@ class MeterWidget extends ConsumerWidget {
         ? ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.balance.toDouble()))
         : 0.0;
     final initBalance = ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.initBalance.toDouble()));
-    final isForward = ref
-        .watch(moneyMeterProvider.select((state) => state.moneyMeterModel.initBalance < state.moneyMeterModel.balance));
-
-    final chartColor = amountUse > initBalance / 3 ? Colors.greenAccent : Colors.deepOrange;
 
     return LayoutBuilder(builder: (context, _constraints) {
       return ConstrainedBox(
@@ -34,7 +31,7 @@ class MeterWidget extends ConsumerWidget {
         child: PieChart(
           animationDuration: const Duration(seconds: 3),
           // TODO: 段階に応じてチャートカラーを変更する
-          baseChartColor: inOutCircle == MeterInOutEnum.outer ? chartColor : Colors.black,
+          baseChartColor: inOutCircle == MeterInOutEnum.outer ? ref.watch(colorThemeProvider) : Colors.black,
           chartRadius: inOutCircle.radius(_constraints),
           chartType: ChartType.ring,
           chartValuesOptions: const ChartValuesOptions(showChartValues: false),

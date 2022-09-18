@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/main.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -27,7 +28,7 @@ class Keyboard extends ConsumerWidget {
             child: ElevatedButton(
               child: Text(
                 key.value,
-                style: kTextStyleCaption(size: 30),
+                style: kTextStyleCaption(color: ref.watch(colorThemeProvider), size: 30),
               ),
               onPressed: () async {
                 final isBack = _setValue(key, ref);

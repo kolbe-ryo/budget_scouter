@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/main.dart';
 import 'package:budget_scouter/view/page/money_meter_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -39,7 +40,7 @@ class InputTile extends ConsumerWidget {
           contentPadding: const EdgeInsets.only(top: kSpacing),
           title: Text(
             title,
-            style: kTextStylePrimary,
+            style: kTextStylePrimary(ref.watch(colorThemeProvider)),
           ),
         ),
         TextFormField(

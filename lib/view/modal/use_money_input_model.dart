@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/main.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -36,7 +37,7 @@ class UsemoneyInpuModal extends ConsumerWidget {
                 padding: const EdgeInsets.only(bottom: kSpacing * 2),
                 child: Text(
                   'Expenditure',
-                  style: kTextStyleCaption(),
+                  style: kTextStyleCaption(color: ref.watch(colorThemeProvider)),
                 ),
               ),
               Padding(

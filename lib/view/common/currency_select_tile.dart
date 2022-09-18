@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/main.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -18,11 +19,11 @@ class CurrencySelectTile extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       children: [
-        const ListTile(
-          contentPadding: EdgeInsets.only(top: kSpacing),
+        ListTile(
+          contentPadding: const EdgeInsets.only(top: kSpacing),
           title: Text(
             'Currency',
-            style: kTextStylePrimary,
+            style: kTextStylePrimary(ref.watch(colorThemeProvider)),
           ),
         ),
         Row(

@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 
 const kSpacing = 16.0;
 
-kTextStyleCaption({Color? color = kThemeColor, double? size = 35}) => TextStyle(
+kTextStyleCaption({Color? color = Colors.pinkAccent, double? size = 35}) => TextStyle(
       color: color,
       fontSize: size,
       fontWeight: FontWeight.w600,
     );
 
-const kTextStylePrimary = TextStyle(
-  color: kThemeColor,
-  fontSize: 20,
-  fontWeight: FontWeight.w600,
-);
+kTextStylePrimary(Color color) => TextStyle(
+      color: color,
+      fontSize: 20,
+      fontWeight: FontWeight.w600,
+    );
 
 const kTextStyleSecondary = TextStyle(
   color: kDarkTextColor,
@@ -26,8 +26,6 @@ const kTextStyleHint = TextStyle(
   fontSize: 14,
   fontWeight: FontWeight.w300,
 );
-
-const kThemeColor = Colors.deepOrange;
 
 const kDarkBackColor = Color(0xff303030);
 

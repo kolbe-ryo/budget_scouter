@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/main.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -23,7 +24,7 @@ class CheckResetBalanceRadioButton extends ConsumerWidget {
       children: [
         ListTile(
           contentPadding: const EdgeInsets.only(top: kSpacing),
-          title: Text(title, style: kTextStylePrimary),
+          title: Text(title, style: kTextStylePrimary(ref.watch(colorThemeProvider))),
         ),
         Text(description, style: kTextStyleHint),
         const SizedBox(height: kSpacing),
@@ -32,7 +33,7 @@ class CheckResetBalanceRadioButton extends ConsumerWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Radio(
-              activeColor: kThemeColor,
+              activeColor: ref.watch(colorThemeProvider),
               value: RadioButtonEnum.yes.boolean,
               groupValue: isSelect,
               onChanged: (_) => ref
@@ -42,7 +43,7 @@ class CheckResetBalanceRadioButton extends ConsumerWidget {
             Text(RadioButtonEnum.yes.name, style: kTextStyleSecondary),
             const SizedBox(width: kSpacing),
             Radio(
-              activeColor: kThemeColor,
+              activeColor: ref.watch(colorThemeProvider),
               value: RadioButtonEnum.no.boolean,
               groupValue: isSelect,
               onChanged: (_) => ref

@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/main.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -64,7 +65,7 @@ class MoneyMeterInitialSettingModal extends ConsumerWidget {
         ),
         floatingActionButton: FloatingActionButton(
           child: hadData ? const Icon(Icons.edit) : const Icon(Icons.add),
-          backgroundColor: kThemeColor,
+          backgroundColor: ref.watch(colorThemeProvider),
           onPressed: () {
             final inititalMoneyMeterModel = ref.watch(initialMoneyMeterStateProvider);
             final moneyMeterModel = ref.watch(moneyMeterProvider.select((value) => value.moneyMeterModel));

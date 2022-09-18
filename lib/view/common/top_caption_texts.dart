@@ -25,7 +25,7 @@ class TopCaptionTexts extends StatelessWidget {
         const SizedBox(height: kSpacing / 2),
         Text(
           content,
-          style: kTextStyleCaption(color: isNodata ? kDarkTextColor : kThemeColor),
+          style: kTextStyleCaption(color: isNodata ? kDarkTextColor : Colors.white),
         ),
       ],
     );
