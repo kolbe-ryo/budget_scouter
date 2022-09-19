@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
 // Package imports:
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
@@ -35,7 +36,7 @@ class InputDialog extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     String money = '0';
     return CupertinoAlertDialog(
-      title: const Text('Input Use Money'),
+      title: Text(AppLocalizations.of(context)!.input_money),
       content: Padding(
         padding: const EdgeInsets.only(top: kSpacing),
         child: CupertinoTextField(

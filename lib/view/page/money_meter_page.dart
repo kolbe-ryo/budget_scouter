@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Package imports:
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
@@ -59,17 +60,18 @@ class MoneyMeterPage extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               TopCaptionTexts(
-                title: 'Target',
-                content:
-                    hasData ? ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.target)) : 'No Data',
+                title: AppLocalizations.of(context)!.target,
+                content: hasData
+                    ? ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.target))
+                    : AppLocalizations.of(context)!.no_data,
                 isNodata: !hasData,
               ),
               TopCaptionTexts(
-                title: 'Year',
+                title: AppLocalizations.of(context)!.year,
                 content: hasData
                     ? ref.watch(moneyMeterProvider.select((state) =>
                         NumberFormatter.createdAtFotmat(state.moneyMeterModel.year, state.moneyMeterModel.month)))
-                    : 'No Data',
+                    : AppLocalizations.of(context)!.no_data,
                 isNodata: !hasData,
               ),
             ],
@@ -93,15 +95,16 @@ class MoneyMeterPage extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TopCaptionTexts(
-                title: 'Remain Days',
-                content: hasData ? ref.watch(moneyMeterProvider.notifier).remainDays : 'No Data',
+                title: AppLocalizations.of(context)!.remain_days,
+                content:
+                    hasData ? ref.watch(moneyMeterProvider.notifier).remainDays : AppLocalizations.of(context)!.no_data,
                 isNodata: !hasData,
               ),
               TopCaptionTexts(
-                title: 'Use Rate',
+                title: AppLocalizations.of(context)!.use_rate,
                 content: hasData
                     ? '${ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.balanceRatio))}%'
-                    : 'No Data',
+                    : AppLocalizations.of(context)!.no_data,
                 isNodata: !hasData,
               ),
             ],

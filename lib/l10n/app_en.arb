@@ -28,5 +28,6 @@
   "edit_alert": "Please regist your data for this app",
   "delete": "Delete",
   "delete_alert": "Delete your data? This can't undone.",
-  "about_this_app": "About This App"
+  "about_this_app": "About This App",
+  "input_money": "Input Use Money"
 }

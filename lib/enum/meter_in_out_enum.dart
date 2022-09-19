@@ -6,17 +6,7 @@ enum MeterInOutEnum {
   outer,
 }
 
-// TODO: 段階に応じてチャートカラーを変更する
 extension MeterInOutEnumExt on MeterInOutEnum {
-  Color get color {
-    switch (this) {
-      case MeterInOutEnum.inner:
-        return Colors.black;
-      case MeterInOutEnum.outer:
-        return Colors.deepOrange;
-    }
-  }
-
   double radius(BoxConstraints constraints) {
     switch (this) {
       case MeterInOutEnum.inner:

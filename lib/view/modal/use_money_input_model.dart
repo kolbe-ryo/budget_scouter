@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Package imports:
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -36,7 +37,7 @@ class UsemoneyInpuModal extends ConsumerWidget {
               Padding(
                 padding: const EdgeInsets.only(bottom: kSpacing * 2),
                 child: Text(
-                  'Expenditure',
+                  AppLocalizations.of(context)!.expenditure,
                   style: kTextStyleCaption(color: ref.watch(colorThemeProvider)),
                 ),
               ),

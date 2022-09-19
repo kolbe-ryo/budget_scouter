@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Package imports:
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
@@ -22,7 +23,7 @@ class CurrencySelectTile extends ConsumerWidget {
         ListTile(
           contentPadding: const EdgeInsets.only(top: kSpacing),
           title: Text(
-            'Currency',
+            AppLocalizations.of(context)!.currency,
             style: kTextStylePrimary(ref.watch(colorThemeProvider)),
           ),
         ),

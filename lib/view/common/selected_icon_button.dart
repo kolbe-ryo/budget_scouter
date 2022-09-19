@@ -10,7 +10,6 @@ import '../../constant/style.dart';
 import '../../enum/currency_data_enum.dart';
 import '../../main.dart';
 import '../modal/money_meter_initital_setting_modal.dart';
-import '../page/money_meter_page.dart';
 
 class SelectedIconButton extends ConsumerWidget {
   const SelectedIconButton(this.currency, {Key? key}) : super(key: key);
@@ -35,7 +34,7 @@ class SelectedIconButton extends ConsumerWidget {
         DefaultTextStyle(
           style: kTextStyleHint,
           child: Text(
-            currency.name,
+            currency.name(context),
             style: TextStyle(color: isSelectedThis ? ref.watch(colorThemeProvider) : kDarkTextColor),
           ),
         )

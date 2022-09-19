@@ -27,5 +27,6 @@
   "edit_alert": "データがありません。データを作成して下さい",
   "delete": "削除する",
   "delete_alert": "データを削除しますか？この操作は元には戻せません",
-  "about_this_app": "このアプリについて"
+  "about_this_app": "このアプリについて",
+  "input_money": "使用金額を入力"
 }

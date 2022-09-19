@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Package imports:
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
@@ -39,24 +40,24 @@ class MoneyMeterInitialSettingModal extends ConsumerWidget {
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
-                children: const [
+                children: [
                   InputTile(
-                    title: 'Target',
-                    hintText: 'Name for your target money',
+                    title: AppLocalizations.of(context)!.target,
+                    hintText: AppLocalizations.of(context)!.hint_target,
                     numOnly: false,
                     isTarget: true,
                   ),
                   InputTile(
-                    title: 'Initial Balance',
-                    hintText: 'Setting your budget for money meter',
+                    title: AppLocalizations.of(context)!.init_balance,
+                    hintText: AppLocalizations.of(context)!.hint_balance,
                     numOnly: true,
                     isTarget: false,
                   ),
                   CheckResetBalanceRadioButton(
-                    title: 'Reset Balance',
-                    description: 'Reset or not balance at the beginning of month',
+                    title: AppLocalizations.of(context)!.forward_balance,
+                    description: AppLocalizations.of(context)!.hint_reset_balance,
                   ),
-                  CurrencySelectTile(),
+                  const CurrencySelectTile(),
                 ],
               ),
             ),
@@ -101,7 +102,7 @@ class MoneyMeterInitialSettingModal extends ConsumerWidget {
             } else {
               showDialog(
                 context: context,
-                builder: (context) => const AppDialog('Target and Initial Balance field are required'),
+                builder: (context) => AppDialog(AppLocalizations.of(context)!.validation_field_text),
               );
             }
           },

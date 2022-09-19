@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Package imports:
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -17,16 +18,16 @@ enum CurrencyDataEnum {
 }
 
 extension CurrencyDataEnumExt on CurrencyDataEnum {
-  String get name {
+  String name(BuildContext context) {
     switch (this) {
       case CurrencyDataEnum.dollar:
-        return 'Dollar';
+        return AppLocalizations.of(context)!.dollar;
       case CurrencyDataEnum.euro:
-        return 'Euro';
+        return AppLocalizations.of(context)!.euro;
       case CurrencyDataEnum.yen:
-        return 'Yen';
+        return AppLocalizations.of(context)!.yen;
       case CurrencyDataEnum.sterling:
-        return 'Sterling';
+        return AppLocalizations.of(context)!.sterling;
     }
   }
 

@@ -30,7 +30,6 @@ class MeterWidget extends ConsumerWidget {
         ),
         child: PieChart(
           animationDuration: const Duration(seconds: 3),
-          // TODO: 段階に応じてチャートカラーを変更する
           baseChartColor: inOutCircle == MeterInOutEnum.outer ? ref.watch(colorThemeProvider) : Colors.black,
           chartRadius: inOutCircle.radius(_constraints),
           chartType: ChartType.ring,

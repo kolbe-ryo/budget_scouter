@@ -17,7 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$MoneyMeterPageState {
   MoneyMeterModel get moneyMeterModel => throw _privateConstructorUsedError;
-  GoBackState get goBackState => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MoneyMeterPageStateCopyWith<MoneyMeterPageState> get copyWith =>
@@ -29,10 +28,9 @@ abstract class $MoneyMeterPageStateCopyWith<$Res> {
   factory $MoneyMeterPageStateCopyWith(
           MoneyMeterPageState value, $Res Function(MoneyMeterPageState) then) =
       _$MoneyMeterPageStateCopyWithImpl<$Res>;
-  $Res call({MoneyMeterModel moneyMeterModel, GoBackState goBackState});
+  $Res call({MoneyMeterModel moneyMeterModel});
 
   $MoneyMeterModelCopyWith<$Res> get moneyMeterModel;
-  $GoBackStateCopyWith<$Res> get goBackState;
 }
 
 /// @nodoc
@@ -47,17 +45,12 @@ class _$MoneyMeterPageStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? moneyMeterModel = freezed,
-    Object? goBackState = freezed,
   }) {
     return _then(_value.copyWith(
       moneyMeterModel: moneyMeterModel == freezed
           ? _value.moneyMeterModel
           : moneyMeterModel // ignore: cast_nullable_to_non_nullable
               as MoneyMeterModel,
-      goBackState: goBackState == freezed
-          ? _value.goBackState
-          : goBackState // ignore: cast_nullable_to_non_nullable
-              as GoBackState,
     ));
   }
 
@@ -65,13 +58,6 @@ class _$MoneyMeterPageStateCopyWithImpl<$Res>
   $MoneyMeterModelCopyWith<$Res> get moneyMeterModel {
     return $MoneyMeterModelCopyWith<$Res>(_value.moneyMeterModel, (value) {
       return _then(_value.copyWith(moneyMeterModel: value));
-    });
-  }
-
-  @override
-  $GoBackStateCopyWith<$Res> get goBackState {
-    return $GoBackStateCopyWith<$Res>(_value.goBackState, (value) {
-      return _then(_value.copyWith(goBackState: value));
     });
   }
 }
@@ -83,12 +69,10 @@ abstract class _$$_MoneyMeterPageStateCopyWith<$Res>
           $Res Function(_$_MoneyMeterPageState) then) =
       __$$_MoneyMeterPageStateCopyWithImpl<$Res>;
   @override
-  $Res call({MoneyMeterModel moneyMeterModel, GoBackState goBackState});
+  $Res call({MoneyMeterModel moneyMeterModel});
 
   @override
   $MoneyMeterModelCopyWith<$Res> get moneyMeterModel;
-  @override
-  $GoBackStateCopyWith<$Res> get goBackState;
 }
 
 /// @nodoc
@@ -105,17 +89,12 @@ class __$$_MoneyMeterPageStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? moneyMeterModel = freezed,
-    Object? goBackState = freezed,
   }) {
     return _then(_$_MoneyMeterPageState(
       moneyMeterModel: moneyMeterModel == freezed
           ? _value.moneyMeterModel
           : moneyMeterModel // ignore: cast_nullable_to_non_nullable
               as MoneyMeterModel,
-      goBackState: goBackState == freezed
-          ? _value.goBackState
-          : goBackState // ignore: cast_nullable_to_non_nullable
-              as GoBackState,
     ));
   }
 }
@@ -123,20 +102,15 @@ class __$$_MoneyMeterPageStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_MoneyMeterPageState implements _MoneyMeterPageState {
-  _$_MoneyMeterPageState(
-      {this.moneyMeterModel = const MoneyMeterModel(),
-      this.goBackState = const GoBackState()});
+  _$_MoneyMeterPageState({this.moneyMeterModel = const MoneyMeterModel()});
 
   @override
   @JsonKey()
   final MoneyMeterModel moneyMeterModel;
-  @override
-  @JsonKey()
-  final GoBackState goBackState;
 
   @override
   String toString() {
-    return 'MoneyMeterPageState(moneyMeterModel: $moneyMeterModel, goBackState: $goBackState)';
+    return 'MoneyMeterPageState(moneyMeterModel: $moneyMeterModel)';
   }
 
   @override
@@ -145,16 +119,12 @@ class _$_MoneyMeterPageState implements _MoneyMeterPageState {
         (other.runtimeType == runtimeType &&
             other is _$_MoneyMeterPageState &&
             const DeepCollectionEquality()
-                .equals(other.moneyMeterModel, moneyMeterModel) &&
-            const DeepCollectionEquality()
-                .equals(other.goBackState, goBackState));
+                .equals(other.moneyMeterModel, moneyMeterModel));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(moneyMeterModel),
-      const DeepCollectionEquality().hash(goBackState));
+      runtimeType, const DeepCollectionEquality().hash(moneyMeterModel));
 
   @JsonKey(ignore: true)
   @override
@@ -164,14 +134,11 @@ class _$_MoneyMeterPageState implements _MoneyMeterPageState {
 }
 
 abstract class _MoneyMeterPageState implements MoneyMeterPageState {
-  factory _MoneyMeterPageState(
-      {final MoneyMeterModel moneyMeterModel,
-      final GoBackState goBackState}) = _$_MoneyMeterPageState;
+  factory _MoneyMeterPageState({final MoneyMeterModel moneyMeterModel}) =
+      _$_MoneyMeterPageState;
 
   @override
   MoneyMeterModel get moneyMeterModel;
-  @override
-  GoBackState get goBackState;
   @override
   @JsonKey(ignore: true)
   _$$_MoneyMeterPageStateCopyWith<_$_MoneyMeterPageState> get copyWith =>
