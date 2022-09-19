@@ -1,11 +1,11 @@
 // Flutter imports:
-import 'package:budget_scouter/main.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
+import '../../main.dart';
 import '../../model/money_consumption_history_model.dart';
 import '../../model/money_meter_model.dart';
 import '../common/app_bar.dart';

@@ -1,5 +1,4 @@
 // Flutter imports:
-import 'package:budget_scouter/main.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -8,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 // Project imports:
 import '../../constant/style.dart';
 import '../../enum/currency_data_enum.dart';
+import '../../main.dart';
 import 'selected_icon_button.dart';
 
 // Project imports:

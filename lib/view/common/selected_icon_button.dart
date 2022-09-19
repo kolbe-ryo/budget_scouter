@@ -1,6 +1,4 @@
 // Flutter imports:
-import 'package:budget_scouter/main.dart';
-import 'package:budget_scouter/view/page/money_meter_page.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -10,7 +8,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // Project imports:
 import '../../constant/style.dart';
 import '../../enum/currency_data_enum.dart';
+import '../../main.dart';
 import '../modal/money_meter_initital_setting_modal.dart';
+import '../page/money_meter_page.dart';
 
 class SelectedIconButton extends ConsumerWidget {
   const SelectedIconButton(this.currency, {Key? key}) : super(key: key);

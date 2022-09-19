@@ -1,5 +1,4 @@
 // Flutter imports:
-import 'package:budget_scouter/main.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -9,6 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // Project imports:
 import '../../constant/style.dart';
 import '../../enum/currency_data_enum.dart';
+import '../../main.dart';
 import '../../util/number_formatter.dart';
 import '../common/app_bar.dart';
 import '../common/keyboard.dart';

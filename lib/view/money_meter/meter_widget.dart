@@ -1,5 +1,4 @@
 // Flutter imports:
-import 'package:budget_scouter/main.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -8,6 +7,7 @@ import 'package:pie_chart/pie_chart.dart';
 
 // Project imports:
 import '../../enum/meter_in_out_enum.dart';
+import '../../main.dart';
 import '../page/money_meter_page.dart';
 
 class MeterWidget extends ConsumerWidget {

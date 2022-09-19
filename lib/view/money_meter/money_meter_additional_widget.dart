@@ -1,5 +1,4 @@
 // Flutter imports:
-import 'package:budget_scouter/main.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -9,6 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // Project imports:
 import '../../constant/style.dart';
+import '../../main.dart';
 import '../modal/money_meter_initital_setting_modal.dart';
 
 class MoneyMeterAdditionalWidget extends ConsumerWidget {
