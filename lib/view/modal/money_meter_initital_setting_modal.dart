@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
-import '../../constant/style.dart';
 import '../../model/money_consumption_history_model.dart';
 import '../../model/money_meter_model.dart';
 import '../common/app_bar.dart';
