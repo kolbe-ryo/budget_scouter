@@ -62,7 +62,7 @@ class AnalysisPage extends ConsumerWidget {
                   itemCount: years.length,
                   itemBuilder: (context, index) {
                     years.sort(((a, b) => a.compareTo(b)));
-                    WidgetsBinding.instance!.addPostFrameCallback(
+                    WidgetsBinding.instance.addPostFrameCallback(
                       (timeStamp) => ref.read(initPageIndexProvider.notifier).update(((state) => index)),
                     );
                     return MoneyHistoryChart(years[index]);
