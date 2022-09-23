@@ -12,7 +12,7 @@ extension MeterInOutEnumExt on MeterInOutEnum {
       case MeterInOutEnum.inner:
         return constraints.maxWidth;
       case MeterInOutEnum.outer:
-        return constraints.maxWidth - 45;
+        return constraints.maxWidth - 50;
     }
   }
 
@@ -20,7 +20,7 @@ extension MeterInOutEnumExt on MeterInOutEnum {
     switch (this) {
       case MeterInOutEnum.inner:
       case MeterInOutEnum.outer:
-        return constraints.maxWidth;
+        return constraints.maxWidth - 10;
     }
   }
 }

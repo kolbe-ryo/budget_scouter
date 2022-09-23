@@ -91,7 +91,7 @@ class SettingPage extends ConsumerWidget {
                   model.copyWith(
                     hasdata: true,
                     initBalance: 50000,
-                    balance: -1000,
+                    balance: 10000,
                     year: 2022,
                     month: 6,
                     target: 'Test',

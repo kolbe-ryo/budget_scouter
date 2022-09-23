@@ -47,7 +47,7 @@ class MoneyMeterPage extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(kSpacing, 0, kSpacing, kSpacing),
+          padding: const EdgeInsets.fromLTRB(kSpacing, 0, kSpacing, kSpacing / 2),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -81,7 +81,7 @@ class MoneyMeterPage extends ConsumerWidget {
           },
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(kSpacing, 0, kSpacing, 0),
+          padding: const EdgeInsets.symmetric(horizontal: kSpacing),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
