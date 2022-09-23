@@ -16,7 +16,8 @@ class Keyboard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Expanded(
+    return SizedBox(
+      height: MediaQuery.of(context).size.width * 1.2,
       child: GridView.count(
         childAspectRatio: 1.2,
         crossAxisCount: 3,

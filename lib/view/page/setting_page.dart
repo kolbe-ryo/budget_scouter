@@ -77,29 +77,25 @@ class SettingPage extends ConsumerWidget {
               ),
             ),
           ),
-          ElevatedButton(
-            onPressed: () => ref.read(moneyMeterProvider.notifier).delete(context),
-            child: const Text('削除'),
-          ),
-          ElevatedButton(
-            onPressed: () =>
-                ref.read(moneyMeterProvider.notifier).save(model.copyWith(moneyConsumptionHistoryModelList: _list)),
-            child: const Text('履歴追加'),
-          ),
-          ElevatedButton(
-            onPressed: () => ref.read(moneyMeterProvider.notifier).save(
-                  model.copyWith(
-                    hasdata: true,
-                    initBalance: 50000,
-                    balance: 10000,
-                    year: 2022,
-                    month: 6,
-                    target: 'Test',
-                    isForwardBalance: true,
-                  ),
-                ),
-            child: Text('初期データ追加'),
-          ),
+          // ElevatedButton(
+          //   onPressed: () =>
+          //       ref.read(moneyMeterProvider.notifier).save(model.copyWith(moneyConsumptionHistoryModelList: _list)),
+          //   child: const Text('履歴追加'),
+          // ),
+          // ElevatedButton(
+          //   onPressed: () => ref.read(moneyMeterProvider.notifier).save(
+          //         model.copyWith(
+          //           hasdata: true,
+          //           initBalance: 50000,
+          //           balance: 10000,
+          //           year: 2022,
+          //           month: 6,
+          //           target: 'Test',
+          //           isForwardBalance: true,
+          //         ),
+          //       ),
+          //   child: Text('初期データ追加'),
+          // ),
         ],
       ),
     );
