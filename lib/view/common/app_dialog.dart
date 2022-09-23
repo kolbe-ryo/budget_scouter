@@ -27,7 +27,7 @@ class AppDialog extends StatelessWidget {
         ),
         if (isDeleteAction)
           CupertinoDialogAction(
-            child: const Text("Cancel"),
+            child: Text(AppLocalizations.of(context)!.cancel),
             onPressed: () => Navigator.pop(context, false),
           ),
       ],

@@ -38,7 +38,7 @@ class UsemoneyInpuModal extends ConsumerWidget {
                 padding: const EdgeInsets.only(bottom: kSpacing * 2),
                 child: Text(
                   AppLocalizations.of(context)!.expenditure,
-                  style: kTextStyleCaption(color: ref.watch(colorThemeProvider)),
+                  style: kTextStyleCaption(color: ref.watch(colorThemeProvider), size: 25),
                 ),
               ),
               Padding(

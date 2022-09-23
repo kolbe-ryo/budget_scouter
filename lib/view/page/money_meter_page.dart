@@ -35,14 +35,7 @@ class MoneyMeterPage extends ConsumerWidget {
         loading: () => const SizedBox.shrink(),
         error: (err, stack) => Text('$err'),
         data: (data) {
-          if (hasData) {
-            return SingleChildScrollView(
-              physics: const NeverScrollableScrollPhysics(),
-              child: _body(context, ref, hasData),
-            );
-          } else {
-            return _body(context, ref, hasData);
-          }
+          return _body(context, ref, hasData);
         },
       ),
     );
@@ -50,7 +43,7 @@ class MoneyMeterPage extends ConsumerWidget {
 
   Widget _body(BuildContext context, WidgetRef ref, bool hasData) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Padding(
@@ -88,7 +81,7 @@ class MoneyMeterPage extends ConsumerWidget {
           },
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(kSpacing, kSpacing * 2, kSpacing, 0),
+          padding: const EdgeInsets.fromLTRB(kSpacing, 0, kSpacing, 0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

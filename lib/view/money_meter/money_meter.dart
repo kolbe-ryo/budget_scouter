@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Package imports:
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // Project imports:
@@ -21,12 +22,12 @@ class MoneyMeter extends MoneyMeterAbstract {
   final Color color;
 
   @override
-  Widget? innerTextWidget() {
+  Widget? innerTextWidget(BuildContext context) {
     if (moneyMeterModel.hasdata) {
       return Column(
         children: [
           Text(
-            'Balance',
+            AppLocalizations.of(context)!.balance,
             style: kTextStyleCaption(color: kDarkTextColor),
           ),
           Padding(

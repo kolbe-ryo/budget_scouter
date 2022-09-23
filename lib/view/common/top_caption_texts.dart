@@ -22,10 +22,9 @@ class TopCaptionTexts extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(title, style: kTextStyleHint),
-        const SizedBox(height: kSpacing / 2),
         Text(
           content,
-          style: kTextStyleCaption(color: isNodata ? kDarkTextColor : Colors.white),
+          style: kTextStyleCaption(color: isNodata ? kDarkTextColor : Colors.white, size: 30),
         ),
       ],
     );

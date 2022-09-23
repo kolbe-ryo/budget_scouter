@@ -8,7 +8,7 @@ abstract class MoneyMeterAbstract extends ConsumerWidget {
   const MoneyMeterAbstract({Key? key}) : super(key: key);
 
   List<Widget> meterWidgets();
-  Widget? innerTextWidget();
+  Widget? innerTextWidget(BuildContext context);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -16,7 +16,7 @@ abstract class MoneyMeterAbstract extends ConsumerWidget {
       alignment: Alignment.center,
       children: [
         ...(meterWidgets().map((widget) => widget)),
-        innerTextWidget() ?? const SizedBox.shrink(),
+        innerTextWidget(context) ?? const SizedBox.shrink(),
       ],
     );
   }

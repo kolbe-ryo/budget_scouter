@@ -15,7 +15,13 @@ void main() => runApp(const ProviderScope(child: BudgetScouter()));
 final colorThemeProvider = StateProvider<Color>(((ref) {
   final balance = ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.balance.toDouble()));
   final initBalance = ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.initBalance.toDouble()));
-  return balance > initBalance / 3 ? Colors.pinkAccent : Colors.amber;
+  final isForward = ref
+      .watch(moneyMeterProvider.select((state) => state.moneyMeterModel.initBalance < state.moneyMeterModel.balance));
+  return isForward
+      ? Colors.greenAccent
+      : balance > initBalance / 3
+          ? Colors.pinkAccent
+          : Colors.amber;
 }));
 
 class BudgetScouter extends ConsumerWidget {
