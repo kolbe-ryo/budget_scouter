@@ -37,7 +37,7 @@ extension BottomNavigationBarEnumExt on BottomNavigationBarEnum {
     }
   }
 
-  Widget page() {
+  Widget get page {
     switch (this) {
       case BottomNavigationBarEnum.moneyMeter:
         return const MoneyMeterPage();

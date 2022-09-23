@@ -22,7 +22,7 @@ class TopPage extends ConsumerWidget {
       appBar: CustomAppBar.appBar,
       body: Padding(
         padding: const EdgeInsets.all(kSpacing),
-        child: BottomNavigationBarEnum.values.map((item) => item.page()).toList()[pageIndex],
+        child: BottomNavigationBarEnum.values.map((item) => item.page).toList()[pageIndex],
       ),
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,

@@ -87,7 +87,7 @@ class MoneyMeterPage extends ConsumerWidget {
             children: [
               TopCaptionTexts(
                 title: hasData ? AppLocalizations.of(context)!.remain_days : '',
-                content: hasData ? ref.watch(moneyMeterProvider.notifier).remainDays : '',
+                content: hasData ? ref.watch(moneyMeterProvider.notifier).remainDays(context) : '',
                 isNodata: !hasData,
               ),
               TopCaptionTexts(

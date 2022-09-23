@@ -7,6 +7,7 @@
   "target": "名称",
   "year": "年月",
   "balance": "残高",
+  "days": "日",
   "no_data": "データなし",
   "remain_days": "残日数",
   "use_rate": "使用率",

@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 // Package imports:
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -21,7 +22,7 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterPageState> {
   // Fetch list from SharedPreference
   Future<MoneyMeterModel> fetch() async {
     final moneyMeterModel = await _storage.fetch();
-    state = state.copyWith(moneyMeterModel: moneyMeterModel ?? state.moneyMeterModel);
+    state = state.copyWith(moneyMeterModel: moneyMeterModel ?? const MoneyMeterModel());
     _initOnFirstDate();
     return state.moneyMeterModel;
   }
@@ -94,7 +95,12 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterPageState> {
     }
     // 一ヶ月以上使用していなかった場合は以下の処理
     else {
-      final preMonth = state.moneyMeterModel.moneyConsumptionHistoryModelList.last.month;
+      int preMonth;
+      if (state.moneyMeterModel.moneyConsumptionHistoryModelList.isEmpty) {
+        preMonth = state.moneyMeterModel.month;
+      } else {
+        preMonth = state.moneyMeterModel.moneyConsumptionHistoryModelList.last.month;
+      }
       // 現時点の前月から一月ずつ、前回最後に利用した月まで戻って空のhistoryを代入する
       for (int decreaseMonth = nowDateTime.month - 1; decreaseMonth != preMonth; decreaseMonth--) {
         // 戻った年月のDateTime
@@ -128,12 +134,14 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterPageState> {
 
   SharedPreferenceInterface get storage => _storage;
 
-  String get remainDays {
+  String remainDays(BuildContext context) {
     final now = DateTime.now();
     final elapsedDay = DateTime(now.year, now.month, now.day).day;
     final dayMonth = DateTime(now.year, now.month + 1, 1).add(const Duration(days: -1)).day;
     final remainDays = dayMonth - elapsedDay + 1;
-    return remainDays != 1 ? '$remainDays Days' : '$remainDays Day';
+    return remainDays != 1
+        ? '$remainDays ${AppLocalizations.of(context)!.days}'
+        : '$remainDays ${AppLocalizations.of(context)!.days}';
   }
 
   String get nowYM {

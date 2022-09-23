@@ -8,6 +8,7 @@
   "target": "Target",
   "year": "Year",
   "balance": "Balance",
+  "days": "Days",
   "no_data": "No Data",
   "remain_days": "Remain Days",
   "use_rate": "Use Rate",
