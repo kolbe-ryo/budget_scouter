@@ -60,18 +60,16 @@ class MoneyMeterPage extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               TopCaptionTexts(
-                title: AppLocalizations.of(context)!.target,
-                content: hasData
-                    ? ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.target))
-                    : AppLocalizations.of(context)!.no_data,
+                title: hasData ? AppLocalizations.of(context)!.target : '',
+                content: hasData ? ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.target)) : '',
                 isNodata: !hasData,
               ),
               TopCaptionTexts(
-                title: AppLocalizations.of(context)!.year,
+                title: hasData ? AppLocalizations.of(context)!.year : '',
                 content: hasData
                     ? ref.watch(moneyMeterProvider.select((state) =>
                         NumberFormatter.createdAtFotmat(state.moneyMeterModel.year, state.moneyMeterModel.month)))
-                    : AppLocalizations.of(context)!.no_data,
+                    : '',
                 isNodata: !hasData,
               ),
             ],
@@ -95,16 +93,15 @@ class MoneyMeterPage extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TopCaptionTexts(
-                title: AppLocalizations.of(context)!.remain_days,
-                content:
-                    hasData ? ref.watch(moneyMeterProvider.notifier).remainDays : AppLocalizations.of(context)!.no_data,
+                title: hasData ? AppLocalizations.of(context)!.remain_days : '',
+                content: hasData ? ref.watch(moneyMeterProvider.notifier).remainDays : '',
                 isNodata: !hasData,
               ),
               TopCaptionTexts(
-                title: AppLocalizations.of(context)!.use_rate,
+                title: hasData ? AppLocalizations.of(context)!.use_rate : '',
                 content: hasData
                     ? '${ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel.balanceRatio))}%'
-                    : AppLocalizations.of(context)!.no_data,
+                    : '',
                 isNodata: !hasData,
               ),
             ],

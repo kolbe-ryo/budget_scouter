@@ -48,7 +48,7 @@ class InputTile extends ConsumerWidget {
             hintText: hintText,
             hintStyle: kTextStyleHint,
           ),
-          initialValue: initialText,
+          initialValue: initialText != '0' ? initialText : '',
           inputFormatters: numOnly ? [FilteringTextInputFormatter.digitsOnly] : null,
           keyboardType: numOnly ? TextInputType.number : null,
           style: kTextStyleSecondary,
