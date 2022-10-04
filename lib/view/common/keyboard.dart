@@ -16,42 +16,47 @@ class Keyboard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return SizedBox(
-      height: (MediaQuery.of(context).size.width - kSpacing * 2) * 1.2,
-      child: GridView.count(
-        childAspectRatio: 1.2,
-        crossAxisCount: 3,
-        crossAxisSpacing: 5.0,
-        mainAxisSpacing: 5.0,
-        physics: const NeverScrollableScrollPhysics(),
-        children: KeyboardValue.values.map((key) {
-          return GridTile(
-            child: ElevatedButton(
-              child: Text(
-                key.value,
-                style: kTextStyleCaption(color: ref.watch(colorThemeProvider), size: 30),
-              ),
-              onPressed: () async {
-                final isBack = _setValue(key, ref);
-                if (isBack) {
-                  // Loading
-                  showProgressDialog(context);
-                  await Future.delayed(const Duration(milliseconds: 500));
-                  Navigator.of(context).pop();
+    return Expanded(
+      child: Align(
+        alignment: Alignment.center,
+        child: SizedBox(
+          height: (MediaQuery.of(context).size.width - kSpacing * 2) * 1.2,
+          child: GridView.count(
+            childAspectRatio: 1.2,
+            crossAxisCount: 3,
+            crossAxisSpacing: 5.0,
+            mainAxisSpacing: 5.0,
+            physics: const NeverScrollableScrollPhysics(),
+            children: KeyboardValue.values.map((key) {
+              return GridTile(
+                child: ElevatedButton(
+                  child: Text(
+                    key.value,
+                    style: kTextStyleCaption(color: ref.watch(colorThemeProvider), size: 30),
+                  ),
+                  onPressed: () async {
+                    final isBack = _setValue(key, ref);
+                    if (isBack) {
+                      // Loading
+                      showProgressDialog(context);
+                      await Future.delayed(const Duration(milliseconds: 500));
+                      Navigator.of(context).pop();
 
-                  // Back to top page
-                  ref.read(useMoneyState.state).update((state) => 0);
-                  Navigator.of(context).pop();
-                }
-              },
-              style: ElevatedButton.styleFrom(
-                elevation: 10.0,
-                primary: kDarkBackColor,
-                shadowColor: Colors.black,
-              ),
-            ),
-          );
-        }).toList(),
+                      // Back to top page
+                      ref.read(useMoneyState.state).update((state) => 0);
+                      Navigator.of(context).pop();
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    elevation: 10.0,
+                    primary: kDarkBackColor,
+                    shadowColor: Colors.black,
+                  ),
+                ),
+              );
+            }).toList(),
+          ),
+        ),
       ),
     );
   }

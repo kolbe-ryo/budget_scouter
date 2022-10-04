@@ -23,7 +23,7 @@
   "euro": "ユーロ",
   "yen": "円",
   "sterling": "ポンド",
-  "reset_balance": "予算リセット",
+  "forward_balance": "予算リセット",
   "hint_reset_balance": "月初に残高を繰り越す",
   "validation_field_text": "名称と初期残高は設定する必要があります",
   "edit": "データを編集する",

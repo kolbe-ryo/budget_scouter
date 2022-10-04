@@ -72,6 +72,7 @@ class MoneyMeterPage extends ConsumerWidget {
           child: MoneyMeter(
               ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel)), ref.watch(colorThemeProvider)),
           onTap: () {
+            ref.watch(moneyMeterProvider.notifier).initOnFirstDate();
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: ((context) => const UsemoneyInpuModal()),

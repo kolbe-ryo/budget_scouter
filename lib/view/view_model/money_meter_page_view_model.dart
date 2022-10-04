@@ -23,7 +23,7 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterPageState> {
   Future<MoneyMeterModel> fetch() async {
     final moneyMeterModel = await _storage.fetch();
     state = state.copyWith(moneyMeterModel: moneyMeterModel ?? const MoneyMeterModel());
-    _initOnFirstDate();
+    initOnFirstDate();
     return state.moneyMeterModel;
   }
 
@@ -42,10 +42,19 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterPageState> {
   // Use money
   Future<void> use(int money) async {
     final remaining = state.moneyMeterModel.balance - money;
-    final currentHistory =
-        state.moneyMeterModel.moneyConsumptionHistoryModelList.last.copyWith(remainedBalance: remaining);
+    List<MoneyConsumptionHistoryModel> historyList = state.moneyMeterModel.moneyConsumptionHistoryModelList;
+    MoneyConsumptionHistoryModel currentHistory;
 
-    final historyList = state.moneyMeterModel.moneyConsumptionHistoryModelList;
+    if (state.moneyMeterModel.moneyConsumptionHistoryModelList.last.month == nowMonth) {
+      currentHistory = state.moneyMeterModel.moneyConsumptionHistoryModelList.last.copyWith(remainedBalance: remaining);
+    } else {
+      currentHistory = state.moneyMeterModel.moneyConsumptionHistoryModelList.last.copyWith(
+        remainedBalance: remaining,
+        year: nowYear,
+        month: nowMonth,
+      );
+      historyList = [...historyList, currentHistory];
+    }
 
     state = state.copyWith(
       moneyMeterModel: state.moneyMeterModel.copyWith(
@@ -58,7 +67,7 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterPageState> {
   }
 
   // Initiate model on first of month
-  void _initOnFirstDate() {
+  void initOnFirstDate() {
     final nowDateTime = DateTime.now();
 
     // 初回のみ現在の年月を書き込む
@@ -148,4 +157,8 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterPageState> {
     final DateTime dateTime = DateTime.now();
     return '${dateTime.year}-${dateTime.month}';
   }
+
+  int get nowYear => DateTime.now().year;
+
+  int get nowMonth => DateTime.now().month;
 }

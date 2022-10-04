@@ -1,4 +1,5 @@
 // Flutter imports:
+import 'package:budget_scouter/model/money_meter_model.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -23,7 +24,7 @@ class SettingPage extends ConsumerWidget {
       body: Column(
         children: [
           SettingTile(
-            title: '編集する',
+            title: AppLocalizations.of(context)!.edit,
             icon: Icons.edit,
             onTap: model.hasdata
                 ? () {
@@ -48,7 +49,7 @@ class SettingPage extends ConsumerWidget {
                     ),
           ),
           SettingTile(
-            title: 'リセット',
+            title: AppLocalizations.of(context)!.delete,
             icon: Icons.delete,
             onTap: model.hasdata
                 ? () async {
@@ -61,6 +62,7 @@ class SettingPage extends ConsumerWidget {
                     );
                     if (isDeleteConfirmation ?? false) {
                       ref.read(moneyMeterProvider.notifier).delete(context);
+                      ref.read(initialMoneyMeterStateProvider.notifier).update((state) => const MoneyMeterModel());
                     }
                   }
                 : () => showDialog(
@@ -69,7 +71,7 @@ class SettingPage extends ConsumerWidget {
                     ),
           ),
           SettingTile(
-            title: 'このアプリについて',
+            title: AppLocalizations.of(context)!.about_this_app,
             icon: Icons.app_registration,
             onTap: () => Navigator.of(context).push(
               MaterialPageRoute(
@@ -89,7 +91,7 @@ class SettingPage extends ConsumerWidget {
           //           initBalance: 50000,
           //           balance: 10000,
           //           year: 2022,
-          //           month: 6,
+          //           month: 9,
           //           target: 'Test',
           //           isForwardBalance: true,
           //         ),
@@ -156,11 +158,5 @@ const _list = [
     month: 7,
     initBalance: 50000,
     remainedBalance: -3000,
-  ),
-  MoneyConsumptionHistoryModel(
-    year: 2022,
-    month: 8,
-    initBalance: 50000,
-    remainedBalance: 0,
   ),
 ];

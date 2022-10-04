@@ -32,7 +32,7 @@ class UsemoneyInpuModal extends ConsumerWidget {
         body: Padding(
           padding: const EdgeInsets.all(kSpacing),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
                 padding: const EdgeInsets.only(bottom: kSpacing * 2),
