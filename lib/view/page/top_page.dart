@@ -27,15 +27,15 @@ class TopPage extends ConsumerWidget {
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          // FutureBuilder(
-          //   future: Admob.getBannerWidget(context: context),
-          //   builder: ((context, snapshot) {
-          //     if (snapshot.hasData) {
-          //       return snapshot.data as Widget;
-          //     }
-          //     return const Center(child: CircularProgressIndicator());
-          //   }),
-          // ),
+          FutureBuilder(
+            future: Admob.getBannerWidget(context: context),
+            builder: ((context, snapshot) {
+              if (snapshot.hasData) {
+                return snapshot.data as Widget;
+              }
+              return const Center(child: CircularProgressIndicator());
+            }),
+          ),
           BottomNavigationBar(
             items: BottomNavigationBarEnum.values.map((item) => item.bottomNavigationBarItem(context)).toList(),
             currentIndex: pageIndex,

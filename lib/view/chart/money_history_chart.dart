@@ -125,12 +125,14 @@ class MoneyHistoryChart extends ConsumerWidget {
               BarChartRodData(
                 toY: element.value.remainedBalance.toDouble(),
                 gradient: _plusGradient,
+                width: 20,
               ),
             if (element.value.remainedBalance < 0)
               BarChartRodData(
                 fromY: element.value.remainedBalance.toDouble(),
                 toY: 0,
                 gradient: _minusGradient,
+                width: 20,
               ),
           ],
           showingTooltipIndicators: [0],
