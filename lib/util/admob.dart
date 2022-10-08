@@ -29,6 +29,8 @@ class Admob {
     );
   }
 
+  // ca-app-pub-4793779857582845/6824830701
+
   static Future<Widget> getBannerWidget({
     required BuildContext context,
   }) async {
