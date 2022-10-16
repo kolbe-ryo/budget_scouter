@@ -69,6 +69,7 @@ class Keyboard extends ConsumerWidget {
       case KeyboardValue.ok:
         final money = ref.watch(useMoneyState);
         ref.read(moneyMeterProvider.notifier).use(money);
+        ref.read(moneyMeterProvider.notifier).canGoBack(money);
         return true;
       default:
         ref.read(useMoneyState.state).update((state) => int.parse(state.toString() + key.value));

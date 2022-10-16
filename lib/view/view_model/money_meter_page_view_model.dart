@@ -141,6 +141,16 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterPageState> {
     return;
   }
 
+  // Switch can back
+  void canGoBack(int useMoney) => state = state.copyWith(canBack: true, tempInput: useMoney);
+
+  // back inoput treatment
+  void backInput() {
+    final back = -state.tempInput;
+    use(back);
+    state = state.copyWith(canBack: false, tempInput: 0);
+  }
+
   SharedPreferenceInterface get storage => _storage;
 
   String remainDays(BuildContext context) {

@@ -10,5 +10,7 @@ part 'money_meter_page_state.freezed.dart';
 class MoneyMeterPageState with _$MoneyMeterPageState {
   factory MoneyMeterPageState({
     @Default(MoneyMeterModel()) MoneyMeterModel moneyMeterModel,
+    @Default(0) int tempInput,
+    @Default(false) bool canBack,
   }) = _MoneyMeterPageState;
 }

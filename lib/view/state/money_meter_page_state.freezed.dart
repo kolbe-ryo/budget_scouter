@@ -17,6 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$MoneyMeterPageState {
   MoneyMeterModel get moneyMeterModel => throw _privateConstructorUsedError;
+  int get tempInput => throw _privateConstructorUsedError;
+  bool get canBack => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MoneyMeterPageStateCopyWith<MoneyMeterPageState> get copyWith =>
@@ -28,7 +30,7 @@ abstract class $MoneyMeterPageStateCopyWith<$Res> {
   factory $MoneyMeterPageStateCopyWith(
           MoneyMeterPageState value, $Res Function(MoneyMeterPageState) then) =
       _$MoneyMeterPageStateCopyWithImpl<$Res>;
-  $Res call({MoneyMeterModel moneyMeterModel});
+  $Res call({MoneyMeterModel moneyMeterModel, int tempInput, bool canBack});
 
   $MoneyMeterModelCopyWith<$Res> get moneyMeterModel;
 }
@@ -45,12 +47,22 @@ class _$MoneyMeterPageStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? moneyMeterModel = freezed,
+    Object? tempInput = freezed,
+    Object? canBack = freezed,
   }) {
     return _then(_value.copyWith(
       moneyMeterModel: moneyMeterModel == freezed
           ? _value.moneyMeterModel
           : moneyMeterModel // ignore: cast_nullable_to_non_nullable
               as MoneyMeterModel,
+      tempInput: tempInput == freezed
+          ? _value.tempInput
+          : tempInput // ignore: cast_nullable_to_non_nullable
+              as int,
+      canBack: canBack == freezed
+          ? _value.canBack
+          : canBack // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
@@ -69,7 +81,7 @@ abstract class _$$_MoneyMeterPageStateCopyWith<$Res>
           $Res Function(_$_MoneyMeterPageState) then) =
       __$$_MoneyMeterPageStateCopyWithImpl<$Res>;
   @override
-  $Res call({MoneyMeterModel moneyMeterModel});
+  $Res call({MoneyMeterModel moneyMeterModel, int tempInput, bool canBack});
 
   @override
   $MoneyMeterModelCopyWith<$Res> get moneyMeterModel;
@@ -89,12 +101,22 @@ class __$$_MoneyMeterPageStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? moneyMeterModel = freezed,
+    Object? tempInput = freezed,
+    Object? canBack = freezed,
   }) {
     return _then(_$_MoneyMeterPageState(
       moneyMeterModel: moneyMeterModel == freezed
           ? _value.moneyMeterModel
           : moneyMeterModel // ignore: cast_nullable_to_non_nullable
               as MoneyMeterModel,
+      tempInput: tempInput == freezed
+          ? _value.tempInput
+          : tempInput // ignore: cast_nullable_to_non_nullable
+              as int,
+      canBack: canBack == freezed
+          ? _value.canBack
+          : canBack // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -102,15 +124,24 @@ class __$$_MoneyMeterPageStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_MoneyMeterPageState implements _MoneyMeterPageState {
-  _$_MoneyMeterPageState({this.moneyMeterModel = const MoneyMeterModel()});
+  _$_MoneyMeterPageState(
+      {this.moneyMeterModel = const MoneyMeterModel(),
+      this.tempInput = 0,
+      this.canBack = false});
 
   @override
   @JsonKey()
   final MoneyMeterModel moneyMeterModel;
+  @override
+  @JsonKey()
+  final int tempInput;
+  @override
+  @JsonKey()
+  final bool canBack;
 
   @override
   String toString() {
-    return 'MoneyMeterPageState(moneyMeterModel: $moneyMeterModel)';
+    return 'MoneyMeterPageState(moneyMeterModel: $moneyMeterModel, tempInput: $tempInput, canBack: $canBack)';
   }
 
   @override
@@ -119,12 +150,17 @@ class _$_MoneyMeterPageState implements _MoneyMeterPageState {
         (other.runtimeType == runtimeType &&
             other is _$_MoneyMeterPageState &&
             const DeepCollectionEquality()
-                .equals(other.moneyMeterModel, moneyMeterModel));
+                .equals(other.moneyMeterModel, moneyMeterModel) &&
+            const DeepCollectionEquality().equals(other.tempInput, tempInput) &&
+            const DeepCollectionEquality().equals(other.canBack, canBack));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(moneyMeterModel));
+      runtimeType,
+      const DeepCollectionEquality().hash(moneyMeterModel),
+      const DeepCollectionEquality().hash(tempInput),
+      const DeepCollectionEquality().hash(canBack));
 
   @JsonKey(ignore: true)
   @override
@@ -134,11 +170,17 @@ class _$_MoneyMeterPageState implements _MoneyMeterPageState {
 }
 
 abstract class _MoneyMeterPageState implements MoneyMeterPageState {
-  factory _MoneyMeterPageState({final MoneyMeterModel moneyMeterModel}) =
-      _$_MoneyMeterPageState;
+  factory _MoneyMeterPageState(
+      {final MoneyMeterModel moneyMeterModel,
+      final int tempInput,
+      final bool canBack}) = _$_MoneyMeterPageState;
 
   @override
   MoneyMeterModel get moneyMeterModel;
+  @override
+  int get tempInput;
+  @override
+  bool get canBack;
   @override
   @JsonKey(ignore: true)
   _$$_MoneyMeterPageStateCopyWith<_$_MoneyMeterPageState> get copyWith =>

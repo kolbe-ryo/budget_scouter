@@ -71,15 +71,17 @@ class MoneyMeterPage extends ConsumerWidget {
         GestureDetector(
           child: MoneyMeter(
               ref.watch(moneyMeterProvider.select((state) => state.moneyMeterModel)), ref.watch(colorThemeProvider)),
-          onTap: () {
-            ref.watch(moneyMeterProvider.notifier).initOnFirstDate();
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: ((context) => const UsemoneyInpuModal()),
-                fullscreenDialog: true,
-              ),
-            );
-          },
+          onTap: hasData
+              ? () {
+                  ref.watch(moneyMeterProvider.notifier).initOnFirstDate();
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: ((context) => const UsemoneyInpuModal()),
+                      fullscreenDialog: true,
+                    ),
+                  );
+                }
+              : null,
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: kSpacing),
