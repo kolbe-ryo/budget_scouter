@@ -1,5 +1,4 @@
 // Flutter imports:
-import 'package:budget_scouter/model/money_meter_model.dart';
 import 'package:flutter/material.dart';
 
 // Package imports:
@@ -8,7 +7,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // Project imports:
 import '../../model/money_consumption_history_model.dart';
+import '../../model/money_meter_model.dart';
 import '../common/app_dialog.dart';
+import '../common/logo_image.dart';
 import '../common/setting_tile.dart';
 import '../modal/money_meter_initital_setting_modal.dart';
 import 'about_app_webview.dart';
@@ -77,6 +78,15 @@ class SettingPage extends ConsumerWidget {
               MaterialPageRoute(
                 builder: ((context) => const AboutAppWebview()),
               ),
+            ),
+          ),
+          SettingTile(
+            title: AppLocalizations.of(context)!.licenses,
+            icon: Icons.flutter_dash,
+            onTap: () => showLicensePage(
+              context: context,
+              applicationIcon: const LogoImage(),
+              applicationVersion: '1.0.0',
             ),
           ),
           // ElevatedButton(

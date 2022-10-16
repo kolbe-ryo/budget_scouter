@@ -31,5 +31,6 @@
   "delete": "削除する",
   "delete_alert": "データを削除しますか？この操作は元には戻せません",
   "about_this_app": "このアプリについて",
+  "licenses": "ライセンス",
   "input_money": "使用金額を入力"
 }
