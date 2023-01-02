@@ -27,6 +27,9 @@ class MoneyMeterInitialSettingModal extends ConsumerWidget {
     return true;
   }
 
+  static final _formKey1 = GlobalKey<FormState>();
+  static final _formKey2 = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final hadData = ref.watch(moneyMeterProvider.select((value) => value.moneyMeterModel.hasdata));
@@ -46,12 +49,14 @@ class MoneyMeterInitialSettingModal extends ConsumerWidget {
                     hintText: AppLocalizations.of(context)!.hint_target,
                     numOnly: false,
                     isTarget: true,
+                    formKey: _formKey1,
                   ),
                   InputTile(
                     title: AppLocalizations.of(context)!.init_balance,
                     hintText: AppLocalizations.of(context)!.hint_balance,
                     numOnly: true,
                     isTarget: false,
+                    formKey: _formKey2,
                   ),
                   CheckResetBalanceRadioButton(
                     title: AppLocalizations.of(context)!.forward_balance,

@@ -19,6 +19,7 @@ class InputTile extends ConsumerWidget {
     required this.hintText,
     required this.numOnly,
     required this.isTarget,
+    required this.formKey,
     Key? key,
   }) : super(key: key);
 
@@ -26,6 +27,7 @@ class InputTile extends ConsumerWidget {
   final String hintText;
   final bool numOnly;
   final bool isTarget;
+  final GlobalKey<FormState> formKey;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -43,23 +45,26 @@ class InputTile extends ConsumerWidget {
             style: kTextStylePrimary(ref.watch(colorThemeProvider)),
           ),
         ),
-        TextFormField(
-          decoration: InputDecoration(
-            hintText: hintText,
-            hintStyle: kTextStyleHint,
+        Form(
+          key: formKey,
+          child: TextFormField(
+            decoration: InputDecoration(
+              hintText: hintText,
+              hintStyle: kTextStyleHint,
+            ),
+            initialValue: initialText != '0' ? initialText : '',
+            inputFormatters: numOnly ? [FilteringTextInputFormatter.digitsOnly] : null,
+            keyboardType: numOnly ? TextInputType.number : null,
+            style: kTextStyleSecondary,
+            onChanged: (String text) {
+              if (text.isEmpty) {
+                text = '0';
+              }
+              ref.read(initialMoneyMeterStateProvider.state).update(
+                    (state) => isTarget ? state.copyWith(target: text) : state.copyWith(initBalance: int.parse(text)),
+                  );
+            },
           ),
-          initialValue: initialText != '0' ? initialText : '',
-          inputFormatters: numOnly ? [FilteringTextInputFormatter.digitsOnly] : null,
-          keyboardType: numOnly ? TextInputType.number : null,
-          style: kTextStyleSecondary,
-          onChanged: (String text) {
-            if (text.isEmpty) {
-              text = '0';
-            }
-            ref.read(initialMoneyMeterStateProvider.state).update(
-                  (state) => isTarget ? state.copyWith(target: text) : state.copyWith(initBalance: int.parse(text)),
-                );
-          },
         ),
       ],
     );

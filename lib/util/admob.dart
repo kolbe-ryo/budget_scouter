@@ -49,8 +49,8 @@ class Admob {
       child: AdWidget(ad: bannerAd),
       constraints: BoxConstraints(
         maxHeight: AdSize.banner.height.toDouble(),
-        maxWidth: MediaQuery.of(context).size.width,
-        minWidth: MediaQuery.of(context).size.width,
+        maxWidth: double.infinity,
+        minWidth: double.infinity,
       ),
     );
   }

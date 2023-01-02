@@ -90,8 +90,10 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterPageState> {
     List<MoneyConsumptionHistoryModel> historyList = [];
     int lastBalance = 0;
 
+    DateTime previousYM = DateTime(nowYear, nowMonth - 1);
+
     // modelが前月だった場合
-    if ((nowDateTime.month - 1) == state.moneyMeterModel.month) {
+    if (previousYM.month == state.moneyMeterModel.month) {
       historyList.add(
         MoneyConsumptionHistoryModel(
           year: nowDateTime.year,
@@ -104,16 +106,18 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterPageState> {
     }
     // 一ヶ月以上使用していなかった場合は以下の処理
     else {
-      int preMonth;
+      DateTime lastHistoryYM;
       if (state.moneyMeterModel.moneyConsumptionHistoryModelList.isEmpty) {
-        preMonth = state.moneyMeterModel.month;
+        lastHistoryYM = DateTime(state.moneyMeterModel.year, state.moneyMeterModel.month);
       } else {
-        preMonth = state.moneyMeterModel.moneyConsumptionHistoryModelList.last.month;
+        final historyLast = state.moneyMeterModel.moneyConsumptionHistoryModelList.last;
+        lastHistoryYM = DateTime(historyLast.year, historyLast.month);
       }
+
+      lastHistoryYM = DateTime(2022, 11);
       // 現時点の前月から一月ずつ、前回最後に利用した月まで戻って空のhistoryを代入する
-      for (int decreaseMonth = nowDateTime.month - 1; decreaseMonth != preMonth; decreaseMonth--) {
-        // 戻った年月のDateTime
-        final dateTime = DateTime(nowDateTime.year, decreaseMonth);
+      while (previousYM.compareTo(lastHistoryYM) > 0) {
+        final dateTime = DateTime(nowDateTime.year, 0);
         historyList = [
           MoneyConsumptionHistoryModel(
             year: dateTime.year,
@@ -121,6 +125,7 @@ class MoneyMeterPageViewModel extends StateNotifier<MoneyMeterPageState> {
           ),
           ...historyList
         ];
+        previousYM = DateTime(previousYM.year, previousYM.month - 1);
       }
     }
 
