@@ -74,16 +74,11 @@ class SettingPage extends ConsumerWidget {
           SettingTile(
             title: AppLocalizations.of(context)!.about_this_app,
             icon: Icons.app_registration,
-            // onTap: () => Navigator.of(context).push(
-            //   MaterialPageRoute(
-            //     builder: ((context) => const AboutAppWebview()),
-            //   ),
-            // ),
-            onTap: () => ref.read(moneyMeterProvider.notifier).save(
-                  model.copyWith(year: 2022, month: 11, moneyConsumptionHistoryModelList: [
-                    model.moneyConsumptionHistoryModelList.first.copyWith(year: 2022, month: 11)
-                  ]),
-                ),
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: ((context) => const AboutAppWebview()),
+              ),
+            ),
           ),
           SettingTile(
             title: AppLocalizations.of(context)!.licenses,
